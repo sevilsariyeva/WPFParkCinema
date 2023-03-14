@@ -1,0 +1,40 @@
+﻿<Window x:Class="ParkCinema.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ParkCinema"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="Black">
+        <Button Panel.ZIndex="1" BorderThickness="0" Width="152" Height="178" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,0,0,0">
+            <Button.Background>
+                <ImageBrush ImageSource="/icons/Vector 1.png"></ImageBrush>
+            </Button.Background>
+            <Image Stretch="Uniform" Source="/icons/logo.png" Height="89" Width="121"></Image>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <StackPanel>
+            <Image Stretch="Fill" Name="secondImage" Source="{Binding BackImage.ImagePath}" ></Image>
+            <TextBlock Panel.ZIndex="1" Text="{Binding BackImage.MovieDate}" Width="250" Height="80" HorizontalAlignment="Left" Margin="80,220,0,0" Foreground="White" FontSize="20" />
+            <Button Width="100" Height="50" Margin="150,30,0,0" HorizontalAlignment="Left" Background="Blue" Foreground="White" FontSize="25" FontWeight="ExtraBlack" Content="BUY">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="50"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
