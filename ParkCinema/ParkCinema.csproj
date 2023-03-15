@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\BackgroundImageViewModel.cs" />
     <Compile Include="Views\UserControls\BackgroundImageUC.xaml.cs">
       <DependentUpon>BackgroundImageUC.xaml</DependentUpon>

@@ -1,4 +1,5 @@
-﻿using ParkCinema.Models;
+﻿using ParkCinema.Commands;
+using ParkCinema.Models;
 using ParkCinema.Repositories;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,10 @@ namespace ParkCinema.ViewModels
                 count++;
             }
         }
+        public RelayCommand FirstClickCommand { get; set; }
+        public RelayCommand SecondClickCommand { get; set; }
+        public RelayCommand ThirdClickCommand { get; set; }
+        public RelayCommand FourthClickCommand { get; set; }
         public MainViewModel()
         {
             BackgroundRepository = new FakeRepo();
@@ -59,6 +64,27 @@ namespace ParkCinema.ViewModels
             timer.Interval = TimeSpan.FromSeconds(2);
             timer.Tick += Timer_Tick;
             timer.Start();
+
+            FirstClickCommand = new RelayCommand((obj) =>
+            {
+                BackImage = AllBackgroundImages[0];
+                timer.Stop();
+            });
+            SecondClickCommand = new RelayCommand((obj) =>
+            {
+                BackImage = AllBackgroundImages[1];
+                timer.Stop();
+            });
+            ThirdClickCommand = new RelayCommand((obj) =>
+            {
+                BackImage = AllBackgroundImages[2];
+                timer.Stop();
+            });
+            FourthClickCommand = new RelayCommand((obj) =>
+            {
+                BackImage = AllBackgroundImages[3];
+                timer.Stop();
+            });
         }
     }
 }
