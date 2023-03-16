@@ -28,20 +28,37 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <Style x:Key="radioButton" TargetType="RadioButton">
-        <Setter Property="RenderTransform">
-            <Setter.Value>
-                <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
-            </Setter.Value>
-        </Setter>
+    <Style x:Key="buyButton" TargetType="Button">
         <Setter Property="Cursor" Value="Hand"></Setter>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="RadioButton">
-                    
+                <ControlTemplate TargetType="Button">
                     <Border Name="border"
                             BorderThickness="2"
+                            Padding="4,2"
+                            BorderBrush="{TemplateBinding Background}"
+                            CornerRadius="20"
+                            Background="{TemplateBinding Background}"
+                            >
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="Transparent"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="allButtons" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border"
+                            BorderThickness="0"
                             Padding="4,2"
                             BorderBrush="DarkGray"
                             CornerRadius="3"
@@ -53,6 +70,45 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="border" Property="BorderBrush" Value="Transparent"></Setter>
                         </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="mainButtons" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter x:Name="foreground" Property="Foreground" Value="#5d6872"></Setter>
+        <Setter Property="FontSize" Value="25"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border"
+                            BorderThickness="2"
+                            Padding="4,2"
+                            BorderBrush="#5d6872"
+                            CornerRadius="20"
+                            Background="{TemplateBinding Background}"
+                            >
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="White"></Setter>
+                            <Setter Property="Foreground" Value="White"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="red"></Setter>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="Button.Click">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                        <LinearColorKeyFrame KeyTime="0:0:0.5"  Value="red"/>
+                                    </ColorAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

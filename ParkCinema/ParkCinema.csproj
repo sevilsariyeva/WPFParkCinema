@@ -56,10 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="ViewModels\BackgroundImageViewModel.cs" />
-    <Compile Include="Views\UserControls\BackgroundImageUC.xaml.cs">
-      <DependentUpon>BackgroundImageUC.xaml</DependentUpon>
-    </Compile>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,10 +76,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Dictionaries\StyleDictionary.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\UserControls\BackgroundImageUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,16 +113,80 @@
     <Resource Include="icons\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\prestij-cover.png" />
+    <Resource Include="images\kutsal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\facebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\twitter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\youtube.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\prestij.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\android.png" />
+    <Resource Include="icons\apple.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\evde.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\ant-cover.png" />
+    <Resource Include="images\ant.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\kutsal.jpg" />
+    <Folder Include="Views\UserControls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\uchush811.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\antMan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\65.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\cocaineBear.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\epicTales.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\evdeCover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\foreverCover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\kutsalCover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\prestijCover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\scream.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\shazam.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\theLockSmith.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\giftedCover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\passengersCover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\abeautifulmindCover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\chernobyl.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
