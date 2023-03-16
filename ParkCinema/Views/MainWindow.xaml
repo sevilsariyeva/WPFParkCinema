@@ -99,26 +99,85 @@
                 <Button Style="{StaticResource mainButtons}" Width="270" Height="60" Margin="660,738,0,41" HorizontalAlignment="Left" Content="Schedule"></Button>
             </Canvas>
             <ListBox HorizontalAlignment="Left" Width="850" BorderThickness="0"  ItemsSource="{Binding Movies}" Name="listbox" Margin="80,900,0,0" Background="#2b3236" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ListBox.ItemsPanel >
+                <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Margin="35,20,0,0" Orientation="Horizontal"></WrapPanel>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
-                
-                <!--<ListBox.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <EventSetter Event="PreviewMouseDown"
-                             Handler="ItemOnPreviewMouseDown" />
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
+                  Padding="{TemplateBinding Control.Padding}"
+                  BorderBrush="{TemplateBinding Border.BorderBrush}"
+                  Background="{TemplateBinding Panel.Background}"
+                  Name="Bd"
+                  SnapsToDevicePixels="True">
+                                        <ContentPresenter Content="{TemplateBinding ContentControl.Content}"
+                               ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"
+                               ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}"
+                               HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                               VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                               SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                                                <Condition Property="Selector.IsSelected" Value="True"/>
+                                            </MultiTrigger.Conditions>
+                                            <Setter Property="Panel.Background" TargetName="Bd" 
+                        Value="Transparent"/>
+                                            <Setter Property="Border.BorderBrush" TargetName="Bd">
+                                                <Setter.Value>
+                                                    <SolidColorBrush>Transparent</SolidColorBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </MultiTrigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="Selector.IsSelectionActive" Value="True"/>
+                                                <Condition Property="Selector.IsSelected" Value="True"/>
+                                            </MultiTrigger.Conditions>
+                                            <Setter Property="Panel.Background" TargetName="Bd" Value="Transparent"/>
+                                            <Setter Property="Border.BorderBrush" TargetName="Bd">
+                                                <Setter.Value>
+                                                    <SolidColorBrush>Transparent</SolidColorBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </MultiTrigger>
+                                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                            <Setter Property="Panel.Background" TargetName="Bd" 
+                       Value="Transparent"/>
+                                            <Setter Property="Border.BorderBrush" TargetName="Bd">
+                                                <Setter.Value>
+                                                    <SolidColorBrush>Transparent</SolidColorBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                        <Trigger Property="UIElement.IsEnabled" Value="False">
+                                            <Setter Property="TextElement.Foreground" TargetName="Bd">
+                                                <Setter.Value>
+                                                    <DynamicResource ResourceKey="{x:Static SystemColors.GrayTextBrushKey}" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
                     </Style>
-                </ListBox.ItemContainerStyle>-->
-                <ListBox.ItemTemplate >
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Background="Transparent"  BorderThickness="0" CornerRadius="20" Width="250" Height="300">
                             <Grid Name="myGrid" Background="Transparent" Margin="0,0,8,-4" >
                                 <Button HorizontalAlignment="Left" Height="180" Width="115" Style="{StaticResource allButtons}"  HorizontalContentAlignment="Center" Name="imageLbl" Margin="0,15,37,50">
                                     <Image Stretch="Fill" Name="image" Source="{Binding ImagePath}"></Image>
                                 </Button>
-                                <TextBox TextWrapping="Wrap" Text="{Binding MovieName}" BorderThickness="0" Background="Transparent"  Name="filmnametxtBox" HorizontalContentAlignment="Left" Foreground="WhiteSmoke" FontSize="15" Width="120" Margin="110,50,0,0"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding MovieName}" Background="Transparent"  Name="filmnametxtBox" Foreground="WhiteSmoke" FontSize="15" Width="120" Margin="110,50,0,0"/>
                                 <Button Style="{StaticResource buyButton2}" Background="#2c2c2e" Foreground="White" Width="90" Height="30" Content="Buy Ticket" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="15,200,0,0" >
                                 </Button>
                             </Grid>
