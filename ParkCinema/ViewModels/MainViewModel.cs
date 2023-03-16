@@ -118,7 +118,7 @@ namespace ParkCinema.ViewModels
                 MovieFormat="3D / 2D",
                 MovieLanguages="RU TR",
                 Age="12+",
-                ImagePath="/images/antCover.jpg",
+                ImagePath="/images/antMan.jpg",
                 MovieCondition="today"
             },
             new Movie{
@@ -138,7 +138,7 @@ namespace ParkCinema.ViewModels
                 MovieFormat="2D",
                 MovieLanguages="EN TR",
                 Age="6+",
-                ImagePath="/images/gifted.jpg",
+                ImagePath="/images/giftedCover.jpg",
                 MovieCondition="today"
             },
             new Movie{

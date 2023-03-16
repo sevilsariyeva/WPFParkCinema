@@ -98,39 +98,28 @@
                 <Button Style="{StaticResource mainButtons}" Width="270" Height="60" Margin="370,738,0,41" HorizontalAlignment="Left" Content="Soon"></Button>
                 <Button Style="{StaticResource mainButtons}" Width="270" Height="60" Margin="660,738,0,41" HorizontalAlignment="Left" Content="Schedule"></Button>
             </Canvas>
-            <ListBox HorizontalAlignment="Left" Width="600" BorderThickness="0"  ItemsSource="{Binding Movies}" Name="listbox" Margin="0,900,0,0" Background="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ListBox.ItemsPanel>
+            <ListBox HorizontalAlignment="Left" Width="850" BorderThickness="0"  ItemsSource="{Binding Movies}" Name="listbox" Margin="80,900,0,0" Background="#2b3236" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemsPanel >
                     <ItemsPanelTemplate>
-                        <WrapPanel Margin="30,10,0,0" Orientation="Horizontal"></WrapPanel>
+                        <WrapPanel Margin="35,20,0,0" Orientation="Horizontal"></WrapPanel>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
+                
                 <!--<ListBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <EventSetter Event="PreviewMouseDown"
                              Handler="ItemOnPreviewMouseDown" />
                     </Style>
                 </ListBox.ItemContainerStyle>-->
-                <ListBox.ItemTemplate>
+                <ListBox.ItemTemplate >
                     <DataTemplate>
-                        <Border Background="Transparent"  BorderThickness="2" CornerRadius="20" Width="250" Height="300">
-                            <Border.BorderBrush>
-                                <LinearGradientBrush>
-                                    <GradientStop Color="White" Offset="0"></GradientStop>
-                                    <GradientStop Color="#1c4966" Offset="0.5"></GradientStop>
-                                    <GradientStop Color="Black" Offset="1"></GradientStop>
-                                </LinearGradientBrush>
-                            </Border.BorderBrush>
+                        <Border Background="Transparent"  BorderThickness="0" CornerRadius="20" Width="250" Height="300">
                             <Grid Name="myGrid" Background="Transparent" Margin="0,0,8,-4" >
-                                <Label HorizontalContentAlignment="Center" Name="imageLbl" Height="200" Margin="46,50,37,50">
-                                    <Image Stretch="Uniform" Name="image" Source="{Binding ImagePath}"></Image>
-                                </Label>
-                                <TextBox Text="{Binding FilmName}" BorderThickness="0" TextWrapping="Wrap" Background="Transparent"  Name="filmnametxtBox" HorizontalContentAlignment="Center" Foreground="WhiteSmoke" FontSize="18" Width="200" Margin="24,0,14,256"/>
-                                <Button  Name="editBtn"  Background="#3792cb" Foreground="White" Width="70" Height="30" Margin="86,262,82,8" Content="Edit" FontSize="20" >
-                                    <Button.Resources>
-                                        <Style TargetType="Border">
-                                            <Setter Property="CornerRadius" Value="15"></Setter>
-                                        </Style>
-                                    </Button.Resources>
+                                <Button HorizontalAlignment="Left" Height="180" Width="115" Style="{StaticResource allButtons}"  HorizontalContentAlignment="Center" Name="imageLbl" Margin="0,15,37,50">
+                                    <Image Stretch="Fill" Name="image" Source="{Binding ImagePath}"></Image>
+                                </Button>
+                                <TextBox TextWrapping="Wrap" Text="{Binding MovieName}" BorderThickness="0" Background="Transparent"  Name="filmnametxtBox" HorizontalContentAlignment="Left" Foreground="WhiteSmoke" FontSize="15" Width="120" Margin="110,50,0,0"/>
+                                <Button Style="{StaticResource buyButton2}" Background="#2c2c2e" Foreground="White" Width="90" Height="30" Content="Buy Ticket" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="15,200,0,0" >
                                 </Button>
                             </Grid>
                         </Border>
