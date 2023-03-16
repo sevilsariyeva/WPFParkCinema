@@ -113,7 +113,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\Vector 1.png" />
+    <Resource Include="icons\logoBackground.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icons\logo.png" />

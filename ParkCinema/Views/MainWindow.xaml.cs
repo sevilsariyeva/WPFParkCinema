@@ -24,8 +24,9 @@ namespace ParkCinema
         public MainWindow()
         {
             InitializeComponent();
-            var vm = new MainViewModel();
-            this.DataContext = vm;
+            var viewModel = new MainViewModel();
+            App.MyGrid = myGrid;
+            this.DataContext = viewModel;
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ParkCinema
 {
@@ -13,5 +14,6 @@ namespace ParkCinema
     /// </summary>
     public partial class App : Application
     {
+        public static Grid MyGrid { get; set; }
     }
 }

@@ -6,88 +6,76 @@
         xmlns:local="clr-namespace:ParkCinema"
         mc:Ignorable="d"
         Title="MainWindow" Width="1400" Height="750" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-    <Grid>
+    <Grid Name="myGrid">
         <Grid Background="Black">
-            <Button Panel.ZIndex="1" BorderThickness="0" Width="152" Height="178" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,0,0,0">
-                <Button.Background>
-                    <ImageBrush ImageSource="/icons/Vector 1.png" Stretch="Fill"></ImageBrush>
-                </Button.Background>
-                <Image Stretch="Fill" Source="/icons/logo.png" Height="89" Width="121"></Image>
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="White" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Cursor" Value="Hand"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
+            <Button Style="{StaticResource logoButton}" Panel.ZIndex="1" BorderThickness="0" Width="152" Height="178" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,0,0,0">
+                <Image Stretch="Uniform" Source="/icons/logo.png" Height="89" Width="121"></Image>
             </Button>
             <ScrollViewer>
-            <Canvas>
-                <Image Width="1400" Height="750" Stretch="Fill"  Name="secondImage" Source="{Binding BackImage.ImagePath}" ></Image>
-                <TextBlock Panel.ZIndex="1" Text="{Binding BackImage.MovieName}"  HorizontalAlignment="Left" Foreground="White" FontSize="65" Canvas.Left="88" Canvas.Top="486" VerticalAlignment="Center" FontWeight="ExtraBlack">
-                    <TextBlock.Effect>
-                        <DropShadowEffect ShadowDepth="8"></DropShadowEffect>
-                    </TextBlock.Effect>
-                </TextBlock>
-                <TextBlock Panel.ZIndex="1" Text="{Binding BackImage.MovieDate}"   HorizontalAlignment="Center" Foreground="White" FontSize="35" Canvas.Left="90" Canvas.Top="572" VerticalAlignment="Top" FontWeight="Bold">
-                    <TextBlock.Effect>
-                        <DropShadowEffect ShadowDepth="3"></DropShadowEffect>
-                    </TextBlock.Effect>
-                </TextBlock>
-                <Button Width="100" Height="50" Canvas.Top="634" Canvas.Left="86" HorizontalAlignment="Center" Background="Blue" Foreground="White" FontSize="25" FontWeight="ExtraBlack" Content="BUY" VerticalAlignment="Top">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="20"></Setter>
-                        </Style>
-                    </Button.Resources>
-                </Button>
-                <RadioButton Command="{Binding FirstClickCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="625" Canvas.Top="676">
-                    <RadioButton.RenderTransform>
-                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
-                    </RadioButton.RenderTransform>
-                    <RadioButton.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="20"></Setter>
-                        </Style>
-                    </RadioButton.Resources>
-                </RadioButton>
-                <RadioButton Command="{Binding SecondClickCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="675" Canvas.Top="676">
-                    <RadioButton.RenderTransform>
-                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
-                    </RadioButton.RenderTransform>
-                    <RadioButton.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="20"></Setter>
-                        </Style>
-                    </RadioButton.Resources>
-                </RadioButton>
-                <RadioButton Command="{Binding ThirdClickCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="725" Canvas.Top="676">
-                    <RadioButton.RenderTransform>
-                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
-                    </RadioButton.RenderTransform>
-                    <RadioButton.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="20"></Setter>
-                        </Style>
-                    </RadioButton.Resources>
-                </RadioButton>
-                <RadioButton Command="{Binding FourthClickCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="775" Canvas.Top="676">
-                    <RadioButton.RenderTransform>
-                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
-                    </RadioButton.RenderTransform>
-                    <RadioButton.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="20"></Setter>
-                        </Style>
-                    </RadioButton.Resources>
-                </RadioButton>
-            </Canvas>
+                <Canvas>
+                    <Image Width="1400" Height="750" Stretch="Fill"  Name="secondImage" Source="{Binding BackImage.ImagePath}" ></Image>
+                    <TextBlock Panel.ZIndex="1" Text="{Binding BackImage.MovieName}"  HorizontalAlignment="Left" Foreground="White" FontSize="65" Canvas.Left="88" Canvas.Top="486" VerticalAlignment="Center" FontWeight="ExtraBlack">
+                        <TextBlock.Effect>
+                            <DropShadowEffect ShadowDepth="8"></DropShadowEffect>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <TextBlock Panel.ZIndex="1" Text="{Binding BackImage.MovieDate}"   HorizontalAlignment="Center" Foreground="White" FontSize="35" Canvas.Left="90" Canvas.Top="572" VerticalAlignment="Top" FontWeight="Bold">
+                        <TextBlock.Effect>
+                            <DropShadowEffect ShadowDepth="3"></DropShadowEffect>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <Button Style="{StaticResource logoButton}" Width="100" Height="50" Canvas.Top="634" Canvas.Left="86" HorizontalAlignment="Center" Background="Blue" Foreground="White" FontSize="25" FontWeight="ExtraBlack" Content="BUY" VerticalAlignment="Top">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="30"></Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <RadioButton Cursor="Hand" Command="{Binding FirstClickCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="625" Canvas.Top="676">
+                        <RadioButton.RenderTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </RadioButton.RenderTransform>
+                        <RadioButton.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"></Setter>
+                            </Style>
+                        </RadioButton.Resources>
+                    </RadioButton>
+                    <RadioButton Cursor="Hand" Command="{Binding SecondClickCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="675" Canvas.Top="676">
+                        <RadioButton.RenderTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </RadioButton.RenderTransform>
+                        <RadioButton.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"></Setter>
+                            </Style>
+                        </RadioButton.Resources>
+                    </RadioButton>
+                    <RadioButton Cursor="Hand" Command="{Binding ThirdClickCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="725" Canvas.Top="676">
+                        <RadioButton.RenderTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </RadioButton.RenderTransform>
+                        <RadioButton.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"></Setter>
+                            </Style>
+                        </RadioButton.Resources>
+                    </RadioButton>
+                    <RadioButton Cursor="Hand" Command="{Binding FourthClickCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="775" Canvas.Top="676">
+                        <RadioButton.RenderTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
+                        </RadioButton.RenderTransform>
+                        <RadioButton.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"></Setter>
+                            </Style>
+                        </RadioButton.Resources>
+                    </RadioButton>
+                </Canvas>
             </ScrollViewer>
+        </Grid>
+        <Grid>
+            
         </Grid>
     </Grid>
 </Window>
