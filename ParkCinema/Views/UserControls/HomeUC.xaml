@@ -95,7 +95,7 @@
                     </Button>
                 </Canvas>
                 <Canvas>
-                    <Button Command="{Binding TodayClickCommand}" Style="{StaticResource mainButtons}" Width="270" Height="60" Margin="80,738,0,41" HorizontalAlignment="Left" Content="Today"></Button>
+                    <Button Command="{Binding TodayClickCommand}" Style="{StaticResource mainButtons}" Width="270" Height="60" Margin="80,738,0,41" HorizontalAlignment="Left" Content="Today" IsDefault="True" ></Button>
                     <Button Style="{StaticResource mainButtons}" Width="270" Height="60" Margin="370,738,0,41" HorizontalAlignment="Left" Content="Soon"></Button>
                     <Button Style="{StaticResource mainButtons}" Width="270" Height="60" Margin="660,738,0,41" HorizontalAlignment="Left" Content="Schedule"></Button>
                 </Canvas>

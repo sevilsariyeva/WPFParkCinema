@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace ParkCinema.ViewModels
@@ -21,7 +22,7 @@ namespace ParkCinema.ViewModels
         public ObservableCollection<Movie> AllMovies
         {
             get { return movies; }
-            set { movies = value; }
+            set { movies = value; OnPropertyChanged(); }
         }
 
         private ObservableCollection<BackgroundImage> allBackgroundImages;
@@ -90,7 +91,13 @@ namespace ParkCinema.ViewModels
             });
             TodayClickCommand = new RelayCommand((obj) =>
             {
-
+                var movies = (App.MovieRepo.Movies.Where((m) => m.MovieCondition == "today").ToList());
+                List<Movie> movies1 = new List<Movie>();
+                movies.ForEach(m =>
+                {
+                    movies1.Add(m);
+                });
+                AllMovies = new ObservableCollection<Movie>(movies1);
             });
         }
 

@@ -127,7 +127,7 @@ namespace ParkCinema.Repositories
                 MovieLanguages="TR",
                 Age="12+",
                 ImagePath="/images/prestijCover.png",
-                MovieCondition="today"
+                MovieCondition="soon"
             },
             new Movie{
                 Id=12,
