@@ -1,4 +1,5 @@
 ﻿using ParkCinema.ViewModels;
+using ParkCinema.Views.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,12 @@ namespace ParkCinema
             InitializeComponent();
             var viewModel = new MainViewModel();
             App.MyGrid = myGrid;
+            var homeUCViewModel = new HomeUCViewModel();
+            var homeUC = new HomeUC();
+            homeUC.DataContext = homeUCViewModel;
+
+            App.MyGrid.Children.Add(homeUC);
+
             this.DataContext = viewModel;
         }
     }

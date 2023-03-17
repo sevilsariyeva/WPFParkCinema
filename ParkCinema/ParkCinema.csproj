@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -56,8 +59,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Repositories\MovieRepository.cs" />
     <Compile Include="ViewModels\BackgroundImageViewModel.cs" />
+    <Compile Include="ViewModels\HomeUCViewModel.cs" />
+    <Compile Include="Views\UserControls\HomeUC.xaml.cs">
+      <DependentUpon>HomeUC.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,7 +77,7 @@
     </Compile>
     <Compile Include="Models\BackgroundImage.cs" />
     <Compile Include="Models\Entity.cs" />
-    <Compile Include="Repositories\FakeRepo.cs" />
+    <Compile Include="Repositories\BackgroundRepository.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
@@ -76,6 +85,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Dictionaries\StyleDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\HomeUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -98,6 +111,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -138,7 +152,8 @@
     <Resource Include="images\ant.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\UserControls\" />
+    <Resource Include="icons\master.png" />
+    <Resource Include="icons\visa.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\uchush811.jpg" />
@@ -187,6 +202,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\chernobyl.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\logogray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\imaxtelebe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\supergun.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

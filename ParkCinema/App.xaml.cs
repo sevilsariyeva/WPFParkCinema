@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ParkCinema.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -15,5 +16,12 @@ namespace ParkCinema
     public partial class App : Application
     {
         public static Grid MyGrid { get; set; }
+        public static MovieRepository MovieRepo { get; set; }
+        public static UIElement BackPage { get; set; }
+
+        public App()
+        {
+            MovieRepo = new MovieRepository();  
+        }
     }
 }

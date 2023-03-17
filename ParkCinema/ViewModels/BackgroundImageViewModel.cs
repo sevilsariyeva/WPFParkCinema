@@ -12,7 +12,7 @@ namespace ParkCinema.ViewModels
 {
     public class BackgroundImageViewModel : BaseViewModel 
     {
-        public FakeRepo BackgroundImageRepository { get; set; }
+        public BackgroundRepository BackgroundImageRepository { get; set; }
         private ObservableCollection<BackgroundImage> allImages;
 
         public ObservableCollection<BackgroundImage> AllImages
@@ -35,7 +35,7 @@ namespace ParkCinema.ViewModels
 
         public BackgroundImageViewModel()
         {
-            BackgroundImageRepository = new FakeRepo();
+            BackgroundImageRepository = new BackgroundRepository();
             AllImages = new ObservableCollection<BackgroundImage>(BackgroundImageRepository.GetAll());
             BackImage = new BackgroundImage();
             FirstClickCommand = new RelayCommand((obj) =>

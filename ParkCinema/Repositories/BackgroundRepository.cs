@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ParkCinema.Repositories
 {
-    public class FakeRepo
+    public class BackgroundRepository
     {
         
         public List<BackgroundImage> GetAll()

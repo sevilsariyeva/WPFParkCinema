@@ -122,8 +122,10 @@
                             <Setter TargetName="border" Property="BorderBrush" Value="White"></Setter>
                             <Setter Property="Foreground" Value="White"></Setter>
                         </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
+                       
+                        <Trigger Property="IsFocused" Value="True">
                             <Setter TargetName="border" Property="BorderBrush" Value="red"></Setter>
+                            <Setter Property="Foreground" Value="White"></Setter>
                         </Trigger>
                         <EventTrigger RoutedEvent="Button.Click">
                             <BeginStoryboard>
@@ -200,4 +202,95 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="movieNameButton" TargetType="{x:Type Button}">
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border"
+                            BorderThickness="0"
+                            Padding="4,2"
+                            BorderBrush="DarkGray"
+                            CornerRadius="3"
+                            Background="{TemplateBinding Background}"
+                            >
+                        <TextBlock x:Name="textBlock" Margin="-1" TextWrapping="Wrap"
+                                           TextDecorations="{x:Null}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+
+                        </TextBlock>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="Transparent"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True" >
+                            <Setter TargetName="textBlock" Property="TextBlock.TextDecorations" Value="Underline" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!--<Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="button">
+                        <Grid>
+                            <Border>
+                                <TextBlock x:Name="textBlock" Margin="-1" TextWrapping="Wrap"
+                                           TextDecorations="{x:Null}">
+
+                                </TextBlock>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True" >
+                            <Setter TargetName="textBlock" Property="TextBlock.TextDecorations" Value="Underline" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>-->
+    </Style>
+    <Style x:Key="txtblck" TargetType="TextBlock">
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter  Property="TextBlock.TextDecorations" Value="Underline" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Storyboard x:Key="expandStoryboard">
+        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+        To="1.2" Duration="0:0:0.2" />
+        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+        To="1.2" Duration="0:0:0.2" />
+    </Storyboard>
+    <Storyboard x:Key="shrinkStoryboard">
+        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+        To="1" Duration="0:0:0.2" />
+        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+        To="1" Duration="0:0:0.2" />
+    </Storyboard>
+    <Style x:Key="imgStyle" TargetType ="{x:Type Image}">
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource expandStoryboard}" />
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource shrinkStoryboard}" />
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>
