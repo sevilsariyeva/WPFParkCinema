@@ -18,6 +18,7 @@ namespace ParkCinema.Repositories
                 new BackgroundImage{Id=2,MovieName="Prestij Meselesi",MovieDate="2 February",ImagePath="/images/prestij.jpg"},
                 new BackgroundImage{Id=3,MovieName="Evdə qalmış",MovieDate="9 February",ImagePath="/images/evde.jpg"},
                 new BackgroundImage{Id=4,MovieName="Ant-Man and the Wasp: Quantumania",MovieDate="16 February",ImagePath="/images/ant.jpg"},
+                new BackgroundImage{Id=5,MovieName="Shazam! Fury of the Gods",MovieDate="16 March",ImagePath="/images/shazamCover.jpg"},
             };
         }
     }

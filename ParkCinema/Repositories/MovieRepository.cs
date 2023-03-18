@@ -127,7 +127,7 @@ namespace ParkCinema.Repositories
                 MovieLanguages="TR",
                 Age="12+",
                 ImagePath="/images/prestijCover.png",
-                MovieCondition="soon"
+                MovieCondition="today"
             },
             new Movie{
                 Id=12,
@@ -168,6 +168,56 @@ namespace ParkCinema.Repositories
                 Age="16+",
                 ImagePath="/images/chernobyl.jpg",
                 MovieCondition="today"
+            },
+            new Movie{
+                Id=16,
+                MovieName="Julia & Julie",
+                MovieDate="From 22 March",
+                MovieFormat="2D",
+                MovieLanguages="EN TR",
+                Age="16+",
+                ImagePath="/images/julia.jpg",
+                MovieCondition="soon"
+            },
+            new Movie{
+                Id=17,
+                MovieName="Yedinci Koğuştaki Mucize",
+                MovieDate="From 25 March",
+                MovieFormat="2D",
+                MovieLanguages="TR",
+                Age="16+",
+                ImagePath="/images/yedinci.jpg",
+                MovieCondition="soon"
+            },
+            new Movie{
+                Id=18,
+                MovieName="Bergen",
+                MovieDate="From 28 March",
+                MovieFormat="2D",
+                MovieLanguages="TR",
+                Age="16+",
+                ImagePath="/images/bergen.png",
+                MovieCondition="soon"
+            },
+            new Movie{
+                Id=19,
+                MovieName="Wonder",
+                MovieDate="From 28 March",
+                MovieFormat="2D",
+                MovieLanguages="EN TR",
+                Age="6+",
+                ImagePath="/images/wonder.jpg",
+                MovieCondition="soon"
+            },
+             new Movie{
+                Id=20,
+                MovieName="The Fault In Our Stars",
+                MovieDate="From 1 April",
+                MovieFormat="2D",
+                MovieLanguages="EN TR",
+                Age="16+",
+                ImagePath="/images/thefault.jpg",
+                MovieCondition="soon"
             }
                 };
                 FileHelper.WriteMovies(Movies);
