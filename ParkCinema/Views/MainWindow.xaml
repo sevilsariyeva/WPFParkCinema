@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ParkCinema"
         mc:Ignorable="d"
-        Title="MainWindow" Width="1400" Height="856" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="MainWindow"  WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <ScrollViewer>
         <Grid Name="myGrid">
             <!--<Button Style="{StaticResource logoButton}" Panel.ZIndex="1" BorderThickness="0" Width="152" Height="178" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,0,0,0">

@@ -76,21 +76,21 @@
                     </RadioButton.Resources>
                 </RadioButton>
 
-                <Button Style="{StaticResource allButtons}" Width="50" Canvas.Top="653" Canvas.Left="1152" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button Style="{StaticResource allButtons}" Command="{Binding FaceBookClickCommand}" Width="50" Canvas.Top="653" Canvas.Left="1152" HorizontalAlignment="Center" VerticalAlignment="Top">
                     <Image Source="/icons/facebook.png" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <Image.Effect>
                             <DropShadowEffect ShadowDepth="3"></DropShadowEffect>
                         </Image.Effect>
                     </Image>
                 </Button>
-                <Button Style="{StaticResource allButtons}" Width="50" Canvas.Top="657" Canvas.Left="1212" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button Style="{StaticResource allButtons}" Command="{Binding TwitterClickCommand}" Width="50" Canvas.Top="657" Canvas.Left="1212" HorizontalAlignment="Center" VerticalAlignment="Top">
                     <Image  Source="/icons/twitter.png" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <Image.Effect>
                             <DropShadowEffect ShadowDepth="3"></DropShadowEffect>
                         </Image.Effect>
                     </Image>
                 </Button>
-                <Button Style="{StaticResource allButtons}" Width="80" Canvas.Top="663" Canvas.Left="1265">
+                <Button Style="{StaticResource allButtons}" Command="{Binding YoutubeClickCommand}" Width="80" Canvas.Top="663" Canvas.Left="1265">
                     <Image Source="/icons/youtube.png" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <Image.Effect>
                             <DropShadowEffect Color="WhiteSmoke" ShadowDepth="2" Direction="200"></DropShadowEffect>

@@ -15,6 +15,12 @@ namespace ParkCinema.Models
         public string MovieFormat { get; set; }
         public string MovieLanguages { get; set; }
         public string MovieCondition { get; set; }
+        public string MovieCountry { get; set; }
+        public string MovieDirector { get; set; }
+        public string MovieGenre { get; set; }
+        public string MovieActors { get; set; }
+        public string MovieDuration { get; set; }
+        public int MovieYear { get; set; }
         public string MovieLink { get; set; }
     }
 }

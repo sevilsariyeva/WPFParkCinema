@@ -150,117 +150,120 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\logoBackground.png" />
+    <Resource Include="Icons\logoBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\logo.png" />
+    <Resource Include="Icons\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\kutsal.jpg" />
+    <Resource Include="Images\kutsal.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\facebook.png" />
+    <Resource Include="Icons\facebook.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\twitter.png" />
+    <Resource Include="Icons\twitter.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\youtube.png" />
+    <Resource Include="Icons\youtube.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\prestij.jpg" />
+    <Resource Include="Images\prestij.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\android.png" />
-    <Resource Include="icons\apple.png" />
+    <Resource Include="Icons\android.png" />
+    <Resource Include="Icons\apple.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\evde.jpg" />
+    <Resource Include="Images\evde.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\ant.jpg" />
+    <Resource Include="Images\ant.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\master.png" />
-    <Resource Include="icons\visa.png" />
+    <Resource Include="Icons\master.png" />
+    <Resource Include="Icons\visa.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\uchush811.jpg" />
+    <Resource Include="Images\uchush811.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\antMan.jpg" />
+    <Resource Include="Images\antMan.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\65.jpg" />
+    <Resource Include="Images\65.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\cocaineBear.jpg" />
+    <Resource Include="Images\cocaineBear.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\epicTales.jpg" />
+    <Resource Include="Images\epicTales.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\evdeCover.jpg" />
+    <Resource Include="Images\evdeCover.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\foreverCover.jpg" />
+    <Resource Include="Images\foreverCover.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\kutsalCover.jpg" />
+    <Resource Include="Images\kutsalCover.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\prestijCover.png" />
+    <Resource Include="Images\prestijCover.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\scream.jpg" />
+    <Resource Include="Images\scream.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\shazam.jpg" />
+    <Resource Include="Images\shazam.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\theLockSmith.jpg" />
+    <Resource Include="Images\theLockSmith.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\giftedCover.jpg" />
+    <Resource Include="Images\giftedCover.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\passengersCover.jpg" />
+    <Resource Include="Images\passengersCover.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\abeautifulmindCover.jpg" />
+    <Resource Include="Images\abeautifulmindCover.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\chernobyl.jpg" />
+    <Resource Include="Images\chernobyl.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\logogray.png" />
+    <Resource Include="Icons\logogray.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\imaxtelebe.png" />
+    <Resource Include="Icons\imaxtelebe.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\supergun.png" />
+    <Resource Include="Icons\supergun.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\julia.jpg" />
+    <Resource Include="Images\julia.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\yedinci.jpg" />
+    <Resource Include="Images\yedinci.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\bergen.png" />
+    <Resource Include="Images\bergen.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\wonder.jpg" />
+    <Resource Include="Images\wonder.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\thefault.jpg" />
+    <Resource Include="Images\thefault.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\shazamCover.jpg" />
+    <Resource Include="Images\shazamCover.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\movieback.jpg" />
+    <Resource Include="Images\movieback.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\ticketBanner.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1587.40\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1587.40\build\Microsoft.Web.WebView2.targets')" />
