@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.TextFormatting;
 using System.Windows.Threading;
 
 namespace ParkCinema.ViewModels
@@ -160,11 +161,25 @@ namespace ParkCinema.ViewModels
                 vm.Movie = temp;
                 var uc = new MovieBackgroundUC();
                 uc.DataContext = vm;
+                //string html = "<html><head>";
+                //html += " meta content='IE=Edge' http-equiv='X-UA-Compatible'/ ";
+                //html += "<iframe id='video' src= ' / embed  { 0}' width='600' height='300' frameborder='0' allowfullscreen  /iframe ";
+                //html += "</head></html>";
+                string htmlFragment =
+    @"<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+                <html>
+                   <head>
+                      <title>YouTubePagesample</title>
+                   </head>
+<iframe width='560' height='315' src='http://www.youtube.com/embed/{YoutubeID}' frameborder='0' allowfullscreen></iframe>
+                   <body>
+                   </body>
+                </html>;";
+                //string html = @"<iframe width=""560"" height=""315"" src=""https://www.youtube.com/watch?v=Zi88i4CpHe4"" frameborder=""0"" allowfullscreen></iframe>";
+                //vm.Movie.MovieLink = string.Format(html, temp.MovieLink.Split('=')[1]);
+                
                 App.MyGrid.Children.RemoveAt(0);
                 App.MyGrid.Children.Add(uc);
-                //vm.Movie.MovieName = MovieName;
-                //vm.Movie.MovieName = MovieName;
-                //uc.DataContext = vm;
             });
         }
 

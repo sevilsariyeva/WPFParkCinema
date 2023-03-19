@@ -15,5 +15,6 @@ namespace ParkCinema.Models
         public string MovieFormat { get; set; }
         public string MovieLanguages { get; set; }
         public string MovieCondition { get; set; }
+        public string MovieLink { get; set; }
     }
 }

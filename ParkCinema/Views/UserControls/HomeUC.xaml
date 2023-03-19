@@ -110,7 +110,6 @@
                 <Button Command="{Binding ScheduleClickCommand}" Style="{StaticResource mainButtons}" Width="270" Height="60" Margin="660,738,0,41" HorizontalAlignment="Left" Content="Schedule"></Button>
             </Canvas>
             <ListBox HorizontalAlignment="Left" Width="850" Height="1550" BorderThickness="0"  ItemsSource="{Binding AllMovies}" Name="listbox" Margin="80,560,0,0" Background="#2b3236" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Margin="35,20,0,0" Orientation="Horizontal"></WrapPanel>
@@ -190,13 +189,19 @@
                     <DataTemplate>
                         <Border Background="Transparent"  BorderThickness="0" CornerRadius="20" Width="250" Height="300">
                             <Grid Name="myGrid" Background="Transparent" Margin="0,0,8,-4" >
-                                <Button Command="{Binding RelativeSource={
+                                <Button  Command="{Binding RelativeSource={
                                 RelativeSource AncestorType=ListBox},
                                 Path=DataContext.MovieNameClickCommand}"
                             
                             CommandParameter="{Binding RelativeSource={
                                 RelativeSource AncestorType=ListBox},
-                                Path=SelectedItem}" HorizontalAlignment="Left" Height="180" Width="115" Style="{StaticResource allButtons}"  HorizontalContentAlignment="Center" Name="imageLbl" Margin="0,15,37,50">
+                                Path=SelectedItem}" HorizontalAlignment="Left" Height="180" Width="115" Style="{StaticResource allButtons}"  HorizontalContentAlignment="Center" Name="imageBtn" Margin="0,15,37,50">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding MovieNameClickCommand}" 
+                                           CommandParameter="{Binding ElementName=imageBtn,Path=IsFocused}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                     <Image Stretch="Fill" Style="{StaticResource imgStyle}" Name="image" Source="{Binding ImagePath}"></Image>
                                 </Button>
                                 <Button Command="{Binding RelativeSource={

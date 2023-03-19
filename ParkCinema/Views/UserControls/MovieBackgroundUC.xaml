@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ParkCinema.Views.UserControls"
+             xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="Black">
@@ -18,8 +19,13 @@
             <Button Style="{StaticResource allButtons}"  Command="{Binding AndroidClickCommand}" Width="30" Canvas.Top="20" Canvas.Left="1294" HorizontalAlignment="Left" VerticalAlignment="Center" >
                 <Image Source="/icons/android.png"></Image>
             </Button>
-            <TextBlock Foreground="White" Text="{Binding Movie.MovieName}"></TextBlock>
+            <TextBlock Margin="100,230,0,0" FontWeight="ExtraBlack" FontSize="40" Foreground="White" Text="{Binding Movie.MovieName}"></TextBlock>
         </Canvas>
-        
+        <wv2:WebView2 Focusable="True" Width="650" Margin="0,280,30,0" Height="400" Source="{Binding Movie.MovieLink}">
+            <wv2:WebView2.BitmapEffect>
+                <DropShadowBitmapEffect ShadowDepth="5" Color="#a90908" Direction="90" Softness="10"></DropShadowBitmapEffect>
+            </wv2:WebView2.BitmapEffect>
+        </wv2:WebView2>
+
     </Grid>
 </UserControl>
