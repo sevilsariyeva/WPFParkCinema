@@ -20,6 +20,7 @@ namespace ParkCinema.Models
         public string MovieGenre { get; set; }
         public string MovieActors { get; set; }
         public string MovieDuration { get; set; }
+        public string About { get; set; }
         public int MovieYear { get; set; }
         public string MovieLink { get; set; }
     }

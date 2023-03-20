@@ -1,4 +1,5 @@
-﻿using ParkCinema.Commands;
+﻿using Microsoft.Web.WebView2.Wpf;
+using ParkCinema.Commands;
 using ParkCinema.Models;
 using ParkCinema.Views.UserControls;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace ParkCinema.ViewModels
 {
@@ -25,17 +27,15 @@ namespace ParkCinema.ViewModels
         public MovieBackgroundUCViewModel()
         {
             Movie = new Movie();
-            var uc = new HomeUC();
-            var vm = new HomeUCViewModel();
             LogoClickCommand = new RelayCommand((obj) =>
             {
                 App.BackPage = App.MyGrid.Children[0];
-                App.MyGrid.Children.RemoveAt(0);
 
-                 uc = new HomeUC();
-                 vm = new HomeUCViewModel();
-                
+                var uc = new HomeUC();
+                var vm = new HomeUCViewModel();
+
                 uc.DataContext = vm;
+                App.MyGrid.Children.RemoveAt(0);
                 App.MyGrid.Children.Add(uc);
             });
             AppleClickCommand = new RelayCommand((obj) =>

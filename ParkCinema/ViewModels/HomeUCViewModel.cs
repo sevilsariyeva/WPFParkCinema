@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.TextFormatting;
 using System.Windows.Threading;
 
@@ -81,6 +82,7 @@ namespace ParkCinema.ViewModels
         public RelayCommand LogoClickCommand { get; set; }
         public RelayCommand MovieNameClickCommand { get; set; }
         public RelayCommand SelectedItemChangedCommand { get; set; }
+        public RelayCommand PreviewMouseDownCommand { get; set; }
         public HomeUCViewModel()
         {
             BackgroundRepository = new BackgroundRepository();
@@ -159,7 +161,6 @@ namespace ParkCinema.ViewModels
             LogoClickCommand = new RelayCommand((obj) =>
             {
                 App.BackPage = App.MyGrid.Children[0];
-                App.MyGrid.Children.RemoveAt(0);
 
                 var uc = new HomeUC();
                 var vm = new HomeUCViewModel();
@@ -176,10 +177,28 @@ namespace ParkCinema.ViewModels
                 vm.Movie = temp;
                 var uc = new MovieBackgroundUC();
                 uc.DataContext = vm;
-                
+
                 App.MyGrid.Children.RemoveAt(0);
                 App.MyGrid.Children.Add(uc);
             });
+            PreviewMouseDownCommand = new RelayCommand((obj) =>
+            {
+                timer.Stop();
+                var temp = obj as Movie;
+
+                var vm = new MovieBackgroundUCViewModel();
+                vm.Movie = temp;
+                var uc = new MovieBackgroundUC();
+                uc.DataContext = vm;
+
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
+            });
+        }
+        private void ItemOnPreviewMouseDown(
+        object sender, MouseButtonEventArgs e)
+        {
+            ((ListBoxItem)sender).IsSelected = true;
         }
 
     }

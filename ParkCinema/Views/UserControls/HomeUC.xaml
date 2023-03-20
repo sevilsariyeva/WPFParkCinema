@@ -109,7 +109,7 @@
                 <Button Command="{Binding SoonClickCommand}" Style="{StaticResource mainButtons}" Width="270" Height="60" Margin="370,738,0,41" HorizontalAlignment="Left" Content="Soon"></Button>
                 <Button Command="{Binding ScheduleClickCommand}" Style="{StaticResource mainButtons}" Width="270" Height="60" Margin="660,738,0,41" HorizontalAlignment="Left" Content="Schedule"></Button>
             </Canvas>
-            <ListBox HorizontalAlignment="Left" Width="850" Height="1550" BorderThickness="0"  ItemsSource="{Binding AllMovies}" Name="listbox" Margin="80,560,0,0" Background="#2b3236" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox  HorizontalAlignment="Left" Width="850" Height="1550" BorderThickness="0"  ItemsSource="{Binding AllMovies}" Name="listbox" Margin="80,560,0,0" Background="#2b3236" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Margin="35,20,0,0" Orientation="Horizontal"></WrapPanel>
@@ -189,30 +189,10 @@
                     <DataTemplate>
                         <Border Background="Transparent"  BorderThickness="0" CornerRadius="20" Width="250" Height="300">
                             <Grid Name="myGrid" Background="Transparent" Margin="0,0,8,-4" >
-                                <Button  Command="{Binding RelativeSource={
-                                RelativeSource AncestorType=ListBox},
-                                Path=DataContext.MovieNameClickCommand}"
-                            
-                            CommandParameter="{Binding RelativeSource={
-                                RelativeSource AncestorType=ListBox},
-                                Path=SelectedItem}" HorizontalAlignment="Left" Height="180" Width="115" Style="{StaticResource allButtons}"  HorizontalContentAlignment="Center" Name="imageBtn" Margin="0,15,37,50">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="SelectionChanged">
-                                            <i:InvokeCommandAction Command="{Binding MovieNameClickCommand}" 
-                                           CommandParameter="{Binding ElementName=imageBtn,Path=IsFocused}"></i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                    <Image Stretch="Fill" Style="{StaticResource imgStyle}" Name="image" Source="{Binding ImagePath}"></Image>
-                                </Button>
-                                <Button Command="{Binding RelativeSource={
-                                RelativeSource AncestorType=ListBox},
-                                Path=DataContext.MovieNameClickCommand}"
-                            
-                            CommandParameter="{Binding RelativeSource={
-                                RelativeSource AncestorType=ListBox},
-                                Path=SelectedItem}" Background="Transparent" Height="80" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Width="150" Margin="115,0,0,150" Style="{StaticResource allButtons}">
-                                    <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource txtblck}" TextWrapping="Wrap" Text="{Binding MovieName}" FontWeight="Bold" FontFamily="Segoe ui" Background="Transparent"  Name="filmnametxtBox" Foreground="WhiteSmoke" FontSize="15" Width="110" />
-                                </Button>
+                                
+                                    <Image Cursor="Hand" Height="170" Width="115" Margin="-150,15,0,50" Stretch="Fill" Style="{StaticResource imgStyle}" Name="image" Source="{Binding ImagePath}"></Image>
+
+                                <TextBlock Margin="135,45,0,150" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource txtblck}" TextWrapping="Wrap" Text="{Binding MovieName}" FontWeight="Bold" FontFamily="Segoe ui" Background="Transparent"  Name="filmnametxtBox" Foreground="WhiteSmoke" FontSize="15" Width="110" />
                                 <TextBlock Cursor="IBeam" Margin="135,105,0,0" Background="Transparent" Foreground="WhiteSmoke" Text="{Binding MovieDate}" FontFamily="Segoe ui"></TextBlock>
                                 <TextBlock Cursor="IBeam" Margin="135,125,0,0" Background="Transparent" Foreground="WhiteSmoke" Text="{Binding MovieFormat}" FontFamily="Segoe ui"></TextBlock>
                                 <TextBlock Cursor="IBeam" Margin="135,145,0,0" Background="Transparent" Foreground="DarkGoldenrod" Text="{Binding MovieLanguages}" FontFamily="Segoe ui" FontWeight="DemiBold"></TextBlock>
