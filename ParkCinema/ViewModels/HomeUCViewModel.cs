@@ -175,9 +175,30 @@ namespace ParkCinema.ViewModels
 
                 var vm = new MovieBackgroundUCViewModel();
                 vm.Movie = temp;
+                var movies = new ObservableCollection<Movie>();
+                        var moviesShort = new ObservableCollection<Movie>();
+                for (int i = 1; i < App.MovieRepo.Movies.Count; i++)
+                {
+                    if (i == vm.Movie.Id)
+                    {
+                        for (int j = 0; j < i - 1; j++)
+                        {
+                            movies.Add(App.MovieRepo.Movies[j]);
+                        }
+                        for (int j = i; j < App.MovieRepo.Movies.Count; j++)
+                        {
+                            movies.Add(App.MovieRepo.Movies[j]);
+                        }
+                        for (int k = 0; k < 5; k++)
+                        {
+                            moviesShort.Add(movies[k]);
+                        }
+                        break;
+                    }
+                }
+                vm.AllMovies = moviesShort;
                 var uc = new MovieBackgroundUC();
                 uc.DataContext = vm;
-
                 App.MyGrid.Children.RemoveAt(0);
                 App.MyGrid.Children.Add(uc);
             });

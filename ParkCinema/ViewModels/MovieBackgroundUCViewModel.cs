@@ -4,6 +4,7 @@ using ParkCinema.Models;
 using ParkCinema.Views.UserControls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,13 +21,22 @@ namespace ParkCinema.ViewModels
             get { return movie; }
             set { movie = value; OnPropertyChanged(); }
         }
+        private ObservableCollection<Movie> movies;
 
+        public ObservableCollection<Movie> AllMovies
+        {
+            get { return movies; }
+            set { movies = value; OnPropertyChanged(); }
+        }
         public RelayCommand AppleClickCommand { get; set; }
         public RelayCommand AndroidClickCommand { get; set; }
         public RelayCommand LogoClickCommand { get; set; }
+        public RelayCommand MovieNameClickCommand { get; set; }
         public MovieBackgroundUCViewModel()
         {
-            Movie = new Movie();
+
+            Movie = new Movie();                      
+            
             LogoClickCommand = new RelayCommand((obj) =>
             {
                 App.BackPage = App.MyGrid.Children[0];
@@ -45,6 +55,17 @@ namespace ParkCinema.ViewModels
             AndroidClickCommand = new RelayCommand((obj) =>
             {
                 System.Diagnostics.Process.Start("https://play.google.com/store/apps/details?id=az.parkcinema.app&hl=ru");
+            });
+            MovieNameClickCommand = new RelayCommand((obj) =>
+            {
+                var temp = obj as Movie;
+
+                var vm = new MovieBackgroundUCViewModel();
+                vm.Movie = temp;
+                var uc = new MovieBackgroundUC();
+                uc.DataContext = vm;
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
             });
         }
     }
