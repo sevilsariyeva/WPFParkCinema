@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -67,6 +68,10 @@ namespace ParkCinema.ViewModels
                 count++;
             }
         }
+        public Random a = new Random();
+        public List<int> randomList = new List<int>();
+        public ObservableCollection<Movie> movieList = new ObservableCollection<Movie>();
+        int MyNumber = 0;
         public RelayCommand FirstClickCommand { get; set; }
         public RelayCommand SecondClickCommand { get; set; }
         public RelayCommand ThirdClickCommand { get; set; }
@@ -171,13 +176,13 @@ namespace ParkCinema.ViewModels
             MovieNameClickCommand = new RelayCommand((obj) =>
             {
                 timer.Stop();
-                var temp = obj as Movie;
-
+                movieList = new ObservableCollection<Movie>();
+                var temp=obj as Movie;
                 var vm = new MovieBackgroundUCViewModel();
                 vm.Movie = temp;
                 var movies = new ObservableCollection<Movie>();
-                        var moviesShort = new ObservableCollection<Movie>();
-                for (int i = 1; i < App.MovieRepo.Movies.Count; i++)
+                var moviesShort = new ObservableCollection<Movie>();
+                for (int i = 1; i <= App.MovieRepo.Movies.Count; i++)
                 {
                     if (i == vm.Movie.Id)
                     {
@@ -189,14 +194,21 @@ namespace ParkCinema.ViewModels
                         {
                             movies.Add(App.MovieRepo.Movies[j]);
                         }
-                        for (int k = 0; k < 5; k++)
+                        for (int k = 0; k < 5;)
                         {
-                            moviesShort.Add(movies[k]);
+                            MyNumber = a.Next(0, movies.Count);
+                            if (!randomList.Contains(MyNumber) && MyNumber != vm.Movie.Id)
+                            {
+                                k++;
+                                movieList.Add(movies[MyNumber]);
+                            randomList.Add(MyNumber);
+                            }
                         }
+
                         break;
                     }
                 }
-                vm.AllMovies = moviesShort;
+                vm.AllMovies = movieList;
                 var uc = new MovieBackgroundUC();
                 uc.DataContext = vm;
                 App.MyGrid.Children.RemoveAt(0);

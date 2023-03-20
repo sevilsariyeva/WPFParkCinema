@@ -32,11 +32,17 @@ namespace ParkCinema.ViewModels
         public RelayCommand AndroidClickCommand { get; set; }
         public RelayCommand LogoClickCommand { get; set; }
         public RelayCommand MovieNameClickCommand { get; set; }
+        public Random a = new Random(); // replace from new Random(DateTime.Now.Ticks.GetHashCode());
+                                        // Since similar code is done in default constructor internally
+        public List<int> randomList = new List<int>();
+        public ObservableCollection<Movie> movieList = new ObservableCollection<Movie>();
+        int MyNumber = 0;
+
         public MovieBackgroundUCViewModel()
         {
 
-            Movie = new Movie();                      
-            
+            Movie = new Movie();
+
             LogoClickCommand = new RelayCommand((obj) =>
             {
                 App.BackPage = App.MyGrid.Children[0];
@@ -59,9 +65,39 @@ namespace ParkCinema.ViewModels
             MovieNameClickCommand = new RelayCommand((obj) =>
             {
                 var temp = obj as Movie;
+                movieList = new ObservableCollection<Movie>();
 
                 var vm = new MovieBackgroundUCViewModel();
                 vm.Movie = temp;
+                var movies = new ObservableCollection<Movie>();
+                var moviesShort = new ObservableCollection<Movie>();
+                for (int i = 1; i <= App.MovieRepo.Movies.Count; i++)
+                {
+                    if (i == vm.Movie.Id)
+                    {
+                        for (int j = 0; j < i - 1; j++)
+                        {
+                            movies.Add(App.MovieRepo.Movies[j]);
+                        }
+                        for (int j = i; j < App.MovieRepo.Movies.Count; j++)
+                        {
+                            movies.Add(App.MovieRepo.Movies[j]);
+                        }
+                        for (int k = 0; k < 5;)
+                        {
+                            MyNumber = a.Next(0, movies.Count);
+                            if (!randomList.Contains(MyNumber) && MyNumber != vm.Movie.Id)
+                            {
+                                k++;
+                                movieList.Add(movies[MyNumber]);
+                                randomList.Add(MyNumber);
+                            }
+                        }
+
+                        break;
+                    }
+                }
+                vm.AllMovies = movieList;
                 var uc = new MovieBackgroundUC();
                 uc.DataContext = vm;
                 App.MyGrid.Children.RemoveAt(0);
