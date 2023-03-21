@@ -93,7 +93,6 @@ namespace ParkCinema.ViewModels
                                 randomList.Add(MyNumber);
                             }
                         }
-
                         break;
                     }
                 }
