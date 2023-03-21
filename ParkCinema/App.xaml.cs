@@ -18,6 +18,7 @@ namespace ParkCinema
         public static Grid MyGrid { get; set; }
         public static MovieRepository MovieRepo { get; set; }
         public static UIElement BackPage { get; set; }
+        public static ViewModels.MovieBackgroundUCViewModel PreviousViewModel { get; set; }
 
         public App()
         {

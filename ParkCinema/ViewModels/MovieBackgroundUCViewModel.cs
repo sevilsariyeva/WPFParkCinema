@@ -21,6 +21,51 @@ namespace ParkCinema.ViewModels
             get { return movie; }
             set { movie = value; OnPropertyChanged(); }
         }
+        private string _youTubeUrl;
+        public string YouTubeUrl
+        {
+            get { return _youTubeUrl; }
+            set
+            {
+                if (_youTubeUrl != value)
+                {
+                    _youTubeUrl = value;
+                    OnPropertyChanged(nameof(YouTubeUrl));
+                    OnPropertyChanged(nameof(YouTubeEmbedUrl));
+                }
+            }
+        }
+
+        public string YouTubeEmbedUrl
+        {
+            get
+            {
+                // Parse the video ID from the YouTube URL
+                string videoId = ExtractVideoId(YouTubeUrl);
+
+                // Construct the YouTube video embed URL
+                return "https://www.youtube.com/embed/" + videoId;
+            }
+        }
+
+        private string ExtractVideoId(string youTubeUrl)
+        {
+            // Parse the video ID from the YouTube URL
+            string videoId = "";
+
+            if (youTubeUrl.Contains("youtube.com/watch?v="))
+            {
+                int index = youTubeUrl.IndexOf("youtube.com/watch?v=") + 20;
+                videoId = youTubeUrl.Substring(index, 11);
+            }
+            else if (youTubeUrl.Contains("youtu.be/"))
+            {
+                int index = youTubeUrl.IndexOf("youtu.be/") + 9;
+                videoId = youTubeUrl.Substring(index, 11);
+            }
+
+            return videoId;
+        }
         private ObservableCollection<Movie> movies;
 
         public ObservableCollection<Movie> AllMovies
@@ -93,6 +138,7 @@ namespace ParkCinema.ViewModels
                                 randomList.Add(MyNumber);
                             }
                         }
+
                         break;
                     }
                 }
