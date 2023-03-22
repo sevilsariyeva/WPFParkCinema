@@ -30,12 +30,12 @@ namespace ParkCinema.ViewModels
             set { movies = value; OnPropertyChanged(); }
         }
 
-        private string movieName;
+        private Movie movie;
 
-        public string MovieName
+        public Movie Movie
         {
-            get { return movieName; }
-            set { movieName = value; OnPropertyChanged(); }
+            get { return movie; }
+            set { movie = value; OnPropertyChanged(); }
         }
 
 
@@ -88,6 +88,7 @@ namespace ParkCinema.ViewModels
         public RelayCommand MovieNameClickCommand { get; set; }
         public RelayCommand SelectedItemChangedCommand { get; set; }
         public RelayCommand PreviewMouseDownCommand { get; set; }
+        public RelayCommand BuyTicketCommand { get; set; }
         public HomeUCViewModel()
         {
             BackgroundRepository = new BackgroundRepository();
@@ -163,6 +164,23 @@ namespace ParkCinema.ViewModels
             {
                 System.Diagnostics.Process.Start("https://www.youtube.com/channel/UC0NJN0gCCx_DbJlkPfD30Ag/feed");
             });
+            BuyTicketCommand = new RelayCommand((obj) =>
+            {
+                var uc = new ScheduleUC();
+                var vm = new ScheduleUCViewModel();
+                foreach (var item in App.ScheduleRepo.MovieSchedules)
+                {
+                    if (item.MovieName == Movie.MovieName)
+                    {
+                        vm.Movie = item;
+                        vm.Movies.Add(item);
+                    }
+                }
+                uc.DataContext = vm;
+
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
+            });
             LogoClickCommand = new RelayCommand((obj) =>
             {
                 App.BackPage = App.MyGrid.Children[0];
@@ -176,8 +194,9 @@ namespace ParkCinema.ViewModels
             MovieNameClickCommand = new RelayCommand((obj) =>
             {
                 timer.Stop();
+                var temp = obj as Movie;
                 movieList = new ObservableCollection<Movie>();
-                var temp=obj as Movie;
+
                 var vm = new MovieBackgroundUCViewModel();
                 vm.Movie = temp;
                 var movies = new ObservableCollection<Movie>();
@@ -201,7 +220,7 @@ namespace ParkCinema.ViewModels
                             {
                                 k++;
                                 movieList.Add(movies[MyNumber]);
-                            randomList.Add(MyNumber);
+                                randomList.Add(MyNumber);
                             }
                         }
 

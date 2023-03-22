@@ -21,7 +21,6 @@ namespace ParkCinema.ViewModels
             get { return movie; }
             set { movie = value; OnPropertyChanged(); }
         }
-
         private ObservableCollection<Movie> movies;
 
         public ObservableCollection<Movie> AllMovies
@@ -33,6 +32,8 @@ namespace ParkCinema.ViewModels
         public RelayCommand AndroidClickCommand { get; set; }
         public RelayCommand LogoClickCommand { get; set; }
         public RelayCommand MovieNameClickCommand { get; set; }
+        public RelayCommand BuyTicketCommand { get; set; }
+
         public Random a = new Random(); // replace from new Random(DateTime.Now.Ticks.GetHashCode());
                                         // Since similar code is done in default constructor internally
         public List<int> randomList = new List<int>();
@@ -62,6 +63,23 @@ namespace ParkCinema.ViewModels
             AndroidClickCommand = new RelayCommand((obj) =>
             {
                 System.Diagnostics.Process.Start("https://play.google.com/store/apps/details?id=az.parkcinema.app&hl=ru");
+            });
+            BuyTicketCommand = new RelayCommand((obj) =>
+            {
+                var uc = new ScheduleUC();
+                var vm = new ScheduleUCViewModel();
+                foreach (var item in App.ScheduleRepo.MovieSchedules)
+                {
+                    if(item.MovieName== Movie.MovieName)
+                    {
+                        vm.Movie = item;
+                        vm.Movies.Add(item);
+                    }
+                }
+                uc.DataContext = vm;
+                
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
             });
             MovieNameClickCommand = new RelayCommand((obj) =>
             {

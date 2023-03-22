@@ -26,35 +26,32 @@ namespace ParkCinema.Helpers
                 }
             }
         }
+        public static void WriteMovieSchedule(List<MovieSchedule> movies)
+        {
+            var serializer = new JsonSerializer();
 
-        //public static void WriteStudents(List<Student> students)
-        //{
-        //    var serializer = new JsonSerializer();
-
-        //    using (var sw = new StreamWriter("students.json"))
-        //    {
-        //        using (var jw = new JsonTextWriter(sw))
-        //        {
-        //            jw.Formatting = Formatting.Indented;
-        //            serializer.Serialize(jw, students);
-        //        }
-        //    }
-        //}
-
-        //public static List<Student> ReadStudents()
-        //{
-        //    List<Student> students = null;
-        //    var serializer = new JsonSerializer();
-        //    using (var sr = new StreamReader("students.json"))
-        //    {
-        //        using (var jr = new JsonTextReader(sr))
-        //        {
-        //            students = serializer.Deserialize<List<Student>>(jr);
-        //        }
-        //    }
-        //    return students;
-        //}
-
+            using (var sw = new StreamWriter("moviesSchedule.json"))
+            {
+                using (var jw = new JsonTextWriter(sw))
+                {
+                    jw.Formatting = Formatting.Indented;
+                    serializer.Serialize(jw, movies);
+                }
+            }
+        }
+        public static List<MovieSchedule> ReadMovieSchedule()
+        {
+            List<MovieSchedule> movies = null;
+            var serializer = new JsonSerializer();
+            using (var sr = new StreamReader("movies.json"))
+            {
+                using (var jr = new JsonTextReader(sr))
+                {
+                    movies = serializer.Deserialize<List<MovieSchedule>>(jr);
+                }
+            }
+            return movies;
+        }
         public static List<Movie> ReadMovies()
         {
             List<Movie> movies = null;

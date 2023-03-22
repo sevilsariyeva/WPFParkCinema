@@ -197,7 +197,7 @@
                                 <TextBlock Cursor="IBeam" Margin="135,125,0,0" Background="Transparent" Foreground="WhiteSmoke" Text="{Binding MovieFormat}" FontFamily="Segoe ui"></TextBlock>
                                 <TextBlock Cursor="IBeam" Margin="135,145,0,0" Background="Transparent" Foreground="DarkGoldenrod" Text="{Binding MovieLanguages}" FontFamily="Segoe ui" FontWeight="DemiBold"></TextBlock>
                                 <TextBlock Cursor="IBeam" Margin="135,165,0,0" Background="Transparent" Foreground="DarkGoldenrod" Text="{Binding Age}" FontWeight="DemiBold" FontFamily="Segoe ui"></TextBlock>
-                                <Button Style="{StaticResource buyButton2}" Background="#2c2c2e" Foreground="White" Width="90" Height="30" Content="Buy Ticket" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="15,240,0,0" >
+                                <Button x:Name="button" Style="{StaticResource buyButton2}" Background="#2c2c2e" Foreground="White" Width="90" Height="30" Content="Buy Ticket" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="5,240,0,0" Command="{Binding BuyTicketCommand,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  >
                                 </Button>
                             </Grid>
                         </Border>
