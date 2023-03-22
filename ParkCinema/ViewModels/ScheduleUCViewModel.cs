@@ -3,9 +3,12 @@ using ParkCinema.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ParkCinema.ViewModels
 {
@@ -33,17 +36,89 @@ namespace ParkCinema.ViewModels
             get { return movies; }
             set { movies = value; OnPropertyChanged(); }
         }
+
+        private List<MovieSchedule> allMovies;
+
+        public List<MovieSchedule> AllMovies
+        {
+            get { return allMovies; }
+            set { allMovies = value; OnPropertyChanged(); }
+        }
+
+        private Visibility _isComboBoxVisible;
+
+        public Visibility IsComboBoxVisible
+        {
+            get { return _isComboBoxVisible; }
+            set
+            {
+                _isComboBoxVisible = value;
+                OnPropertyChanged(nameof(IsComboBoxVisible));
+            }
+        }
+        private int _rowNumber;
+        private bool _isAvailable;
+        private bool _isSelected;
+        private int _seatNumber;
+
+        public int RowNumber
+        {
+            get { return _rowNumber; }
+            set
+            {
+                _rowNumber = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int SeatNumber
+        {
+            get { return _seatNumber; }
+            set
+            {
+                _seatNumber = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsAvailable
+        {
+            get { return _isAvailable; }
+            set
+            {
+                _isAvailable = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set
+            {
+                _isSelected = value;
+                OnPropertyChanged();
+            }
+        }
+
+       
         public RelayCommand ButtonCommand { get; set; }
         public RelayCommand SelectedCommand { get; set; }
+        public RelayCommand SeatClickCommand { get; set; }
         public ScheduleUCViewModel()
         {
             Dates = new List<string>();
+            AllMovies = App.ScheduleRepo.MovieSchedules;
             for (int i = 0; i < 6; i++)
             {
                 Dates.Add(DateTime.Now.AddDays(i).ToShortDateString().ToString());
             }
 
             ButtonCommand = new RelayCommand((obj) =>
+            {
+
+            });
+            SeatClickCommand = new RelayCommand((obj) =>
             {
 
             });
@@ -59,7 +134,6 @@ namespace ParkCinema.ViewModels
                         newMovies.Add(item);
                     }
                 }
-
                 Movies = newMovies;
             });
         }

@@ -30,7 +30,7 @@ namespace ParkCinema
             var homeUCViewModel = new HomeUCViewModel();
             var homeUC = new HomeUC();
             homeUC.DataContext = homeUCViewModel;
-
+            
             App.MyGrid.Children.Add(homeUC);
             this.DataContext = viewModel;
         }

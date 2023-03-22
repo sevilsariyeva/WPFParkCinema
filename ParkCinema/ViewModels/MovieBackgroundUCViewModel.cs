@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ParkCinema.ViewModels
@@ -77,7 +78,7 @@ namespace ParkCinema.ViewModels
                     }
                 }
                 uc.DataContext = vm;
-                
+                vm.IsComboBoxVisible = Visibility.Hidden;
                 App.MyGrid.Children.RemoveAt(0);
                 App.MyGrid.Children.Add(uc);
             });

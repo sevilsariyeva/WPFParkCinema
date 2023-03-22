@@ -296,4 +296,5 @@
         <Setter Property="Background" Value="DarkGoldenrod"/>
         <!-- Add additional setters as needed -->
     </Style>
+    
 </ResourceDictionary>
