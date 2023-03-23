@@ -1,4 +1,5 @@
-﻿using ParkCinema.Models;
+﻿using ParkCinema.Commands;
+using ParkCinema.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,30 @@ namespace ParkCinema.ViewModels
             get { return movie; }
             set { movie = value; OnPropertyChanged(); }
         }
+        private int count;
+
+        public int Count
+        {
+            get { return count; }
+            set { count = value; OnPropertyChanged(); }
+        }
+        private decimal totalprice;
+
+        public decimal TotalPrice
+        {
+            get { return totalprice; }
+            set { totalprice = value; OnPropertyChanged(); }
+        }
+
+        public RelayCommand SelectedCommand { get; set; }
         public SeatUCViewModel()
         {
-
+            SelectedCommand = new RelayCommand((obj) =>
+            {
+                var count = obj;
+                Count = (int)count;
+                TotalPrice = Movie.Price * Count;
+            });
         }
     }
 }

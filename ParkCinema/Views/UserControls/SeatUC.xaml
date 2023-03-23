@@ -3,40 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ParkCinema.Views.UserControls"
+             xmlns:local="clr-namespace:ParkCinema.Views.UserControls" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="500" Height="1000" Width="900">
+             d:DesignHeight="400" d:DesignWidth="500" Height="720" Width="900">
     <Border CornerRadius="30">
 
         <Grid Background="White">
-            <Canvas>
-                <Label Width="900" Height="80" Background="#3f1919" Foreground="White" FontSize="60" FontWeight="Bold" Content="{Binding Movie.MovieName}"></Label>
-                <StackPanel Margin="0,80,0,0" Height="80" Width="300" Background="#7c2121">
+                <Label VerticalAlignment="Top" Width="900" Height="80" Background="#3f1919" Foreground="White" FontSize="40" FontWeight="Bold" Content="{Binding Movie.MovieName}"></Label>
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,80,0,0" Height="80" Width="300" Background="#7c2121">
                     <TextBlock Foreground="White" Margin="40,-5,200,0"  FontFamily="Barlow medium" Text="1" FontSize="80"></TextBlock>
                     <TextBlock Foreground="White" FontSize="25" FontWeight="DemiBold" FontFamily="Barlow medium" Margin="100,-65,0,0">Session</TextBlock>
                 </StackPanel>
-                <StackPanel Margin="300,80,0,0" Height="80" Width="300" Background="#ff0d0d">
+                <StackPanel VerticalAlignment="Top" Margin="-1,80,0,0" Height="80" Width="300" Background="#ff0d0d">
                     <TextBlock Margin="40,-5,200,0" Foreground="White" FontFamily="Barlow medium" Text="2" FontSize="80"></TextBlock>
                     <TextBlock Foreground="White" FontSize="25" FontWeight="DemiBold" FontFamily="Barlow medium" Margin="100,-65,0,0">Places</TextBlock>
                 </StackPanel>
-                <StackPanel Margin="600,80,0,0" Height="80" Width="300" Background="#ff0d0d">
+                <StackPanel VerticalAlignment="Top" Margin="599,80,0,0" Height="80" Width="300" Background="#ff0d0d">
                     <TextBlock Margin="40,-5,200,0" Foreground="White" FontFamily="Barlow medium" Text="3" FontSize="80"></TextBlock>
                     <TextBlock Foreground="White" FontSize="25" FontWeight="DemiBold" FontFamily="Barlow medium" Margin="100,-65,0,0">Payment</TextBlock>
                 </StackPanel>
+            <Canvas Visibility="Hidden">
                 <StackPanel Margin="80,220,0,0">
                     <Image Height="100" Source="/Icons/person.png"></Image>
                     <TextBlock FontSize="20" HorizontalAlignment="Center" Text="Adult"></TextBlock>
                     <TextBlock Width="25" Margin="-35,0,0,0" FontSize="20" Text="{Binding Movie.Price}"></TextBlock>
-                    <TextBlock Margin="57,-26,0,0" FontSize="20" Text="AZN"></TextBlock>
+                    <TextBlock Margin="57,-27,0,0" FontSize="20" Text="AZN"></TextBlock>
                     <TextBlock Foreground="Gray" FontSize="14" Text="Maximum 10 tickets "></TextBlock>
                 </StackPanel>
                 
-                <ComboBox Margin="120,400,0,0" Width="50" ItemsSource="{Binding Numbers}"></ComboBox>
+                <ComboBox Name="myComboBox" Margin="120,400,0,0" Width="50" ItemsSource="{Binding Numbers}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectedCommand}"
+                                           CommandParameter="{Binding ElementName=myComboBox,Path=SelectedItem}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
                 <Canvas Margin="300,500,0,0">
                     <TextBlock FontSize="20" FontWeight="DemiBold" Margin="0,0,0,0" Text="{Binding Movie.MovieDate}"></TextBlock>
                     <TextBlock FontSize="20" FontWeight="DemiBold" Margin="110,0,0,0" Text="{Binding Movie.MovieDateTime}"></TextBlock>
                     <TextBlock FontSize="20" FontWeight="DemiBold" Margin="200,0,0,0" Text="{Binding Movie.Theater}"></TextBlock>
-                    <Image Width="200" Height="150" Margin="30,50,0,0" Source="/Icons/ticket.png"></Image>
+                    <TextBlock FontSize="20" FontWeight="DemiBold" Text="Adults: " Margin="100,20,0,0"></TextBlock>
+                    <TextBlock FontSize="20" FontWeight="DemiBold" Text="{Binding Count}" Margin="180,20,0,0"></TextBlock>
+                    <Image Width="300" Height="200" Margin="0,50,0,0" Source="/Icons/ticket.png"></Image>
+                    <TextBlock FontSize="30" FontWeight="Bold" Margin="110,110,0,0" HorizontalAlignment="Center" Text="{Binding TotalPrice}"></TextBlock>
+                    <TextBlock FontSize="30" FontWeight="Bold" Margin="100,150,0,0" Text="AZN"></TextBlock>
+                    <Image Width="100" Source="/Icons/nextarrow.png"  Margin="260,100,0,0"></Image>
+                    <Button Style="{StaticResource allButtons}" FontWeight="DemiBold" FontSize="20" Content="Next" Margin="280,133,0,0"></Button>
                 </Canvas>
             </Canvas>
         </Grid>
