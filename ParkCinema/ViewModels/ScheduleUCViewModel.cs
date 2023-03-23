@@ -1,5 +1,6 @@
 ﻿using ParkCinema.Commands;
 using ParkCinema.Models;
+using ParkCinema.Views.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -118,9 +119,13 @@ namespace ParkCinema.ViewModels
             {
 
             });
-            SeatClickCommand = new RelayCommand((obj) =>
+             SeatClickCommand = new RelayCommand((obj) =>
             {
-
+                var uc = new SeatUC();
+                var vm = new SeatUCViewModel();
+                vm.Movie = Movie;
+                uc.DataContext = vm;
+                App.MyGrid.Children.Add(uc);
             });
             SelectedCommand = new RelayCommand((obj) =>
             {
@@ -135,6 +140,7 @@ namespace ParkCinema.ViewModels
                     }
                 }
                 Movies = newMovies;
+                Movie = newMovies[0];
             });
         }
 
