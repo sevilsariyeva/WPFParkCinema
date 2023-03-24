@@ -89,6 +89,7 @@ namespace ParkCinema.ViewModels
         public RelayCommand SelectedItemChangedCommand { get; set; }
         public RelayCommand PreviewMouseDownCommand { get; set; }
         public RelayCommand BuyTicketCommand { get; set; }
+        public RelayCommand BuyTicketBackgroundCommand { get; set; }
         public HomeUCViewModel()
         {
             BackgroundRepository = new BackgroundRepository();
@@ -164,8 +165,35 @@ namespace ParkCinema.ViewModels
             {
                 System.Diagnostics.Process.Start("https://www.youtube.com/channel/UC0NJN0gCCx_DbJlkPfD30Ag/feed");
             });
+            BuyTicketBackgroundCommand = new RelayCommand((obj) =>
+            {
+                var recent = BackImage;
+                var uc = new ScheduleUC();
+                var vm = new ScheduleUCViewModel();
+                foreach (var item in AllMovies)
+                {
+                    if (item.ImagePath == recent.ImagePath)
+                    {
+                        var myMovie = item;
+                        foreach (var current in App.ScheduleRepo.MovieSchedules)
+                        {
+                            if (current.MovieName == myMovie.MovieName)
+                            {
+                                vm.Movie = current;
+                                vm.Movies.Add(current);
+                            }
+                        }
+                    }
+                }
+                //vm.AllMovies = new List<MovieSchedule>(vm.Movies);
+                uc.DataContext = vm;
+
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
+            });
             BuyTicketCommand = new RelayCommand((obj) =>
             {
+                var temp = obj as Movie;
                 var uc = new ScheduleUC();
                 var vm = new ScheduleUCViewModel();
                 foreach (var item in App.ScheduleRepo.MovieSchedules)

@@ -140,7 +140,10 @@ namespace ParkCinema.ViewModels
                     }
                 }
                 Movies = newMovies;
-                Movie = newMovies[0];
+                if (newMovies.Count!=0)
+                {
+                    Movie = newMovies[0];
+                }
             });
         }
 

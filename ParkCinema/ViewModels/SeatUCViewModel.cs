@@ -59,14 +59,19 @@ namespace ParkCinema.ViewModels
             set { paymentVisibility = value; OnPropertyChanged(); }
         }
 
-        private bool isButtonEnable;
-
-        public bool IsButtonEnable
+        private bool _isToggleButtonChecked;
+        public bool IsToggleButtonChecked
         {
-            get { return isButtonEnable; }
-            set { isButtonEnable = value; OnPropertyChanged(); }
+            get { return _isToggleButtonChecked; }
+            set
+            {
+                if (_isToggleButtonChecked != value)
+                {
+                    _isToggleButtonChecked = value;
+                    OnPropertyChanged(nameof(IsToggleButtonChecked));
+                }
+            }
         }
-
 
         private decimal totalprice;
 
@@ -75,14 +80,20 @@ namespace ParkCinema.ViewModels
             get { return totalprice; }
             set { totalprice = value; OnPropertyChanged(); }
         }
+        private int row;
+
+        public int RowOrder
+        {
+            get { return row; }
+            set { row = value; OnPropertyChanged(); }
+        }
 
         public RelayCommand SelectedCommand { get; set; }
         public RelayCommand NextPlacesButtonClickCommand { get; set; }
-        public RelayCommand SeatPlaceClickCommand { get; set; }
+        public RelayCommand PlaceClickCommand { get; set; }
         static int counter = 0;
         public SeatUCViewModel()
         {
-            IsButtonEnable = true;
             SessionVisibility = Visibility.Visible;
             PlacesVisibility = Visibility.Hidden;
             PaymentVisibility = Visibility.Hidden;
@@ -99,26 +110,36 @@ namespace ParkCinema.ViewModels
                     SessionVisibility = Visibility.Hidden;
                     PlacesVisibility = Visibility.Visible;
                 }
-                MessageBox.Show("You have to choose count of person(people)");
+                else
+                {
+                    MessageBox.Show("You have to choose count of person(people)");
+                }
             });
 
-            SeatPlaceClickCommand = new RelayCommand((obj) =>
+            PlaceClickCommand = new RelayCommand((obj) =>
             {
-                counter++;
-                if (obj is ToggleButton button)
+
+                if (IsToggleButtonChecked == true)
                 {
-                    button.IsChecked = !button.IsChecked;
-                    // Get the row and seat number
-                    int row = Grid.GetRow(button);
-                    int column = Grid.GetColumn(button);
+                    if (counter <= Count)
+                    {
+                        counter++;
+                        IsToggleButtonChecked = !IsToggleButtonChecked;
+                        //button.IsChecked = !button.IsChecked;
+                        //int row = Grid.GetRow(button);
+                        //int column = Grid.GetColumn(button);
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
-                if (counter == Count)
+                else
                 {
-                    IsButtonEnable = false;
+                    counter--;
                 }
-                //ToggleButton clickedButton = (ToggleButton)obj;
-                //int row = Grid.GetRow(clickedButton);
-                //int column = Grid.GetColumn(clickedButton);
+                RowOrder = counter;
+
             });
         }
     }

@@ -23,7 +23,7 @@
                         <DropShadowEffect ShadowDepth="3"></DropShadowEffect>
                     </TextBlock.Effect>
                 </TextBlock>
-                <Button Style="{StaticResource buyButton}" Height="50" Canvas.Top="658" Canvas.Left="86" HorizontalAlignment="Center" Background="#008fd7" Foreground="White" FontSize="23" Padding="10" FontWeight="ExtraBlack" Content="Buy Ticket" VerticalAlignment="Top">
+                <Button Style="{StaticResource buyButton}" Command="{Binding BuyTicketBackgroundCommand}" Height="50" Canvas.Top="658" Canvas.Left="86" HorizontalAlignment="Center" Background="#008fd7" Foreground="White" FontSize="23" Padding="10" FontWeight="ExtraBlack" Content="Buy Ticket" VerticalAlignment="Top">
                 </Button>
                 <RadioButton Cursor="Hand" Command="{Binding FirstClickCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="625" Canvas.Top="676">
                     <RadioButton.RenderTransform>
@@ -132,7 +132,9 @@
                                HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
                                VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
                                SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                        
                                     </Border>
+                                    
                                     <ControlTemplate.Triggers>
                                         <MultiTrigger>
                                             <MultiTrigger.Conditions>
@@ -175,6 +177,7 @@
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
+                                
                             </Setter.Value>
                         </Setter>
                     </Style>
@@ -183,21 +186,23 @@
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding MovieNameClickCommand}" 
                                            CommandParameter="{Binding ElementName=listbox,Path=SelectedItem}"></i:InvokeCommandAction>
+                        
                     </i:EventTrigger>
+                    
                 </i:Interaction.Triggers>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Background="Transparent"  BorderThickness="0" CornerRadius="20" Width="250" Height="300">
-                            <Grid Name="myGrid" Background="Transparent" Margin="0,0,8,-4" >
+                            <Grid Height="300" Name="myGrid" Background="Transparent" Margin="0,0,8,-4" >
                                 
-                                    <Image Cursor="Hand" Height="170" Width="115" Margin="-150,15,0,50" Stretch="Fill" Style="{StaticResource imgStyle}" Name="image" Source="{Binding ImagePath}"></Image>
+                                <Image Cursor="Hand" Height="170" Width="115" Margin="-150,15,0,50" Stretch="Fill" Style="{StaticResource imgStyle}" Name="image" Source="{Binding ImagePath}"></Image>
 
                                 <TextBlock Margin="135,45,0,150" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource txtblck}" TextWrapping="Wrap" Text="{Binding MovieName}" FontWeight="Bold" FontFamily="Segoe ui" Background="Transparent"  Name="filmnametxtBox" Foreground="WhiteSmoke" FontSize="15" Width="110" />
-                                <TextBlock Cursor="IBeam" Margin="135,105,0,0" Background="Transparent" Foreground="WhiteSmoke" Text="{Binding MovieDate}" FontFamily="Segoe ui"></TextBlock>
-                                <TextBlock Cursor="IBeam" Margin="135,125,0,0" Background="Transparent" Foreground="WhiteSmoke" Text="{Binding MovieFormat}" FontFamily="Segoe ui"></TextBlock>
-                                <TextBlock Cursor="IBeam" Margin="135,145,0,0" Background="Transparent" Foreground="DarkGoldenrod" Text="{Binding MovieLanguages}" FontFamily="Segoe ui" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Cursor="IBeam" Margin="135,165,0,0" Background="Transparent" Foreground="DarkGoldenrod" Text="{Binding Age}" FontWeight="DemiBold" FontFamily="Segoe ui"></TextBlock>
-                                <Button x:Name="button" Style="{StaticResource buyButton2}" Background="#2c2c2e" Foreground="White" Width="90" Height="30" Content="Buy Ticket" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="5,240,0,0" Command="{Binding BuyTicketCommand,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  >
+                                <TextBlock Margin="135,105,0,0" Background="Transparent" Foreground="WhiteSmoke" Text="{Binding MovieDate}" FontFamily="Segoe ui"></TextBlock>
+                                <TextBlock Margin="135,125,0,0" Background="Transparent" Foreground="WhiteSmoke" Text="{Binding MovieFormat}" FontFamily="Segoe ui"></TextBlock>
+                                <TextBlock Margin="135,145,0,0" Background="Transparent" Foreground="DarkGoldenrod" Text="{Binding MovieLanguages}" FontFamily="Segoe ui" FontWeight="DemiBold"></TextBlock>
+                                <TextBlock Margin="135,165,0,0" Background="Transparent" Foreground="DarkGoldenrod" Text="{Binding Age}" FontWeight="DemiBold" FontFamily="Segoe ui"></TextBlock>
+                                <Button x:Name="buyBtn" Style="{StaticResource buyButton2}" Foreground="White" Width="90" Height="30" Content="Buy Ticket" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="5,240,0,0" Command="{Binding DataContext.BuyTicketCommand, ElementName=listbox}" CommandParameter="{Binding ElementName=listbox, Path=SelectedItem}" >
                                 </Button>
                             </Grid>
                         </Border>
