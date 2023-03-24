@@ -106,6 +106,7 @@ namespace ParkCinema.ViewModels
         public RelayCommand ButtonCommand { get; set; }
         public RelayCommand SelectedCommand { get; set; }
         public RelayCommand SeatClickCommand { get; set; }
+        public RelayCommand LogoClickCommand { get; set; }
         public ScheduleUCViewModel()
         {
             Dates = new List<string>();
@@ -115,11 +116,18 @@ namespace ParkCinema.ViewModels
                 Dates.Add(DateTime.Now.AddDays(i).ToShortDateString().ToString());
             }
 
-            ButtonCommand = new RelayCommand((obj) =>
+            LogoClickCommand = new RelayCommand((obj) =>
             {
+                App.BackPage = App.MyGrid.Children[0];
 
+                var uc = new HomeUC();
+                var vm = new HomeUCViewModel();
+
+                uc.DataContext = vm;
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
             });
-             SeatClickCommand = new RelayCommand((obj) =>
+            SeatClickCommand = new RelayCommand((obj) =>
             {
                 var uc = new SeatUC();
                 var vm = new SeatUCViewModel();

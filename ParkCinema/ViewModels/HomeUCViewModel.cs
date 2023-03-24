@@ -79,6 +79,7 @@ namespace ParkCinema.ViewModels
         public RelayCommand FifthClickCommand { get; set; }
         public RelayCommand TodayClickCommand { get; set; }
         public RelayCommand SoonClickCommand { get; set; }
+        public RelayCommand ScheduleClickCommand { get; set; }
         public RelayCommand AppleClickCommand { get; set; }
         public RelayCommand AndroidClickCommand { get; set; }
         public RelayCommand FaceBookClickCommand { get; set; }
@@ -90,6 +91,8 @@ namespace ParkCinema.ViewModels
         public RelayCommand PreviewMouseDownCommand { get; set; }
         public RelayCommand BuyTicketCommand { get; set; }
         public RelayCommand BuyTicketBackgroundCommand { get; set; }
+        public RelayCommand HappyClickCommand { get; set; }
+        public RelayCommand SuperClickCommand { get; set; }
         public HomeUCViewModel()
         {
             BackgroundRepository = new BackgroundRepository();
@@ -145,6 +148,15 @@ namespace ParkCinema.ViewModels
                 });
                 AllMovies = new ObservableCollection<Movie>(movies1);
             });
+            ScheduleClickCommand = new RelayCommand((obj) =>
+            {
+                var uc = new ScheduleUC();
+                var vm = new ScheduleUCViewModel();
+                vm.AllMovies = App.ScheduleRepo.MovieSchedules;
+                uc.DataContext=vm;
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
+            });
             AppleClickCommand = new RelayCommand((obj) =>
             {
                 System.Diagnostics.Process.Start("https://apps.apple.com/us/app/park-cinema/id1119977600?ls=1");
@@ -164,6 +176,22 @@ namespace ParkCinema.ViewModels
             YoutubeClickCommand = new RelayCommand((obj) =>
             {
                 System.Diagnostics.Process.Start("https://www.youtube.com/channel/UC0NJN0gCCx_DbJlkPfD30Ag/feed");
+            });
+            HappyClickCommand = new RelayCommand((obj) =>
+            {
+                var uc = new CampaingsUC();
+                var vm = new CampaingsUCViewModel();
+                uc.DataContext = vm;
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
+            });
+            SuperClickCommand = new RelayCommand((obj) =>
+            {
+                var uc = new SuperDayUC();
+                var vm = new SuperDayUCViewModel();
+                uc.DataContext = vm;
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
             });
             BuyTicketBackgroundCommand = new RelayCommand((obj) =>
             {

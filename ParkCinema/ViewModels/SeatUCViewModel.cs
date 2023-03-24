@@ -59,18 +59,12 @@ namespace ParkCinema.ViewModels
             set { paymentVisibility = value; OnPropertyChanged(); }
         }
 
-        private bool _isToggleButtonChecked;
-        public bool IsToggleButtonChecked
+        private bool isButtonEnabled;
+
+        public bool IsButtonEnabled
         {
-            get { return _isToggleButtonChecked; }
-            set
-            {
-                if (_isToggleButtonChecked != value)
-                {
-                    _isToggleButtonChecked = value;
-                    OnPropertyChanged(nameof(IsToggleButtonChecked));
-                }
-            }
+            get { return isButtonEnabled; }
+            set { isButtonEnabled = value; OnPropertyChanged(); }
         }
 
         private decimal totalprice;
@@ -80,23 +74,18 @@ namespace ParkCinema.ViewModels
             get { return totalprice; }
             set { totalprice = value; OnPropertyChanged(); }
         }
-        private int row;
-
-        public int RowOrder
-        {
-            get { return row; }
-            set { row = value; OnPropertyChanged(); }
-        }
 
         public RelayCommand SelectedCommand { get; set; }
         public RelayCommand NextPlacesButtonClickCommand { get; set; }
         public RelayCommand PlaceClickCommand { get; set; }
+
         static int counter = 0;
         public SeatUCViewModel()
         {
             SessionVisibility = Visibility.Visible;
             PlacesVisibility = Visibility.Hidden;
             PaymentVisibility = Visibility.Hidden;
+            IsButtonEnabled = true;
             SelectedCommand = new RelayCommand((obj) =>
             {
                 var count = obj;
@@ -118,28 +107,15 @@ namespace ParkCinema.ViewModels
 
             PlaceClickCommand = new RelayCommand((obj) =>
             {
-
-                if (IsToggleButtonChecked == true)
+                if (counter < Count-1)
                 {
-                    if (counter <= Count)
-                    {
-                        counter++;
-                        IsToggleButtonChecked = !IsToggleButtonChecked;
-                        //button.IsChecked = !button.IsChecked;
-                        //int row = Grid.GetRow(button);
-                        //int column = Grid.GetColumn(button);
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    counter++;
                 }
                 else
                 {
-                    counter--;
+                    IsButtonEnabled = false;
+                    return;
                 }
-                RowOrder = counter;
-
             });
         }
     }

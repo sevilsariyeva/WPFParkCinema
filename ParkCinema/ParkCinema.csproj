@@ -88,10 +88,15 @@
     <Compile Include="Repositories\MovieRepository.cs" />
     <Compile Include="Repositories\ScheduleRepository.cs" />
     <Compile Include="ViewModels\BackgroundImageViewModel.cs" />
+    <Compile Include="ViewModels\CampaingsUCViewModel.cs" />
     <Compile Include="ViewModels\HomeUCViewModel.cs" />
     <Compile Include="ViewModels\MovieBackgroundUCViewModel.cs" />
     <Compile Include="ViewModels\ScheduleUCViewModel.cs" />
     <Compile Include="ViewModels\SeatUCViewModel.cs" />
+    <Compile Include="ViewModels\SuperDayUCViewModel.cs" />
+    <Compile Include="Views\UserControls\CampaingsUC.xaml.cs">
+      <DependentUpon>CampaingsUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\HomeUC.xaml.cs">
       <DependentUpon>HomeUC.xaml</DependentUpon>
     </Compile>
@@ -103,6 +108,9 @@
     </Compile>
     <Compile Include="Views\UserControls\SeatUC.xaml.cs">
       <DependentUpon>SeatUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\SuperDayUC.xaml.cs">
+      <DependentUpon>SuperDayUC.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +133,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\UserControls\CampaingsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UserControls\HomeUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserControls\SeatUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\SuperDayUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -303,6 +319,10 @@
   <ItemGroup>
     <Resource Include="Icons\backarrow.png" />
     <Resource Include="Icons\nextarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\androidRed.png" />
+    <Resource Include="Icons\appleRed.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1587.40\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1587.40\build\Microsoft.Web.WebView2.targets')" />
