@@ -9,19 +9,19 @@
     <Border CornerRadius="30">
 
         <Grid Background="White">
-                <Label VerticalAlignment="Top" Width="900" Height="80" Background="#3f1919" Foreground="White" FontSize="40" FontWeight="Bold" Content="{Binding Movie.MovieName}"></Label>
-                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,80,0,0" Height="80" Width="300" Background="#7c2121">
-                    <TextBlock Foreground="White" Margin="40,-5,200,0"  FontFamily="Barlow medium" Text="1" FontSize="80"></TextBlock>
-                    <TextBlock Foreground="White" FontSize="25" FontWeight="DemiBold" FontFamily="Barlow medium" Margin="100,-65,0,0">Session</TextBlock>
-                </StackPanel>
-                <StackPanel VerticalAlignment="Top" Margin="-1,80,0,0" Height="80" Width="300" Background="#ff0d0d">
-                    <TextBlock Margin="40,-5,200,0" Foreground="White" FontFamily="Barlow medium" Text="2" FontSize="80"></TextBlock>
-                    <TextBlock Foreground="White" FontSize="25" FontWeight="DemiBold" FontFamily="Barlow medium" Margin="100,-65,0,0">Places</TextBlock>
-                </StackPanel>
-                <StackPanel VerticalAlignment="Top" Margin="599,80,0,0" Height="80" Width="300" Background="#ff0d0d">
-                    <TextBlock Margin="40,-5,200,0" Foreground="White" FontFamily="Barlow medium" Text="3" FontSize="80"></TextBlock>
-                    <TextBlock Foreground="White" FontSize="25" FontWeight="DemiBold" FontFamily="Barlow medium" Margin="100,-65,0,0">Payment</TextBlock>
-                </StackPanel>
+            <Label VerticalAlignment="Top" Width="900" Height="80" Background="#3f1919" Foreground="White" FontSize="40" FontWeight="Bold" Content="{Binding Movie.MovieName}"></Label>
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,80,0,0" Height="80" Width="300" Background="#7c2121">
+                <TextBlock Foreground="White" Margin="40,-5,200,0"  FontFamily="Barlow medium" Text="1" FontSize="80"></TextBlock>
+                <TextBlock Foreground="White" FontSize="25" FontWeight="DemiBold" FontFamily="Barlow medium" Margin="100,-65,0,0">Session</TextBlock>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Top" Margin="-1,80,0,0" Height="80" Width="300" Background="#ff0d0d">
+                <TextBlock Margin="40,-5,200,0" Foreground="White" FontFamily="Barlow medium" Text="2" FontSize="80"></TextBlock>
+                <TextBlock Foreground="White" FontSize="25" FontWeight="DemiBold" FontFamily="Barlow medium" Margin="100,-65,0,0">Places</TextBlock>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Top" Margin="599,80,0,0" Height="80" Width="300" Background="#ff0d0d">
+                <TextBlock Margin="40,-5,200,0" Foreground="White" FontFamily="Barlow medium" Text="3" FontSize="80"></TextBlock>
+                <TextBlock Foreground="White" FontSize="25" FontWeight="DemiBold" FontFamily="Barlow medium" Margin="100,-65,0,0">Payment</TextBlock>
+            </StackPanel>
             <Canvas Visibility="Hidden">
                 <StackPanel Margin="80,220,0,0">
                     <Image Height="100" Source="/Icons/person.png"></Image>
@@ -30,7 +30,7 @@
                     <TextBlock Margin="57,-27,0,0" FontSize="20" Text="AZN"></TextBlock>
                     <TextBlock Foreground="Gray" FontSize="14" Text="Maximum 10 tickets "></TextBlock>
                 </StackPanel>
-                
+
                 <ComboBox Name="myComboBox" Margin="120,400,0,0" Width="50" ItemsSource="{Binding Numbers}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
@@ -49,8 +49,239 @@
                     <TextBlock FontSize="30" FontWeight="Bold" Margin="110,110,0,0" HorizontalAlignment="Center" Text="{Binding TotalPrice}"></TextBlock>
                     <TextBlock FontSize="30" FontWeight="Bold" Margin="100,150,0,0" Text="AZN"></TextBlock>
                     <Image Width="100" Source="/Icons/nextarrow.png"  Margin="260,100,0,0"></Image>
-                    <Button Style="{StaticResource allButtons}" FontWeight="DemiBold" FontSize="20" Content="Next" Margin="280,133,0,0"></Button>
+                    <Button Command="{Binding NextPlacesButtonClickCommand}" Style="{StaticResource allButtons}" FontWeight="DemiBold" FontSize="20" Content="Next" Margin="280,133,0,0"></Button>
                 </Canvas>
+            </Canvas>
+            <Grid Visibility="Visible" Width="500" Height="350" Margin="50,100,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="1" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="0"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="2" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="1"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="3" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="2"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="4" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="3"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="5" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="4"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="6" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="5"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="7" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="6"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="8" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="7"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="9" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="8"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="10" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="9"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="11" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="10"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="12" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="11"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="13" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="12"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="14" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="13"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="15" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="14"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="16" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="15"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="17" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="16"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="18" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="0" Grid.Column="17"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="1" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="2"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="2" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="3"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="3" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="4"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="4" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="5"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="5" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="6"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="6" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="7"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="7" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="8"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="8" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="9"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="9" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="10"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="10" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="11"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="11" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="12"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="12" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="13"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="13" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="14"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="14" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="1" Grid.Column="15"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="1" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="2"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="2" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="3"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="3" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="4"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="4" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="5"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="5" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="6"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="6" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="7"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="7" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="8"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="8" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="9"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="9" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="10"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="10" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="11"></ToggleButton>                 
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="11" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="12"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="12" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="13"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="13" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="14"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="14" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="2" Grid.Column="15"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="1" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="2"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="2" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="3"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="3" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="4"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="4" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="5"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="5" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="6"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="6" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="7"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="7" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="8"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="8" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="9"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="9" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="10"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="10" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="11"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="11" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="12"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="12" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="13"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="13" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="14"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="14" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="3" Grid.Column="15"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="1" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="2"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="2" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="3"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="3" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="4"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="4" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="5"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="5" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="6"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="6" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="7"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="7" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="8"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="8" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="9"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="9" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="10"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="10" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="11"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="11" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="12"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="12" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="13"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="13" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="14"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="14" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="4" Grid.Column="15"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="1" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="2"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="2" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="3"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="3" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="4"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="4" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="5"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="5" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="6"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="6" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="7"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="7" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="8"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="8" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="9"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="9" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="10"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="10" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="11"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="11" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="12"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="12" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="13"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="13" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="14"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="14" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="5" Grid.Column="15"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="1" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="2"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="2" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="3"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="3" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="4"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="4" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="5"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="5" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="6"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="6" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="7"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="7" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="8"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="8" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="9"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="9" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="10"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="10" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="11"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="11" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="12"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="12" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="13"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="13" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="14"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="14" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="6" Grid.Column="15"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="1" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="2"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="2" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="3"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="3" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="4"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="4" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="5"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="5" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="6"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="6" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="7"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="7" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="8"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="8" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="9"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="9" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="10"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="10" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="11"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="11" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="12"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="12" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="13"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="13" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="14"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="14" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="7" Grid.Column="15"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="1" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="2"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="2" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="3"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="3" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="4"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="4" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="5"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="5" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="6"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="6" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="7"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="7" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="8"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="8" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="9"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="9" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="10"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="10" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="11"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="11" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="12"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="12" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="13"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="13" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="14"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="14" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="8" Grid.Column="15"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="1" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="2"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="2" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="3"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="3" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="4"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="4" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="5"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="5" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="6"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="6" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="7"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="7" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="8"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="8" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="9"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="9" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="10"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="10" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="11"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="11" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="12"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="12" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="13"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="13" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="14"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="14" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="9" Grid.Column="15"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="1" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="2"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="2" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="3"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="3" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="4"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="4" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="5"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="5" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="6"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="6" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="7"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="7" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="8"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="8" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="9"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="9" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="10"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="10" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="11"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="11" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="12"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="12" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="13"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="13" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="14"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="14" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}" Style="{StaticResource seatButton}" Grid.Row="10" Grid.Column="15"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="1" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="11" Grid.Column="3"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="2" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="11" Grid.Column="4"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="3" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="11" Grid.Column="5"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="4" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="11" Grid.Column="6"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="5" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="11" Grid.Column="7"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="6" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="11" Grid.Column="8"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="7" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="11" Grid.Column="9"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="8" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="11" Grid.Column="10"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="9" FontSize="8" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="11" Grid.Column="11"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="10" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="11" Grid.Column="12"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="11" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="11" Grid.Column="13"></ToggleButton>
+                <ToggleButton IsEnabled="{Binding IsButtonEnable}" Content="12" FontSize="8" Margin="-3,0,0,0" VerticalContentAlignment="Top" Command="{Binding SeatPlaceClickCommand}"  Style="{StaticResource seatButton}" Grid.Row="11" Grid.Column="14"></ToggleButton>
+                <TextBlock Margin="-70,5,0,0" Text="Row 12" Width="40"></TextBlock>
+                <TextBlock Text="Row 11" Grid.ColumnSpan="2" Margin="0,35,15,0" Grid.RowSpan="2"/>
+                <TextBlock Text="Row 10" Grid.ColumnSpan="2" Margin="0,5,0,0" Grid.Row="2" Grid.RowSpan="2"/>
+                <TextBlock Text="Row 9" Grid.ColumnSpan="2" Margin="0,5,0,0"  Grid.RowSpan="3" Grid.Row="3"/>
+                <TextBlock Text="Row 8" Grid.ColumnSpan="2" Margin="0,5,0,0" Grid.RowSpan="3" Grid.Row="4"/>
+                <TextBlock Text="Row 7" Grid.ColumnSpan="2" Margin="0,5,0,0" Grid.RowSpan="3" Grid.Row="5"/>
+                <TextBlock Text="Row 6" Grid.ColumnSpan="2" Margin="0,5,0,0" Grid.RowSpan="3" Grid.Row="6"/>
+                <TextBlock Text="Row 5" Grid.ColumnSpan="2" Margin="0,5,0,0" Grid.RowSpan="3" Grid.Row="7"/>
+                <TextBlock Text="Row 4" Grid.ColumnSpan="2" Margin="0,5,0,0" Grid.RowSpan="3" Grid.Row="8"/>
+                <TextBlock Text="Row 3" Grid.ColumnSpan="2" Margin="0,5,0,0" Grid.RowSpan="3" Grid.Row="9"/>
+                <TextBlock Text="Row 2" Grid.ColumnSpan="2" Margin="0,5,0,0" Grid.RowSpan="3" Grid.Row="10"/>
+                <TextBlock Text="Row 1" Margin="26,10,16,0" Grid.Row="11" Grid.ColumnSpan="3"/>
+            </Grid>
+            <Canvas Margin="300,500,0,0">
+                <TextBlock FontSize="20" Height="30" FontWeight="DemiBold" VerticalAlignment="Top"  Margin="0,-315,0,0" Text="{Binding Movie.MovieDate}"></TextBlock>
+                <TextBlock FontSize="20" Height="30" FontWeight="DemiBold" Margin="110,-600,0,0" Text="{Binding Movie.MovieDateTime}"></TextBlock>
+                <TextBlock FontSize="20" Height="30" FontWeight="DemiBold" Margin="200,-600,0,0" Text="{Binding Movie.Theater}"></TextBlock>
+                <TextBlock FontSize="20" Height="30" FontWeight="DemiBold" Text="Adults: " Margin="100,-565,0,0"></TextBlock>
+                <TextBlock FontSize="20" Height="30" FontWeight="DemiBold" Text="{Binding Count}" Margin="180,-565,0,0"></TextBlock>
+                <Image Width="300" Height="180" Margin="0,70,0,0" Source="/Icons/ticket.png"></Image>
+                <TextBlock FontSize="30" FontWeight="Bold" Margin="110,110,0,0" HorizontalAlignment="Center" Text="{Binding TotalPrice}"></TextBlock>
+                <TextBlock FontSize="30" FontWeight="Bold" Margin="100,150,0,0" Text="AZN"></TextBlock>
+                <Image Width="100"  Source="/Icons/nextarrow.png"  Margin="260,100,0,0"></Image>
+                <Button Command="{Binding NextPlacesButtonClickCommand}" Style="{StaticResource allButtons}" FontWeight="DemiBold" FontSize="20" Content="Next" Margin="280,133,0,0"></Button>
             </Canvas>
         </Grid>
     </Border>
