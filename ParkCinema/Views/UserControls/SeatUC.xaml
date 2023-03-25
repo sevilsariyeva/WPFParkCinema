@@ -22,6 +22,9 @@
                 <TextBlock Margin="40,-5,200,0" Foreground="White" FontFamily="Barlow medium" Text="3" FontSize="80"></TextBlock>
                 <TextBlock Foreground="White" FontSize="25" FontWeight="DemiBold" FontFamily="Barlow medium" Margin="100,-65,0,0">Payment</TextBlock>
             </StackPanel>
+            <Button Command="{Binding DataContext.CloseCommand, ElementName=myGrid}" Style="{StaticResource allButtons}" Margin="0,0,10,0" Background="Transparent" Width="80" Height="80" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Image Stretch="Fill" Source="/Icons/close.png" Width="80"></Image>
+            </Button>
             <Canvas Visibility="{Binding SessionVisibility}">
                 <StackPanel Margin="80,220,0,0">
                     <Image Height="100" Source="/Icons/person.png"></Image>

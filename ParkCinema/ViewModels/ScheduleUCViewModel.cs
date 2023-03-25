@@ -125,12 +125,14 @@ namespace ParkCinema.ViewModels
             set { allMovies = value; OnPropertyChanged(); }
         }
 
-
+        public RelayCommand AppleClickCommand { get; set; }
+        public RelayCommand AndroidClickCommand { get; set; }
         public RelayCommand ButtonCommand { get; set; }
         public RelayCommand SelectedCommand { get; set; }
         public RelayCommand SeatClickCommand { get; set; }
         public RelayCommand LogoClickCommand { get; set; }
         public RelayCommand SelectedTheaterCommand { get; set; }
+        public RelayCommand CloseCommand { get; set; }
         public ScheduleUCViewModel()
         {
             Dates = new List<string>();
@@ -155,6 +157,14 @@ namespace ParkCinema.ViewModels
                 App.MyGrid.Children.RemoveAt(0);
                 App.MyGrid.Children.Add(uc);
             });
+            AppleClickCommand = new RelayCommand((obj) =>
+            {
+                System.Diagnostics.Process.Start("https://apps.apple.com/us/app/park-cinema/id1119977600?ls=1");
+            });
+            AndroidClickCommand = new RelayCommand((obj) =>
+            {
+                System.Diagnostics.Process.Start("https://play.google.com/store/apps/details?id=az.parkcinema.app&hl=ru");
+            });
             SeatClickCommand = new RelayCommand((obj) =>
             {
                 var uc = new SeatUC();
@@ -162,6 +172,13 @@ namespace ParkCinema.ViewModels
                 vm.Movie = Movie;
                 uc.DataContext = vm;
                 App.MyGrid.Children.Add(uc);
+            });
+            CloseCommand = new RelayCommand((obj) =>
+            {
+                var uc = new SeatUC();
+                var vm = new SeatUCViewModel();
+                uc.DataContext = vm;
+                App.MyGrid.Children.Remove(uc);
             });
             SelectedCommand = new RelayCommand((obj) =>
             {

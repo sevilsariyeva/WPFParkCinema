@@ -10,6 +10,9 @@
         <Button Style="{StaticResource logoButton}" Command="{Binding LogoClickCommand}" Panel.ZIndex="1" BorderThickness="0" Width="152" Height="178" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,-4,0,0">
             <Image Stretch="Uniform" Source="/icons/logo.png" Height="89" Width="121"></Image>
         </Button>
+        <DockPanel Panel.ZIndex="1">
+            <TextBlock Panel.ZIndex="1" Foreground="White" Margin="500,-480,0,0" Width="370" HorizontalAlignment="Left" Height="60" FontFamily="segoe ui" FontSize="50" FontWeight="ExtraBlack" Text="S C H E D U L E"></TextBlock>
+        </DockPanel>
         <Canvas>
             <Image Stretch="Fill" Width="1400" Source="/images/movieback.jpg"></Image>
             <Button Style="{StaticResource allButtons}" Command="{Binding AppleClickCommand}" Width="30" Canvas.Top="20" Canvas.Left="1249" HorizontalAlignment="Left" VerticalAlignment="Center" >
@@ -35,8 +38,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ComboBox>
-        <TextBlock Foreground="White" Margin="220,-500,189,0" Width="370" HorizontalAlignment="Center" Height="60" FontFamily="segoe ui" FontSize="50" FontWeight="ExtraBlack" Text="S C H E D U L E"></TextBlock>
-        <DataGrid CanUserAddRows="False" Background="DarkGoldenrod" RowStyle="{StaticResource DataGridRowStyle}" FontWeight="Bold" FontSize="20"  HorizontalContentAlignment="Center" RowHeight="50" Foreground="Goldenrod" MaxHeight="600" Width="1018" Margin="0,300,0,0" ItemsSource="{Binding Movies}" AutoGenerateColumns="False">
+        <DataGrid CanUserAddRows="False" Background="DarkGoldenrod" RowStyle="{StaticResource DataGridRowStyle}" FontWeight="Bold" FontSize="20"  HorizontalContentAlignment="Center" RowHeight="50" Foreground="Goldenrod" MaxHeight="600" Width="1018" Margin="0,200,0,0" ItemsSource="{Binding Movies}" AutoGenerateColumns="False">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -60,7 +62,7 @@
                 <DataGridTemplateColumn  Header="Movie" Width="180">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock TextWrapping="Wrap" FontSize="20" Text="{Binding MovieName}"></TextBlock>
+                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="{Binding MovieName}"></TextBlock>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -84,8 +86,8 @@
                                 <Button Width="46" Height="42" Panel.ZIndex="1" Style="{StaticResource allButtons}" HorizontalContentAlignment="Left" Background="Transparent" Command="{Binding DataContext.SeatClickCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}">
                                     <Image HorizontalAlignment="Left" Width="50" Height="40" Source="/Icons/seat.png"></Image>
                                 </Button>
-                                <Button Command="{Binding SeatClickCommand}" Margin="50,10,0,0" Width="51" Height="25" Style="{StaticResource allButtons}" >
-                                <TextBlock Style="{StaticResource txtblck}" Panel.ZIndex="1"  FontSize="15" FontWeight="Bold" Text="Places"></TextBlock>
+                                <Button Command="{Binding DataContext.SeatClickCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="50,10,0,0" Width="51" Height="25" Style="{StaticResource allButtons}" >
+                                    <TextBlock Style="{StaticResource txtblck}" Panel.ZIndex="1"  FontSize="15" FontWeight="Bold" Text="Places"></TextBlock>
                                 </Button>
                             </Canvas>
                         </DataTemplate>

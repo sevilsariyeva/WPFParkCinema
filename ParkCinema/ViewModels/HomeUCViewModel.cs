@@ -198,6 +198,7 @@ namespace ParkCinema.ViewModels
                         {
                             if (current.MovieName == item.MovieName)
                             {
+                                vm.Movie = current;
                                 myMovies.Add(current);
                             }
                         }

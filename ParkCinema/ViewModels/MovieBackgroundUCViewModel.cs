@@ -96,6 +96,7 @@ namespace ParkCinema.ViewModels
                 {
                     if(item.MovieName== Movie.MovieName)
                     {
+                        vm.Movie = item;
                         newMovies.Add(item);
                     }
                 }

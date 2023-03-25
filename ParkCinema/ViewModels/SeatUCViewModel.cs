@@ -135,7 +135,11 @@ namespace ParkCinema.ViewModels
                 IsButtonEnabled = true;
                 var count = obj;
                 Count = (int)count;
-                TotalPrice = Movie.Price * Count;
+                if (Count > 0)
+                {
+                    TotalPrice = Movie.Price * Count;
+                }
+                
             });
             NextPlacesButtonClickCommand = new RelayCommand((obj) =>
             {
