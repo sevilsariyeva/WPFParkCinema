@@ -142,7 +142,8 @@ namespace ParkCinema.ViewModels
             {
                 var uc = new ScheduleUC();
                 var vm = new ScheduleUCViewModel();
-                vm.AllMovies = App.ScheduleRepo.MovieSchedules;
+                vm.Movies = new ObservableCollection<MovieSchedule>(App.ScheduleRepo.MovieSchedules);
+                vm.AllMovies = new ObservableCollection<MovieSchedule>(App.ScheduleRepo.MovieSchedules);
                 uc.DataContext=vm;
                 App.MyGrid.Children.RemoveAt(0);
                 App.MyGrid.Children.Add(uc);
@@ -188,21 +189,22 @@ namespace ParkCinema.ViewModels
                 var recent = BackImage;
                 var uc = new ScheduleUC();
                 var vm = new ScheduleUCViewModel();
+                var myMovies = new ObservableCollection<MovieSchedule>();
                 foreach (var item in AllMovies)
                 {
-                    if (item.ImagePath == recent.ImagePath)
+                    if (item.MovieName == recent.MovieName)
                     {
-                        var myMovie = item;
                         foreach (var current in App.ScheduleRepo.MovieSchedules)
                         {
-                            if (current.MovieName == myMovie.MovieName)
+                            if (current.MovieName == item.MovieName)
                             {
-                                vm.Movie = current;
-                                vm.Movies.Add(current);
+                                myMovies.Add(current);
                             }
                         }
                     }
                 }
+                vm.Movies = myMovies;
+                vm.AllMovies = myMovies;
                 uc.DataContext = vm;
 
                 App.MyGrid.Children.RemoveAt(0);

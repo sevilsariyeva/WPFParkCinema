@@ -91,14 +91,16 @@ namespace ParkCinema.ViewModels
             {
                 var uc = new ScheduleUC();
                 var vm = new ScheduleUCViewModel();
+                var newMovies = new ObservableCollection<MovieSchedule>();
                 foreach (var item in App.ScheduleRepo.MovieSchedules)
                 {
                     if(item.MovieName== Movie.MovieName)
                     {
-                        vm.Movie = item;
-                        vm.Movies.Add(item);
+                        newMovies.Add(item);
                     }
                 }
+                vm.Movies = newMovies;
+                vm.AllMovies = newMovies;
                 uc.DataContext = vm;
                 var grid = obj as Grid;
                 foreach (UIElement child in grid.Children)

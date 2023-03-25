@@ -77,7 +77,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,13,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(120)
                     },
                     new MovieSchedule
                     {
@@ -87,7 +87,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,15,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(120)
                     },
                     new MovieSchedule
                     {
@@ -97,7 +97,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(120)
                     },
                     new MovieSchedule
                     {
@@ -107,7 +107,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,31,15,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(120)
                     },
                     new MovieSchedule
                     {
@@ -117,7 +117,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(140)
                     },
                     new MovieSchedule
                     {
@@ -127,7 +127,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,17,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(140)
                     },
                     new MovieSchedule
                     {
@@ -137,7 +137,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,17,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(140)
                     },
                     new MovieSchedule
                     {
@@ -147,7 +147,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,17,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(140)
                     },
                     new MovieSchedule
                     {
@@ -157,7 +157,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,18,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(140)
                     },
                     new MovieSchedule
                     {
@@ -167,7 +167,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,31,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(140)
                     },
                      new MovieSchedule
                     {
@@ -177,7 +177,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=7,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(115)
                     },
                      new MovieSchedule
                     {
@@ -187,7 +187,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=7,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(115)
                     },
                      new MovieSchedule
                     {
@@ -197,7 +197,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=7,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(115)
                     },
                      new MovieSchedule
                     {
@@ -207,7 +207,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=7,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(115)
                     },
                      new MovieSchedule
                     {
@@ -217,7 +217,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,31,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=7,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(115)
                     },
                      new MovieSchedule
                     {
@@ -227,7 +227,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,4,1,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=7,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(115)
                     },
                      new MovieSchedule
                     {
@@ -237,7 +237,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,4,2,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=7,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(115)
                     },
                      new MovieSchedule
                     {
@@ -247,7 +247,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(100)
                     },
                      new MovieSchedule
                     {
@@ -257,7 +257,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,17,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(100)
                     },
                       new MovieSchedule
                     {
@@ -267,7 +267,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,17,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(100)
                     },
                       new MovieSchedule
                     {
@@ -277,7 +277,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,17,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(100)
                     },
                       new MovieSchedule
                     {
@@ -287,7 +287,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,31,15,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(100)
                     },
                       new MovieSchedule
                     {
@@ -297,7 +297,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,4,1,15,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(100)
                     },
                       new MovieSchedule
                     {
@@ -307,7 +307,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,15,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(145)
                     },
                       new MovieSchedule
                     {
@@ -317,7 +317,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(145)
                     },
                       new MovieSchedule
                     {
@@ -327,7 +327,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(145)
                     },
                       new MovieSchedule
                     {
@@ -337,7 +337,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(145)
                     },
                       new MovieSchedule
                     {
@@ -347,7 +347,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,31,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(145)
                     },
                        new MovieSchedule
                     {
@@ -357,7 +357,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,4,1,17,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(145)
                     },
                         new MovieSchedule
                     {
@@ -367,7 +367,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(145)
                     },
                         new MovieSchedule
                     {
@@ -377,7 +377,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(145)
                     },
                         new MovieSchedule
                     {
@@ -387,7 +387,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,19,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(145)
                     },
                         new MovieSchedule
                     {
@@ -397,7 +397,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,19,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(145)
                     },
                         new MovieSchedule
                     {
@@ -407,7 +407,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,31,19,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(145)
                     },
                         new MovieSchedule
                     {
@@ -417,7 +417,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,4,1,19,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(145)
                     },
                         new MovieSchedule
                     {
@@ -427,7 +427,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,4,2,19,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(145)
                     },
                         new MovieSchedule
                     {
@@ -437,7 +437,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,19,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(135)
                     },
                         new MovieSchedule
                     {
@@ -447,7 +447,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,17,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(135)
                     },
                         new MovieSchedule
                     {
@@ -457,7 +457,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(135)
                     },
                         new MovieSchedule
                     {
@@ -467,7 +467,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(135)
                     },
                         new MovieSchedule
                     {
@@ -477,7 +477,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,31,15,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(135)
                     },
                         new MovieSchedule
                     {
@@ -487,7 +487,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,4,1,19,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(135)
                     },
                         new MovieSchedule
                     {
@@ -497,7 +497,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,19,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(160)
                     },
                         new MovieSchedule
                     {
@@ -507,7 +507,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,19,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(160)
                     },
                         new MovieSchedule
                     {
@@ -517,7 +517,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,17,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(160)
                     },
                         new MovieSchedule
                     {
@@ -527,7 +527,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(160)
                     },
                         new MovieSchedule
                     {
@@ -537,7 +537,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,31,15,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(160)
                     },
                         new MovieSchedule
                     {
@@ -547,7 +547,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,4,1,10,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(160)
                     },
                         new MovieSchedule
                     {
@@ -557,7 +557,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,4,2,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(160)
                     },
                         new MovieSchedule
                     {
@@ -567,7 +567,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(125)
                     },
                         new MovieSchedule
                     {
@@ -587,7 +587,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(125)
                     },
                         new MovieSchedule
                     {
@@ -597,7 +597,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(125)
                     },
                         new MovieSchedule
                     {
@@ -607,7 +607,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,31,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(125)
                     },
                         new MovieSchedule
                     {
@@ -617,7 +617,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,17,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(120)
                     },
                         new MovieSchedule
                     {
@@ -627,7 +627,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,17,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(120)
                     },
                         new MovieSchedule
                     {
@@ -637,7 +637,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,17,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(120)
                     },
                         new MovieSchedule
                     {
@@ -647,7 +647,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,17,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(120)
                     },
                         new MovieSchedule
                     {
@@ -657,7 +657,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,17,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(120)
                     },
                         new MovieSchedule
                     {
@@ -667,7 +667,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,31,17,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(120)
                     },
                         new MovieSchedule
                     {
@@ -677,7 +677,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,4,1,17,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(120)
                     },
                         new MovieSchedule
                     {
@@ -687,7 +687,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,17,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(180)
                     },
                         new MovieSchedule
                     {
@@ -697,7 +697,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,13,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(180)
                     },
                         new MovieSchedule
                     {
@@ -707,7 +707,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(180)
                     },
                         new MovieSchedule
                     {
@@ -717,7 +717,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(180)
                     },
                          new MovieSchedule
                     {
@@ -727,7 +727,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,15,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(110)
                     },
                         new MovieSchedule
                     {
@@ -737,7 +737,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,13,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(110)
                     },
                         new MovieSchedule
                     {
@@ -747,7 +747,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(110)
                     },
                         new MovieSchedule
                     {
@@ -757,7 +757,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,15,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(110)
                     },
                     new MovieSchedule
                     {
@@ -767,7 +767,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,15,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(170)
                     },
                         new MovieSchedule
                     {
@@ -777,7 +777,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,13,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(170)
                     },
                         new MovieSchedule
                     {
@@ -787,7 +787,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,13,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(170)
                     },
                         new MovieSchedule
                     {
@@ -797,7 +797,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,15,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(170)
                     },
                     new MovieSchedule
                     {
@@ -807,7 +807,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,14,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(190)
                     },
                         new MovieSchedule
                     {
@@ -817,7 +817,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,17,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(190)
                     },
                         new MovieSchedule
                     {
@@ -827,7 +827,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,13,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(190)
                     },
                         new MovieSchedule
                     {
@@ -837,7 +837,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,15,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(190)
                     },new MovieSchedule
                     {
                         Id=79,
@@ -846,7 +846,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,14,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(190)
                     },
                         new MovieSchedule
                     {
@@ -856,7 +856,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,17,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(56)
                     },
                         new MovieSchedule
                     {
@@ -866,7 +866,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,19,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(56)
                     },
                         new MovieSchedule
                     {
@@ -876,7 +876,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,15,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=9,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(56)
                     },
                     new MovieSchedule
                     {
@@ -886,7 +886,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,14,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=8,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(180)
                     },
                         new MovieSchedule
                     {
@@ -896,7 +896,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,17,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=8,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(180)
                     },
                         new MovieSchedule
                     {
@@ -906,7 +906,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,19,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=8,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(180)
                     },
                         new MovieSchedule
                     {
@@ -916,7 +916,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,15,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=8,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(180)
                     },
                     new MovieSchedule
                     {
@@ -926,7 +926,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,14,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(210)
                     },
                         new MovieSchedule
                     {
@@ -936,7 +936,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,17,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(210)
                     },
                         new MovieSchedule
                     {
@@ -946,7 +946,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,19,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(210)
                     },
                         new MovieSchedule
                     {
@@ -956,7 +956,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,17,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(210)
                     },
                     new MovieSchedule
                     {
@@ -966,7 +966,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(180)
                     },
                         new MovieSchedule
                     {
@@ -976,7 +976,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,12,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(180)
                     },
                         new MovieSchedule
                     {
@@ -986,7 +986,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,19,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(180)
                     },
                         new MovieSchedule
                     {
@@ -996,7 +996,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,17,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(180)
                     },
                     new MovieSchedule
                     {
@@ -1006,7 +1006,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,15,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(170)
                     },
                         new MovieSchedule
                     {
@@ -1016,7 +1016,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,12,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(170)
                     },
                         new MovieSchedule
                     {
@@ -1026,7 +1026,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,19,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(170)
                     },
                         new MovieSchedule
                     {
@@ -1036,7 +1036,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,17,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(170)
                     },
                     new MovieSchedule
                     {
@@ -1046,7 +1046,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,27,15,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(165)
                     },
                         new MovieSchedule
                     {
@@ -1056,7 +1056,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,28,12,0,0).ToShortTimeString().ToString(),
                         Theater="Deniz Mall",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(165)
                     },
                         new MovieSchedule
                     {
@@ -1066,7 +1066,7 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,29,19,0,0).ToShortTimeString().ToString(),
                         Theater="MetroPark",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(165)
                     },
                         new MovieSchedule
                     {
@@ -1076,13 +1076,12 @@ namespace ParkCinema.Repositories
                         MovieDateTime=new DateTime(2023,3,30,17,0,0).ToShortTimeString().ToString(),
                         Theater="Park Bulvar",
                         Price=10,
-                        Duration=TimeSpan.FromMinutes(136)
+                        Duration=TimeSpan.FromMinutes(165)
                     },
 
                 };
                 FileHelper.WriteMovieSchedule(MovieSchedules);
             }
-
         }
     }
 }
