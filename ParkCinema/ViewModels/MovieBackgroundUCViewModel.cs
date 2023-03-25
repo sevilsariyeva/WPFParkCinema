@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace ParkCinema.ViewModels
 {
@@ -29,27 +30,48 @@ namespace ParkCinema.ViewModels
             get { return movies; }
             set { movies = value; OnPropertyChanged(); }
         }
+        private Visibility webViewVisibility;
+
+        public Visibility WebViewVisibility
+        {
+            get { return webViewVisibility; }
+            set { webViewVisibility = value; OnPropertyChanged(); }
+        }
+
         public RelayCommand AppleClickCommand { get; set; }
         public RelayCommand AndroidClickCommand { get; set; }
         public RelayCommand LogoClickCommand { get; set; }
         public RelayCommand MovieNameClickCommand { get; set; }
         public RelayCommand BuyTicketCommand { get; set; }
 
-        public Random a = new Random(); // replace from new Random(DateTime.Now.Ticks.GetHashCode());
-                                        // Since similar code is done in default constructor internally
+        public Random a = new Random(); 
         public List<int> randomList = new List<int>();
         public ObservableCollection<Movie> movieList = new ObservableCollection<Movie>();
         int MyNumber = 0;
 
         public MovieBackgroundUCViewModel()
         {
-
+            WebViewVisibility = Visibility.Visible;
             Movie = new Movie();
 
             LogoClickCommand = new RelayCommand((obj) =>
             {
+                var grid = obj as Grid;
+                foreach (UIElement child in grid.Children)
+                {
+                    if (child is StackPanel stack)
+                    {
+                        foreach (var item1 in stack.Children)
+                        {
+                            if (item1 is WebView2 web)
+                            {
+                                web.Dispose();
+                            }
+                        }
+                    }
+                }
                 App.BackPage = App.MyGrid.Children[0];
-
+                WebViewVisibility = Visibility.Hidden;
                 var uc = new HomeUC();
                 var vm = new HomeUCViewModel();
 
@@ -78,21 +100,43 @@ namespace ParkCinema.ViewModels
                     }
                 }
                 uc.DataContext = vm;
-                vm.IsComboBoxVisible = Visibility.Hidden;
+                var grid = obj as Grid;
+                foreach (UIElement child in grid.Children)
+                {
+                    if(child is StackPanel stack)
+                    {
+                        foreach (var item1 in stack.Children)
+                        {
+                            if(item1 is WebView2 web)
+                            {
+                                web.Dispose();
+                            }
+                        }
+                    }
+                }
                 App.MyGrid.Children.RemoveAt(0);
                 App.MyGrid.Children.Add(uc);
             });
             MovieNameClickCommand = new RelayCommand((obj) =>
             {
-                var temp = obj as Movie;
+                var grid = obj as Grid;
+                var temp=obj as Movie;
+                foreach (var child in grid.Children)
+                {
+                    if(child is ListBox list)
+                    {
+                        temp=list.SelectedItem as Movie;
+                    }
+                }
                 movieList = new ObservableCollection<Movie>();
-
+                WebViewVisibility = Visibility.Hidden;
                 var vm = new MovieBackgroundUCViewModel();
                 vm.Movie = temp;
                 var movies = new ObservableCollection<Movie>();
                 var moviesShort = new ObservableCollection<Movie>();
                 for (int i = 1; i <= App.MovieRepo.Movies.Count; i++)
                 {
+                    
                     if (i == vm.Movie.Id)
                     {
                         for (int j = 0; j < i - 1; j++)
@@ -120,6 +164,19 @@ namespace ParkCinema.ViewModels
                 vm.AllMovies = movieList;
                 var uc = new MovieBackgroundUC();
                 uc.DataContext = vm;
+                foreach (UIElement child in grid.Children)
+                {
+                    if (child is StackPanel stack)
+                    {
+                        foreach (var item1 in stack.Children)
+                        {
+                            if (item1 is WebView2 web)
+                            {
+                                web.Dispose();
+                            }
+                        }
+                    }
+                }
                 App.MyGrid.Children.RemoveAt(0);
                 App.MyGrid.Children.Add(uc);
             });
