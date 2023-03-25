@@ -24,5 +24,6 @@ namespace ParkCinema.Models
         public string About { get; set; }
         public int MovieYear { get; set; }
         public string MovieLink { get; set; }
+        public double Rating { get; set; }
     }
 }

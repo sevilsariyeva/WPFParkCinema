@@ -19,7 +19,7 @@
                 <Image Source="/icons/android.png"></Image>
             </Button>
         </Canvas>
-        <ComboBox  Name="myComboBox" FontWeight="Bold" Margin="165,250,0,0" Height="30" Width="190" VerticalAlignment="Top" HorizontalAlignment="Left" ItemsSource="{Binding Dates}" >
+        <ComboBox Name="myComboBox" FontWeight="Bold" Margin="165,250,0,0" Height="30" Width="190" VerticalAlignment="Top" HorizontalAlignment="Left" ItemsSource="{Binding Dates}" >
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding SelectedCommand}"
@@ -27,8 +27,15 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ComboBox>
-        <ComboBox Visibility="{Binding IsComboBoxVisible}" Height="30" Width="190" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400,250,0,0" ItemsSource="{Binding Movies}" DisplayMemberPath="MovieName"></ComboBox>
-        <TextBlock Foreground="White" Margin="220,-300,189,0" Width="370" HorizontalAlignment="Center" Height="100" FontFamily="segoe ui" FontSize="50" FontWeight="ExtraBlack" Text="S C H E D U L E"></TextBlock>
+        <ComboBox ItemsSource="{Binding Theaters}" Foreground="Black" Name="comboBox2" Visibility="{Binding IsComboBoxVisible}" Height="30" Width="190" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400,250,0,0" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectedTheaterCommand}"
+                                           CommandParameter="{Binding ElementName=comboBox2,Path=SelectedItem}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+        <TextBlock Foreground="White" Margin="220,-500,189,0" Width="370" HorizontalAlignment="Center" Height="60" FontFamily="segoe ui" FontSize="50" FontWeight="ExtraBlack" Text="S C H E D U L E"></TextBlock>
         <DataGrid CanUserAddRows="False" Background="DarkGoldenrod" RowStyle="{StaticResource DataGridRowStyle}" FontWeight="Bold" FontSize="20"  HorizontalContentAlignment="Center" RowHeight="50" Foreground="Goldenrod" MaxHeight="600" Width="1018" Margin="0,300,0,0" ItemsSource="{Binding Movies}" AutoGenerateColumns="False">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">

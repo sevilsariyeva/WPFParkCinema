@@ -30,6 +30,29 @@ namespace ParkCinema.ViewModels
             set { _dates = value; OnPropertyChanged("Dates"); }
         }
 
+        private string currentDate;
+
+        public string CurrentDate
+        {
+            get { return currentDate; }
+            set { currentDate = value; OnPropertyChanged(); }
+        }
+        private string currentTheater;
+
+        public string CurrentTheater
+        {
+            get { return currentTheater; }
+            set { currentTheater = value; OnPropertyChanged(); }
+        }
+
+        private List<string> theaters;
+
+        public List<string> Theaters
+        {
+            get { return theaters; }
+            set { theaters = value; OnPropertyChanged("Dates"); }
+        }
+
         private ObservableCollection<MovieSchedule> movies = new ObservableCollection<MovieSchedule>();
 
         public ObservableCollection<MovieSchedule> Movies
@@ -102,11 +125,12 @@ namespace ParkCinema.ViewModels
             }
         }
 
-       
+
         public RelayCommand ButtonCommand { get; set; }
         public RelayCommand SelectedCommand { get; set; }
         public RelayCommand SeatClickCommand { get; set; }
         public RelayCommand LogoClickCommand { get; set; }
+        public RelayCommand SelectedTheaterCommand { get; set; }
         public ScheduleUCViewModel()
         {
             Dates = new List<string>();
@@ -115,6 +139,10 @@ namespace ParkCinema.ViewModels
             {
                 Dates.Add(DateTime.Now.AddDays(i).ToShortDateString().ToString());
             }
+            Theaters = new List<string>();
+            Theaters.Add("Park Bulvar");
+            Theaters.Add("Deniz Mall");
+            Theaters.Add("MetroPark");
 
             LogoClickCommand = new RelayCommand((obj) =>
             {
@@ -138,17 +166,45 @@ namespace ParkCinema.ViewModels
             SelectedCommand = new RelayCommand((obj) =>
             {
                 var date = obj as string;
+                CurrentDate = date;
+                var newMovies = new ObservableCollection<MovieSchedule>();
+                
+                    foreach (var item in App.ScheduleRepo.MovieSchedules)
+                    {
+                        if (date == item.MovieDate)
+                        {
+                            if (CurrentTheater != null && item.Theater == CurrentTheater)
+                            {
+                                newMovies.Add(item);
+                            }
+                            else
+                            {
+                                newMovies.Add(item);
+                            }
+                        }
+                    }
+               
+                
+                Movies = newMovies;
+                if (newMovies.Count != 0)
+                {
+                    Movie = newMovies[0];
+                }
+            });
+            SelectedTheaterCommand = new RelayCommand((obj) =>
+            {
+                var theater = obj as string;
                 var newMovies = new ObservableCollection<MovieSchedule>();
 
                 foreach (var item in App.ScheduleRepo.MovieSchedules)
                 {
-                    if (date == item.MovieDate)
+                    if (theater == item.Theater && CurrentDate == item.MovieDate)
                     {
                         newMovies.Add(item);
                     }
                 }
                 Movies = newMovies;
-                if (newMovies.Count!=0)
+                if (newMovies.Count != 0)
                 {
                     Movie = newMovies[0];
                 }

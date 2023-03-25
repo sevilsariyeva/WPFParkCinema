@@ -14,13 +14,13 @@ namespace ParkCinema.ViewModels
     {
         public BackgroundRepository BackgroundImageRepository { get; set; }
         private ObservableCollection<BackgroundImage> allImages;
+        private BackgroundImage image;
 
         public ObservableCollection<BackgroundImage> AllImages
         {
             get { return allImages; }
             set { allImages = value; OnPropertyChanged(); }
         }
-        private BackgroundImage image;
 
         public BackgroundImage BackImage
         {

@@ -318,6 +318,10 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Background" Value="Gold" />
+                            <Setter Property="Grid.Row" Value="{Binding SelectedRow, Mode=TwoWay, 
+                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}"/>
+                            <Setter Property="Grid.Column" Value="{Binding SelectedColumn, Mode=TwoWay, 
+                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="Background" Value="Gold" />
@@ -325,6 +329,7 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=Content}"/>
                             <Setter Property="Background" Value="#d5d5d5"></Setter>
+                            
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

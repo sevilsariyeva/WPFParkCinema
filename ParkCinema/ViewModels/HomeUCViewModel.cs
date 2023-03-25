@@ -19,59 +19,6 @@ namespace ParkCinema.ViewModels
 {
     public class HomeUCViewModel : BaseViewModel
     {
-        public BackgroundRepository BackgroundRepository { get; set; }
-        DispatcherTimer timer = new DispatcherTimer();
-
-        private ObservableCollection<Movie> movies;
-
-        public ObservableCollection<Movie> AllMovies
-        {
-            get { return movies; }
-            set { movies = value; OnPropertyChanged(); }
-        }
-
-        private Movie movie;
-
-        public Movie Movie
-        {
-            get { return movie; }
-            set { movie = value; OnPropertyChanged(); }
-        }
-
-
-        private ObservableCollection<BackgroundImage> allBackgroundImages;
-
-        public ObservableCollection<BackgroundImage> AllBackgroundImages
-        {
-            get { return allBackgroundImages; }
-            set { allBackgroundImages = value; OnPropertyChanged(); }
-        }
-
-        private BackgroundImage image;
-
-        public BackgroundImage BackImage
-        {
-            get { return image; }
-            set { image = value; OnPropertyChanged(); }
-        }
-
-        int count = 0;
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            BackImage = AllBackgroundImages[count];
-            if (count == 4)
-            {
-                count = 0;
-            }
-            else
-            {
-                count++;
-            }
-        }
-        public Random a = new Random();
-        public List<int> randomList = new List<int>();
-        public ObservableCollection<Movie> movieList = new ObservableCollection<Movie>();
-        int MyNumber = 0;
         public RelayCommand FirstClickCommand { get; set; }
         public RelayCommand SecondClickCommand { get; set; }
         public RelayCommand ThirdClickCommand { get; set; }
@@ -93,6 +40,49 @@ namespace ParkCinema.ViewModels
         public RelayCommand BuyTicketBackgroundCommand { get; set; }
         public RelayCommand HappyClickCommand { get; set; }
         public RelayCommand SuperClickCommand { get; set; }
+        public BackgroundRepository BackgroundRepository { get; set; }
+        DispatcherTimer timer = new DispatcherTimer();
+        private ObservableCollection<Movie> movies;
+        private Movie movie;
+        private ObservableCollection<BackgroundImage> allBackgroundImages;
+        private BackgroundImage image;
+        public Random a = new Random();
+        public List<int> randomList = new List<int>();
+        public ObservableCollection<Movie> movieList = new ObservableCollection<Movie>();
+        int count = 0;
+        int MyNumber = 0;
+        public ObservableCollection<Movie> AllMovies
+        {
+            get { return movies; }
+            set { movies = value; OnPropertyChanged(); }
+        }
+        public Movie Movie
+        {
+            get { return movie; }
+            set { movie = value; OnPropertyChanged(); }
+        }
+        public ObservableCollection<BackgroundImage> AllBackgroundImages
+        {
+            get { return allBackgroundImages; }
+            set { allBackgroundImages = value; OnPropertyChanged(); }
+        }
+        public BackgroundImage BackImage
+        {
+            get { return image; }
+            set { image = value; OnPropertyChanged(); }
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            BackImage = AllBackgroundImages[count];
+            if (count == 4)
+            {
+                count = 0;
+            }
+            else
+            {
+                count++;
+            }
+        }
         public HomeUCViewModel()
         {
             BackgroundRepository = new BackgroundRepository();
@@ -213,7 +203,6 @@ namespace ParkCinema.ViewModels
                         }
                     }
                 }
-                //vm.AllMovies = new List<MovieSchedule>(vm.Movies);
                 uc.DataContext = vm;
 
                 App.MyGrid.Children.RemoveAt(0);
@@ -279,7 +268,6 @@ namespace ParkCinema.ViewModels
                                 randomList.Add(MyNumber);
                             }
                         }
-
                         break;
                     }
                 }

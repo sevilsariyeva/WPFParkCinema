@@ -35,6 +35,7 @@ namespace ParkCinema.Repositories
                 About="The film continues the story of teenage Billy Batson who, upon reciting the magic word \"SHAZAM!\" is transformed into his adult Super Hero alter ego, Shazam.",
                 MovieDuration="02:10:00",
                 MovieYear=2022,
+                Rating=7.0,
                 MovieLink="https://www.youtube.com/watch?v=Zi88i4CpHe4"
             },
             new Movie{
@@ -53,6 +54,7 @@ namespace ParkCinema.Repositories
                 About="A 200-year-old man works in the New York City Morgue trying to find a key to unlock the curse of his immortality.",
                 MovieDuration="02:10:00",
                 MovieYear=2014,
+                Rating=8.2,
                 MovieLink="https://www.youtube.com/watch?v=-JmVnyJ16d4"
             },
             new Movie{
@@ -71,6 +73,7 @@ namespace ParkCinema.Repositories
                 About="A thief fresh out of prison, tries to work his way back into the life of his daughter and ex-fiancé. Determined, he is forced to use the skills he has as a gifted locksmith. Things take a tumultuous turn after an unexpected disappearance.",
                 MovieDuration="01:40:00",
                 MovieYear=2023,
+                Rating=4.7,
                 MovieLink="https://www.youtube.com/watch?v=tfAg2ylTqPo"
             },
             new Movie{
@@ -89,6 +92,7 @@ namespace ParkCinema.Repositories
                 About="Life in Yolcos, a beautiful and prosperous port city in ancient Greece, is peaceful until the population is threatened by the wrath of Poseidon. A young, adventurous mouse and the cat who adopted her help the aged Jason and his Argonauts in their quest to save the city.",
                 MovieDuration="01:40:00",
                 MovieYear=2023,
+                Rating=6.0,
                 MovieLink="https://www.youtube.com/watch?v=UzHilzZX7iw"
             },
             new Movie{
@@ -107,6 +111,7 @@ namespace ParkCinema.Repositories
                 About="Ruslan and Sevda must get married by the age of 30 by the compulsion of their parents. “You are spinster”, “when do you move, baby?” young people who are tired of their words as such do not want to get married, but events confront them. Will they spend their 30s as single or married? How will the way they choose to get rid of the word ” spinster ” change their lives?",
                 MovieDuration="01:40:00",
                 MovieYear=2023,
+                Rating=6.5,
                 MovieLink="https://www.youtube.com/watch?v=3E6cjO5kcco"
             },
             new Movie{
@@ -125,6 +130,7 @@ namespace ParkCinema.Repositories
                 About="In the next installment, the survivors of the Ghostface killings leave Woodsboro behind and start a fresh chapter in New York City.",
                 MovieDuration="02:10:00",
                 MovieYear=2023,
+                Rating=7.2,
                 MovieLink="https://www.youtube.com/watch?v=h74AXqw4Opc"
             },
             new Movie{
@@ -143,6 +149,7 @@ namespace ParkCinema.Repositories
                 About="An astronaut crash lands on a mysterious planet only to discover he's not alone.",
                 MovieDuration="01:40:00",
                 MovieYear=2023,
+                Rating=5.6,
                 MovieLink="https://www.youtube.com/watch?v=bHXejJq5vr0"
             },
             new Movie{
@@ -161,6 +168,7 @@ namespace ParkCinema.Repositories
                 About="Follows the story of Azra and Cengiz, a couple who take a precious stone worth $2 million to auction in the USA, on the plane number 811. A distrustful death on the plane from Istanbul to New York changes the fate of all passengers.",
                 MovieDuration="01:40:00",
                 MovieYear=2023,
+                Rating=7.4,
                 MovieLink="https://www.youtube.com/watch?v=0ic2a3QztYc"
             },
             new Movie{
@@ -179,6 +187,7 @@ namespace ParkCinema.Repositories
                 About="An oddball group of cops, criminals, tourists and teens converge on a Georgia forest where a huge black bear goes on a murderous rampage after unintentionally ingesting cocaine.",
                 MovieDuration="01:40:00",
                 MovieYear=2023,
+                Rating=6.1,
                 MovieLink="https://www.youtube.com/watch?v=DuWEEKeJLMI"
             },
             new Movie{
@@ -197,6 +206,7 @@ namespace ParkCinema.Repositories
                 About="Scott Lang and Hope Van Dyne, along with Hank Pym and Janet Van Dyne, explore the Quantum Realm, where they interact with strange creatures and embark on an adventure that goes beyond the limits of what they thought was possible.",
                 MovieDuration="02:10:00",
                 MovieYear=2022,
+                Rating=6.4,
                 MovieLink="https://www.youtube.com/watch?v=5WfTEZJnv_8"
             },
             new Movie{
@@ -215,6 +225,7 @@ namespace ParkCinema.Repositories
                 About="Film tells the story of the legendary music label in the 1990s, where Mahsun and many other stars like Özcan Deniz became superstars.",
                 MovieDuration="02:10:00",
                 MovieYear=2023,
+                Rating=6.0,
                 MovieLink="https://www.youtube.com/watch?v=zaLV0-2WqEs"
             },
             new Movie{
@@ -233,6 +244,7 @@ namespace ParkCinema.Repositories
                 About="Frank, a single man raising his child prodigy niece Mary, is drawn into a custody battle with his mother.",
                 MovieDuration="02:10:00",
                 MovieYear=2017,
+                Rating=7.6,
                 MovieLink="https://www.youtube.com/watch?v=tI01wBXGHUs"
             },
             new Movie{
@@ -251,6 +263,7 @@ namespace ParkCinema.Repositories
                 About="It tells the story of Fikret, who accidentally becomes a priest. Fikret finds himself in an unpredictable position on the priesthood path he accidentally entered. Unexpectedly rising to the Vatican, Fikret now decides to return to his homeland.",
                 MovieDuration="01:40:00",
                 MovieYear=2023,
+                Rating=3.0,
                 MovieLink="https://www.youtube.com/watch?v=HphAPON03o8"
             },
             new Movie{
@@ -269,6 +282,7 @@ namespace ParkCinema.Repositories
                 About="A malfunction in a sleeping pod on a spacecraft traveling to a distant colony planet wakes one passenger 90 years early.",
                 MovieDuration="02:30:00",
                 MovieYear=2016,
+                Rating=7.0,
                 MovieLink="https://www.youtube.com/watch?v=BJWR0io_SuE"
             },
             new Movie{
@@ -287,6 +301,7 @@ namespace ParkCinema.Repositories
                 About="After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish.",
                 MovieDuration="01:40:00",
                 MovieYear=2001,
+                Rating=8.2,
                 MovieLink="https://www.youtube.com/watch?v=9wZM7CQY130"
             },
             new Movie{
@@ -305,6 +320,7 @@ namespace ParkCinema.Repositories
                 About="In April 1986, an explosion at the Chernobyl nuclear power plant in the Union of Soviet Socialist Republics becomes one of the world's worst man-made catastrophes.",
                 MovieDuration="01:10:00",
                 MovieYear=2019,
+                Rating=9.4,
                 MovieLink="https://www.youtube.com/watch?v=s9APLXM9Ei8"
             },
             new Movie{
@@ -323,6 +339,7 @@ namespace ParkCinema.Repositories
                 About="Julia Child's story of her start in the cooking profession is intertwined with blogger Julie Powell's 2002 challenge to cook all the recipes in Child's first book.",
                 MovieDuration="01:40:00",
                 MovieYear=2009,
+                Rating=7.0,
                 MovieLink="https://www.youtube.com/watch?v=ozRK7VXQl-k"
             },
             new Movie{
@@ -341,6 +358,7 @@ namespace ParkCinema.Repositories
                 About="A story of love between a mentally-ill father who was wrongly accused of murder and his lovely six year old daughter. Prison will be their home. Based on the 2013 Korean movie Miracle in Cell No. 7 (2013).",
                 MovieDuration="01:40:00",
                 MovieYear=2019,
+                Rating=8.2,
                 MovieLink="https://www.youtube.com/watch?v=z_tgY9Nmo18"
             },
             new Movie{
@@ -359,6 +377,7 @@ namespace ParkCinema.Repositories
                 About="Bergen, a valuable turkish arabesque singer, fights to stay afloat despite all the difficulties in her life.",
                 MovieDuration="01:40:00",
                 MovieYear=2023,
+                Rating=6.9,
                 MovieLink="https://www.youtube.com/watch?v=dMsSORIgsOg"
             },
             new Movie{
@@ -377,6 +396,7 @@ namespace ParkCinema.Repositories
                 About="Based on the New York Times bestseller, this movie tells the incredibly inspiring and heartwarming story of August Pullman, a boy with facial differences who enters the fifth grade, attending a mainstream elementary school for the first time.",
                 MovieDuration="01:40:00",
                 MovieYear=2017,
+                Rating=7.9,
                 MovieLink="https://www.youtube.com/watch?v=Ob7fPOzbmzE"
             },
              new Movie{
@@ -395,6 +415,7 @@ namespace ParkCinema.Repositories
                 About="Two teenage cancer patients begin a life-affirming journey to visit a reclusive author in Amsterdam.",
                 MovieDuration="01:40:00",
                 MovieYear=2023,
+                Rating=7.7,
                 MovieLink="https://www.youtube.com/watch?v=642lKXC97c4"
             }
                 };
