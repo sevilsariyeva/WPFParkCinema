@@ -96,6 +96,7 @@
     <Compile Include="ViewModels\ScheduleUCViewModel.cs" />
     <Compile Include="ViewModels\SeatUCViewModel.cs" />
     <Compile Include="ViewModels\SuperDayUCViewModel.cs" />
+    <Compile Include="ViewModels\TicketUCViewModel.cs" />
     <Compile Include="Views\UserControls\CampaingsUC.xaml.cs">
       <DependentUpon>CampaingsUC.xaml</DependentUpon>
     </Compile>
@@ -113,6 +114,9 @@
     </Compile>
     <Compile Include="Views\UserControls\SuperDayUC.xaml.cs">
       <DependentUpon>SuperDayUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\TicketUC.xaml.cs">
+      <DependentUpon>TicketUC.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserControls\SuperDayUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\TicketUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -41,7 +41,8 @@ namespace ParkCinema.ViewModels
         static int counter = 0;
         private string seat;
 
-
+        public List<int> SelectedRows { get; set; } = new List<int> { };
+        public List<int> SelectedColumns { get; set; } = new List<int> { };
 
         public MovieSchedule Movie
         {
@@ -132,7 +133,8 @@ namespace ParkCinema.ViewModels
             }
         }
 
-
+        static int m = 0;
+        static int n = 0;
         public SeatUCViewModel()
         {
             SessionVisibility = Visibility.Visible;
@@ -211,10 +213,34 @@ namespace ParkCinema.ViewModels
             });
             OrderCommand = new RelayCommand((obj) =>
             {
+                
                 foreach (var item in App.EmailRepo.Emails)
                 {
                     if(item.UserEmail==EmailName && item.UserPassword == Password.ToString())
                     {
+                        
+                        for (int i = 0; i < Count; i++)
+                        {
+                            var uc = new TicketUC();
+                            uc.Margin = new Thickness(n,0,0,0);
+                            n += 140;
+                            var vm = new TicketUCViewModel();
+                            vm.Movie = Movie;
+                            foreach (var img in App.MovieRepo.Movies)
+                            {
+                                if (Movie.MovieName == img.MovieName)
+                                {
+                                    vm.ImagePath = img.ImagePath;
+                                    break;
+                                }
+                            }
+                            vm.SelectedRow = SelectedRows[m];
+                            vm.SelectedColumn = SelectedColumns[m];
+                            uc.DataContext = vm;
+                            App.MyGrid.Children.Add(uc);
+                            m++;
+                        }
+                        
                         MailMessage mail = new MailMessage();
                         SmtpClient smtp = new SmtpClient("smtp.gmail.com");
 
@@ -227,7 +253,7 @@ namespace ParkCinema.ViewModels
                         smtp.Credentials = new NetworkCredential("vstudio7377@gmail.com", "vbsqxayxsgjktzbn");
                         smtp.EnableSsl = true;
 
-                        smtp.Send(mail);
+                        //smtp.Send(mail);
                     }
                     else
                     {
@@ -305,6 +331,8 @@ namespace ParkCinema.ViewModels
                                 Seat += ",";
                             }
                             toggleButton.Name = "Checked";
+                            SelectedRows.Add(SelectedRow);
+                            SelectedColumns.Add(SelectedColumn);
                             break;
                         }
                     }
