@@ -38,7 +38,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ComboBox>
-        <DataGrid CanUserAddRows="False" Background="DarkGoldenrod" RowStyle="{StaticResource DataGridRowStyle}" FontWeight="Bold" FontSize="20"  HorizontalContentAlignment="Center" RowHeight="50" Foreground="Goldenrod" MaxHeight="600" Width="1018" Margin="0,200,0,0" ItemsSource="{Binding Movies}" AutoGenerateColumns="False">
+        <DataGrid CanUserAddRows="False" Background="DarkGoldenrod" RowStyle="{StaticResource DataGridRowStyle}" FontWeight="Bold" FontSize="20"  HorizontalContentAlignment="Center" RowHeight="50" Foreground="Goldenrod" MaxHeight="600" Width="1018" Margin="0,300,0,0" ItemsSource="{Binding Movies}" AutoGenerateColumns="False">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -66,9 +66,10 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Sessions" Width="180" Binding="{Binding MovieDateTime}" />
-                <DataGridTextColumn Header="Theater" Width="180" Binding="{Binding Theater}" />
-                <DataGridTextColumn Header="Duration" Width="180" Binding="{Binding Duration}" />
+                <DataGridTextColumn Header="Sessions" Width="140" Binding="{Binding MovieDateTime}" />
+                <DataGridTextColumn Header="Theater" Width="130" Binding="{Binding Theater}" />
+                <DataGridTextColumn Header="Date" Width="140" Binding="{Binding MovieDate}" />
+                <DataGridTextColumn Header="Duration" Width="130" Binding="{Binding Duration}" />
                 <DataGridTemplateColumn Header="Price" Width="140">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

@@ -83,8 +83,10 @@
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieSchedule.cs" />
+    <Compile Include="Repositories\EmailRepository.cs" />
     <Compile Include="Repositories\MovieRepository.cs" />
     <Compile Include="Repositories\ScheduleRepository.cs" />
     <Compile Include="ViewModels\BackgroundImageViewModel.cs" />

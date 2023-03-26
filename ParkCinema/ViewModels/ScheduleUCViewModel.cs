@@ -132,7 +132,6 @@ namespace ParkCinema.ViewModels
         public RelayCommand SeatClickCommand { get; set; }
         public RelayCommand LogoClickCommand { get; set; }
         public RelayCommand SelectedTheaterCommand { get; set; }
-        public RelayCommand CloseCommand { get; set; }
         public ScheduleUCViewModel()
         {
             Dates = new List<string>();
@@ -172,13 +171,6 @@ namespace ParkCinema.ViewModels
                 vm.Movie = Movie;
                 uc.DataContext = vm;
                 App.MyGrid.Children.Add(uc);
-            });
-            CloseCommand = new RelayCommand((obj) =>
-            {
-                var uc = new SeatUC();
-                var vm = new SeatUCViewModel();
-                uc.DataContext = vm;
-                App.MyGrid.Children.Remove(uc);
             });
             SelectedCommand = new RelayCommand((obj) =>
             {

@@ -18,13 +18,15 @@ namespace ParkCinema
         public static Grid MyGrid { get; set; }
         public static MovieRepository MovieRepo { get; set; }
         public static ScheduleRepository ScheduleRepo { get; set; }
+        public static EmailRepository EmailRepo { get; set; }
         public static UIElement BackPage { get; set; }
         public static ViewModels.MovieBackgroundUCViewModel PreviousViewModel { get; set; }
 
         public App()
         {
             MovieRepo = new MovieRepository();
-            ScheduleRepo = new ScheduleRepository();  
+            ScheduleRepo = new ScheduleRepository();
+            EmailRepo=new EmailRepository();
         }
     }
 }

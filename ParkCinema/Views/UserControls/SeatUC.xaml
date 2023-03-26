@@ -8,7 +8,7 @@
              d:DesignHeight="400" d:DesignWidth="500" Height="720" Width="900">
     <Border CornerRadius="30">
 
-        <Grid Background="White">
+        <Grid Background="White" Name="myGrid2">
             <Label VerticalAlignment="Top" Width="900" Height="80" Background="#3f1919" Foreground="White" FontSize="40" FontWeight="Bold" Content="{Binding Movie.MovieName}"></Label>
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,80,0,0" Height="80" Width="300" Background="{Binding SessionBackground}">
                 <TextBlock Foreground="White" Margin="40,-5,200,0"  FontFamily="Barlow medium" Text="1" FontSize="80"></TextBlock>
@@ -22,7 +22,7 @@
                 <TextBlock Margin="40,-5,200,0" Foreground="White" FontFamily="Barlow medium" Text="3" FontSize="80"></TextBlock>
                 <TextBlock Foreground="White" FontSize="25" FontWeight="DemiBold" FontFamily="Barlow medium" Margin="100,-65,0,0">Payment</TextBlock>
             </StackPanel>
-            <Button Command="{Binding DataContext.CloseCommand, ElementName=myGrid}" Style="{StaticResource allButtons}" Margin="0,0,10,0" Background="Transparent" Width="80" Height="80" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Button Command="{Binding DataContext.CloseCommand, ElementName=myGrid2}" Style="{StaticResource allButtons}" Margin="0,0,10,0" Background="Transparent" Width="80" Height="80" HorizontalAlignment="Right" VerticalAlignment="Top">
                 <Image Stretch="Fill" Source="/Icons/close.png" Width="80"></Image>
             </Button>
             <Canvas Visibility="{Binding SessionVisibility}">
@@ -302,18 +302,20 @@
                     <TextBlock FontSize="30" FontWeight="Bold" Margin="110,110,0,0" HorizontalAlignment="Center" Text="{Binding TotalPrice}"></TextBlock>
                     <TextBlock FontSize="30" FontWeight="Bold" Margin="100,150,0,0" Text="AZN"></TextBlock>
                     <Image Width="100" Source="/Icons/backarrow.png"  Margin="-60,100,0,0"></Image>
-                    <TextBlock Height="30" FontSize="20" FontWeight="DemiBold" Text="Ticket Order : " Margin="30,-450,0,0"></TextBlock>
-                    <TextBlock FontSize="15" FontWeight="DemiBold" Width="300" Margin="180,-370,0,0" Height="100" TextWrapping="Wrap" Text="{Binding Seat}"></TextBlock>
+                    <TextBlock Height="30" FontSize="20" FontWeight="DemiBold" Text="Reserved seats : " Margin="0,-450,0,0"></TextBlock>
+                    <TextBlock FontSize="15" FontWeight="DemiBold" Width="300" Margin="160,-370,0,0" Height="100" TextWrapping="Wrap" Text="{Binding Seat}"></TextBlock>
                     <Label Height="40" Margin="-50,-300,0,0" FontSize="25" FontWeight="DemiBold" Content="E-Mail"></Label>
-                    <TextBox Height="40" Width="250" Margin="70,-300,0,0" FontSize="18" FontWeight="DemiBold"></TextBox>
+                    <TextBox Text="{Binding EmailName}" Height="40" Width="250" Margin="70,-300,0,0" FontSize="18" FontWeight="DemiBold"></TextBox>
                     <Label Height="40" Margin="-50,-200,0,0" FontSize="25" FontWeight="DemiBold" Content="Password"></Label>
-                    <PasswordBox PasswordChar="{Binding Password}" Height="40" Width="250" Margin="70,-190,0,0" FontSize="18" FontWeight="DemiBold"></PasswordBox>
-                    <Button Height="35" Width="100" FontSize="18" Margin="70,-40,0,0" Foreground="White" Style="{StaticResource buyButton2}" Content="Order"></Button>
-                    <CheckBox Margin="-46,-120,0,0" Height="20" FontSize="15" Content="I want to receive recent news">
+                    <TextBox Text="{Binding Password}" Height="40" Width="250" Margin="70,-190,0,0" FontSize="18" FontWeight="DemiBold"></TextBox>
+                    <Button Height="35" Width="100" FontSize="18" Margin="70,-40,0,0" Foreground="White" Style="{StaticResource buyButton2}" Command="{Binding OrderCommand }" Content="Order"></Button>
+                    <!--<CheckBox Margin="-46,-120,0,0" Height="20" FontSize="15" Content="I want to receive recent news">
                         <CheckBox.RenderTransform>
                             <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
                         </CheckBox.RenderTransform>
-                    </CheckBox>
+                    </CheckBox>-->
+                    <TextBlock FontSize="13" Margin="70,-120,0,0" Height="20" Text="Don't you have an account?"></TextBlock>
+                    <Button Style="{StaticResource allButtons}" FontSize="15" Background="Transparent" Foreground="DarkBlue" FontWeight="Bold" Content="Sign up" Margin="230,-123,0,0" Height="25" Width="65"></Button>
                     <Button Command="{Binding BackPlacesButtonClickCommand}" Style="{StaticResource allButtons}" FontWeight="DemiBold" FontSize="20" Content="Back" Margin="-30,133,0,0"></Button>
                 </Canvas>
             </Canvas>

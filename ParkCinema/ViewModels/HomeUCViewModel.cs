@@ -213,7 +213,6 @@ namespace ParkCinema.ViewModels
             });
             BuyTicketCommand = new RelayCommand((obj) =>
             {
-                var current = new Movie();
                 var grid = obj as Grid;
                 var myMovies = new ObservableCollection<MovieSchedule>();
                 var uc = new ScheduleUC();
@@ -230,7 +229,6 @@ namespace ParkCinema.ViewModels
                             }
                         }
                     }
-                   
                     foreach (var item in App.ScheduleRepo.MovieSchedules)
                     {
                         if (item.MovieName == Movie.MovieName)
@@ -312,11 +310,5 @@ namespace ParkCinema.ViewModels
                 App.MyGrid.Children.Add(uc);
             });
         }
-        private void ItemOnPreviewMouseDown(
-        object sender, MouseButtonEventArgs e)
-        {
-            ((ListBoxItem)sender).IsSelected = true;
-        }
-
     }
 }

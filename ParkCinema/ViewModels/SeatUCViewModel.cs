@@ -1,9 +1,12 @@
 ﻿using ParkCinema.Commands;
 using ParkCinema.Models;
+using ParkCinema.Views.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +25,8 @@ namespace ParkCinema.ViewModels
         public RelayCommand BackPlacesButtonClickCommand { get; set; }
         public RelayCommand NextPaymentButtonClickCommand { get; set; }
         public RelayCommand PlaceClickCommand { get; set; }
+        public RelayCommand CloseCommand { get; set; }
+        public RelayCommand OrderCommand { get; set; }
         public List<int> Numbers { get; set; } = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         private MovieSchedule movie;
         private int count;
@@ -107,16 +112,23 @@ namespace ParkCinema.ViewModels
             get { return seat; }
             set { seat = value; OnPropertyChanged(); }
         }
-        private SecureString userPassword;
+        private string emailname;
 
-        public SecureString Password
+        public string EmailName
+        {
+            get { return emailname; }
+            set { emailname = value; OnPropertyChanged(); }
+        }
+
+        private string userPassword;
+
+        public string Password
         {
             get { return userPassword; }
             set
             {
                 userPassword = value;
                 OnPropertyChanged(nameof(Password));
-
             }
         }
 
@@ -192,7 +204,52 @@ namespace ParkCinema.ViewModels
                 }
 
             });
+            CloseCommand = new RelayCommand((obj) =>
+            {
+                App.MyGrid.Children.RemoveAt(1);
 
+            });
+            OrderCommand = new RelayCommand((obj) =>
+            {
+                foreach (var item in App.EmailRepo.Emails)
+                {
+                    if(item.UserEmail==EmailName && item.UserPassword == Password.ToString())
+                    {
+                        MailMessage mail = new MailMessage();
+                        SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+
+                        mail.From = new MailAddress("vstudio7377@gmail.com");
+                        mail.To.Add(EmailName);
+                        //mail.Subject = Subject;
+                        //mail.Body = Body;
+
+                        smtp.Port = 587;
+                        smtp.Credentials = new NetworkCredential("vstudio7377@gmail.com", "vbsqxayxsgjktzbn");
+                        smtp.EnableSsl = true;
+
+                        smtp.Send(mail);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Email or Password!");
+                    }
+                }
+                //if (Email != null)
+                //{
+                //    if (!Email.Contains("@gmail.com"))
+                //    {
+                //        MessageBox.Show("You can only add Gmail!");
+                //    }
+                //}
+                //if (Password.Length < 8)
+                //{
+                //    MessageBox.Show("Password Length must be greater than or equal to 8");
+                //}
+                //else if (!Password.ToString().Any(char.IsUpper))
+                //{ 
+                //    MessageBox.Show("Password must contain at least one uppercase letter!");
+                //}
+            });
             PlaceClickCommand = new RelayCommand((obj) =>
             {
 
