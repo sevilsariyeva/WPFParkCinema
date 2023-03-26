@@ -213,17 +213,35 @@ namespace ParkCinema.ViewModels
             });
             BuyTicketCommand = new RelayCommand((obj) =>
             {
-                var temp = obj as Movie;
+                var current = new Movie();
+                var grid = obj as Grid;
+                var myMovies = new ObservableCollection<MovieSchedule>();
                 var uc = new ScheduleUC();
                 var vm = new ScheduleUCViewModel();
-                foreach (var item in App.ScheduleRepo.MovieSchedules)
+                foreach (var child in grid.Children)
                 {
-                    if (item.MovieName == Movie.MovieName)
+                    if(child is Image img)
                     {
-                        vm.Movie = item;
-                        vm.Movies.Add(item);
+                        foreach (var mov in App.MovieRepo.Movies)
+                        {
+                            if (img.Source.ToString().Contains(mov.ImagePath))
+                            {
+                                Movie = mov;
+                            }
+                        }
+                    }
+                   
+                    foreach (var item in App.ScheduleRepo.MovieSchedules)
+                    {
+                        if (item.MovieName == Movie.MovieName)
+                        {
+                            vm.Movie = item;
+                            myMovies.Add(item);
+                        }
                     }
                 }
+                vm.Movies = myMovies;
+                vm.AllMovies = myMovies;
                 uc.DataContext = vm;
 
                 App.MyGrid.Children.RemoveAt(0);
