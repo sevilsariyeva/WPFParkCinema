@@ -23,7 +23,7 @@ namespace ParkCinema.Repositories
                         Id=1,
                         UserName="Sevil",
                         UserSurname="Sariyeva",
-                        UserEmail="vstudio737700@gmail.com",
+                        UserEmail="vstudio7377@gmail.com",
                         UserPassword="Someone2000"
                     }
                 };

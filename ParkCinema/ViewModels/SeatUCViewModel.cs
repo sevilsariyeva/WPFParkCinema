@@ -308,7 +308,7 @@ namespace ParkCinema.ViewModels
                         {
                             var uc = new TicketUC();
                             uc.Margin = new Thickness(n, 0, 0, 0);
-                            n += 140;
+                            n += 450;
                             var vm = new TicketUCViewModel();
                             vm.Movie = Movie;
                             foreach (var img in App.MovieRepo.Movies)
