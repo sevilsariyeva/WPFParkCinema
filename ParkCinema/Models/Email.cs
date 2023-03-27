@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ParkCinema.Models
 {
-    public class Email
+    public class Email : Entity
     {
         public string UserName { get; set; }
         public string UserSurname { get; set; }

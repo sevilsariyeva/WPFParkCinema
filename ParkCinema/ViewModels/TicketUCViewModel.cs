@@ -1,14 +1,35 @@
-﻿using ParkCinema.Models;
+﻿using iTextSharp.text;
+using ParkCinema.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace ParkCinema.ViewModels
 {
     public class TicketUCViewModel : BaseViewModel
     {
+        public void DrawToBitmap(Bitmap bitmap, Rectangle targetBounds)
+        {
+            using (Graphics graphics = Graphics.FromImage(bitmap))
+            {
+                // draw the background of the control onto the bitmap
+                graphics.FillRectangle(new SolidBrush(Color.White), targetBounds);
+
+                // create a rectangle that represents the area of the control to render
+                Rectangle sourceBounds = new Rectangle(10,50,300,500);
+                sourceBounds.Intersect(targetBounds);
+
+                // render the control to the bitmap
+                this.DrawToBitmap(bitmap, sourceBounds);
+
+                // draw the borders of the control onto the bitmap
+                graphics.DrawRectangle(new Pen(Color.Black), targetBounds);
+            }
+        }
         public List<int> SelectedRows { get; set; } = new List<int> { };
         public List<int> SelectedColumns { get; set; } = new List<int> { };
         private string imagePath;
@@ -45,6 +66,7 @@ namespace ParkCinema.ViewModels
         static int i = 0;
         public TicketUCViewModel()
         {
+
             if (SelectedColumns.Count != 0 && SelectedRows.Count != 0)
             {
                 SelectedColumn = SelectedColumns[i];

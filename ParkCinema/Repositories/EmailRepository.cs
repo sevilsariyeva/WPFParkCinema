@@ -20,10 +20,11 @@ namespace ParkCinema.Repositories
                 {
                     new Email
                     {
+                        Id=1,
                         UserName="Sevil",
                         UserSurname="Sariyeva",
-                        UserEmail="sevilsariyeva00@gmail.com",
-                        UserPassword="sevsar2000"
+                        UserEmail="vstudio737700@gmail.com",
+                        UserPassword="Someone2000"
                     }
                 };
             }

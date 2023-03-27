@@ -315,8 +315,19 @@
                         </CheckBox.RenderTransform>
                     </CheckBox>-->
                     <TextBlock FontSize="13" Margin="70,-120,0,0" Height="20" Text="Don't you have an account?"></TextBlock>
-                    <Button Style="{StaticResource allButtons}" FontSize="15" Background="Transparent" Foreground="DarkBlue" FontWeight="Bold" Content="Sign up" Margin="230,-123,0,0" Height="25" Width="65"></Button>
+                    <Button Command="{Binding SignUpCommand}" Style="{StaticResource allButtons}" FontSize="15" Background="Transparent" Foreground="DarkBlue" FontWeight="Bold" Content="Sign up" Margin="230,-123,0,0" Height="25" Width="65"></Button>
                     <Button Command="{Binding BackPlacesButtonClickCommand}" Style="{StaticResource allButtons}" FontWeight="DemiBold" FontSize="20" Content="Back" Margin="-30,133,0,0"></Button>
+                </Canvas>
+                <Canvas Visibility="{Binding SignUpVisibility}">
+                    <Label Height="40" Margin="150,200,0,0" FontSize="25" FontWeight="DemiBold" Content="Name"></Label>
+                    <TextBox Text="{Binding UserName}" Height="40" Width="250" Margin="280,200,0,0" FontSize="18" FontWeight="DemiBold"></TextBox>
+                    <Label Height="40" Margin="150,270,0,0" FontSize="25" FontWeight="DemiBold" Content="Surname"></Label>
+                    <TextBox Text="{Binding Surname}" Height="40" Width="250" Margin="280,275,0,0" FontSize="18" FontWeight="DemiBold"></TextBox>
+                    <Label Height="40" Margin="150,350,0,0" FontSize="25" FontWeight="DemiBold" Content="E-Mail"></Label>
+                    <TextBox Text="{Binding EmailName}" Height="40" Width="250" Margin="280,350,0,0" FontSize="18" FontWeight="DemiBold"></TextBox>
+                    <Label Height="40" Margin="150,450,0,0" FontSize="25" FontWeight="DemiBold" Content="Password"></Label>
+                    <TextBox Text="{Binding Password}" Height="40" Width="250" Margin="280,450,0,0" FontSize="18" FontWeight="DemiBold"></TextBox>
+                    <Button Height="35" Width="100" FontSize="18" Margin="280,530,0,0" Foreground="White" Style="{StaticResource buyButton2}" Command="{Binding SignedCommand }" Content="Sign Up"></Button>
                 </Canvas>
             </Canvas>
         </Grid>
