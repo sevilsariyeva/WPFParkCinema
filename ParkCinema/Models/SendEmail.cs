@@ -1,6 +1,4 @@
-﻿using iTextSharp.text.pdf;
-using iTextSharp.text;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,7 +12,6 @@ using System.Windows;
 using System.Drawing.Imaging;
 using System.Drawing;
 using Size = System.Windows.Size;
-using Rectangle = iTextSharp.text.Rectangle;
 
 namespace ParkCinema.Models
 {

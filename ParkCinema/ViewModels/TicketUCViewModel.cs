@@ -1,4 +1,4 @@
-﻿using iTextSharp.text;
+﻿using ParkCinema.Commands;
 using ParkCinema.Models;
 using System;
 using System.Collections.Generic;
@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using Rectangle = System.Drawing.Rectangle;
 
 namespace ParkCinema.ViewModels
@@ -30,6 +31,7 @@ namespace ParkCinema.ViewModels
                 graphics.DrawRectangle(new Pen(Color.Black), targetBounds);
             }
         }
+        
         public List<int> SelectedRows { get; set; } = new List<int> { };
         public List<int> SelectedColumns { get; set; } = new List<int> { };
         private string imagePath;
@@ -64,6 +66,7 @@ namespace ParkCinema.ViewModels
         
 
         static int i = 0;
+        public RelayCommand CloseCommand { get; set; }
         public TicketUCViewModel()
         {
 
@@ -73,6 +76,20 @@ namespace ParkCinema.ViewModels
                 SelectedRow = SelectedRows[i];
                 i++;
             }
+            CloseCommand = new RelayCommand((obj) =>
+            {
+                int n = 0;
+                var myControl = obj as UserControl;
+                foreach (var item in App.MyGrid.Children)
+                {
+                    if (item == myControl)
+                    {
+                        App.MyGrid.Children.RemoveAt(n);
+                        break;
+                    }
+                    n++;
+                }
+            });
         }
     }
 }

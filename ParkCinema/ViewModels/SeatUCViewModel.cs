@@ -19,16 +19,47 @@ using System.Windows.Media.Imaging;
 using System.Net.NetworkInformation;
 using System.Drawing;
 
-using HorizontalAlignment = iText.Layout.Properties.HorizontalAlignment;
-using Rectangle = iText.Kernel.Geom.Rectangle;
-using Catel.Windows.Controls;
-using PdfSharp.Drawing;
-using PdfSharp.Pdf;
+using Color = System.Windows.Media.Color;
+using Newtonsoft.Json;
+using Brushes = System.Windows.Media.Brushes;
 
 namespace ParkCinema.ViewModels
 {
+
     public class SeatUCViewModel : BaseViewModel
     {
+        private List<SelectedButtons> LoadListFromFile()
+        {
+            // Load the list from the file, or create a new list if the file doesn't exist
+            string filePath = "toggleButtonState.json";
+            if (File.Exists(filePath))
+            {
+                string json = File.ReadAllText(filePath);
+                return JsonConvert.DeserializeObject<List<SelectedButtons>>(json);
+            }
+            else
+            {
+                return new List<SelectedButtons>();
+            }
+        }
+        private void SaveListToFile(List<SelectedButtons> list)
+        {
+            // Load the existing data from the file, or create a new list if the file doesn't exist
+            string filePath = "toggleButtonState.json";
+            List<SelectedButtons> existingData = new List<SelectedButtons>();
+            if (File.Exists(filePath))
+            {
+                string json = File.ReadAllText(filePath);
+                existingData = JsonConvert.DeserializeObject<List<SelectedButtons>>(json);
+            }
+
+            // Add the new list to the existing data
+            existingData.AddRange(list);
+
+            // Serialize the combined data to JSON and write it to the file
+            string combinedJson = JsonConvert.SerializeObject(existingData);
+            File.WriteAllText(filePath, combinedJson);
+        }
         public RelayCommand SelectedCommand { get; set; }
         public RelayCommand NextPlacesButtonClickCommand { get; set; }
         public RelayCommand BackSessionButtonClickCommand { get; set; }
@@ -39,6 +70,7 @@ namespace ParkCinema.ViewModels
         public RelayCommand OrderCommand { get; set; }
         public RelayCommand SignUpCommand { get; set; }
         public RelayCommand SignedCommand { get; set; }
+        public RelayCommand LoginCommand { get; set; }
         public List<int> Numbers { get; set; } = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         private MovieSchedule movie;
         private int count;
@@ -55,7 +87,8 @@ namespace ParkCinema.ViewModels
 
         public List<int> SelectedRows { get; set; } = new List<int> { };
         public List<int> SelectedColumns { get; set; } = new List<int> { };
-        public List<iTextSharp.text.Document> Documents { get; set; } = new List<iTextSharp.text.Document> { };
+        public static List<SelectedButtons> AllSeatNames { get; set; } = new List<SelectedButtons> { };
+        //public List<iTextSharp.text.Document> Documents { get; set; } = new List<iTextSharp.text.Document> { };
         public MovieSchedule Movie
         {
             get { return movie; }
@@ -87,6 +120,22 @@ namespace ParkCinema.ViewModels
         {
             get { return signUp; }
             set { signUp = value; OnPropertyChanged(); }
+        }
+
+        private Visibility cardVisibility;
+
+        public Visibility CardVisibility
+        {
+            get { return cardVisibility; }
+            set { cardVisibility = value; OnPropertyChanged(); }
+        }
+         
+        private Visibility successVisibility;
+
+        public Visibility SuccessVisibility
+        {
+            get { return successVisibility; }
+            set { successVisibility = value; OnPropertyChanged(); }
         }
 
         public string SessionBackground
@@ -133,6 +182,14 @@ namespace ParkCinema.ViewModels
             get { return seat; }
             set { seat = value; OnPropertyChanged(); }
         }
+        private bool isPlaying;
+
+        public bool IsPlaying
+        {
+            get { return isPlaying; }
+            set { isPlaying = value;OnPropertyChanged(); }
+        }
+
         private string emailname;
 
         public string EmailName
@@ -175,7 +232,40 @@ namespace ParkCinema.ViewModels
             set { email = value; OnPropertyChanged(); }
         }
 
+        private long cardNumber;
+
+        public long CardNumber
+        {
+            get { return cardNumber; }
+            set { cardNumber = value;OnPropertyChanged(); }
+        }
+
+        private int month;
+
+        public int Month
+        {
+            get { return month; }
+            set { month = value;OnPropertyChanged(); }
+        }
+        private int year;
+
+        public int Year
+        {
+            get { return year; }
+            set { year = value;OnPropertyChanged(); }
+        }
+
+        private int cvc;
+
+        public int CVC
+        {
+            get { return cvc; }
+            set { cvc = value;OnPropertyChanged(); }
+        }
+
+
         bool IsAvailable = true;
+        bool IsCardAvailable = true;
         static int m = 0;
         static int n = 0;
         public SeatUCViewModel()
@@ -184,6 +274,8 @@ namespace ParkCinema.ViewModels
             PlacesVisibility = Visibility.Hidden;
             PaymentVisibility = Visibility.Hidden;
             SignUpVisibility = Visibility.Hidden;
+            CardVisibility = Visibility.Hidden;
+            SuccessVisibility = Visibility.Hidden;
             SessionBackground = "#7c2121";
             PlacesBackground = "Red";
             PaymentBackground = "Red";
@@ -285,7 +377,7 @@ namespace ParkCinema.ViewModels
                 if (IsAvailable == true)
                 {
                     var mail = new Email();
-                    mail.Id = App.EmailRepo.Emails[Count - 1].Id + 1;
+                    mail.Id = App.EmailRepo.Emails[App.EmailRepo.Emails.Count - 1].Id + 1;
                     mail.UserName = UserName;
                     mail.UserPassword = Password;
                     mail.UserSurname = Surname;
@@ -296,131 +388,156 @@ namespace ParkCinema.ViewModels
                 }
 
             });
-            OrderCommand = new RelayCommand((obj) =>
+            LoginCommand = new RelayCommand((obj) =>
             {
-
                 foreach (var item in App.EmailRepo.Emails)
                 {
                     if (item.UserEmail == EmailName && item.UserPassword == Password.ToString())
                     {
-
-                        for (int i = 0; i < Count; i++)
-                        {
-                            var uc = new TicketUC();
-                            uc.Margin = new Thickness(n, 0, 0, 0);
-                            n += 450;
-                            var vm = new TicketUCViewModel();
-                            vm.Movie = Movie;
-                            foreach (var img in App.MovieRepo.Movies)
-                            {
-                                if (Movie.MovieName == img.MovieName)
-                                {
-                                    vm.ImagePath = img.ImagePath;
-                                    break;
-                                }
-                            }
-                            vm.SelectedRow = SelectedRows[m];
-                            vm.SelectedColumn = SelectedColumns[m];
-                            uc.DataContext = vm;
-                            App.MyGrid.Children.Add(uc);
-                            m++;
-                            int pixelWidth = 400;
-                            int pixelHeight = 500;
-                            RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap(
-                                pixelWidth, pixelHeight,
-                                96, 96, PixelFormats.Pbgra32);
-
-                            // render the UserControl to the RenderTargetBitmap
-                            renderTargetBitmap.Render(uc);
-
-                            // create a new PdfSharp document
-                            PdfDocument pdfDocument = new PdfDocument();
-
-                            // create a new PDF page
-                            PdfPage pdfPage = pdfDocument.AddPage();
-
-                            // create an XGraphics object for the PDF page
-                            XGraphics gfx = XGraphics.FromPdfPage(pdfPage);
-
-                            // create an XImage object from the RenderTargetBitmap
-                            MemoryStream memoryStream = new MemoryStream();
-                            BitmapEncoder bitmapEncoder = new PngBitmapEncoder();
-                            bitmapEncoder.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
-                            bitmapEncoder.Save(memoryStream);
-                            memoryStream.Position = 0;
-
-                            // create an XImage object from the MemoryStream
-                            XImage xImage = XImage.FromStream(memoryStream);
-
-                            // draw the XImage on the PDF page
-                            gfx.DrawImage(xImage, 0, 0, pdfPage.Width, pdfPage.Height);
-
-                            // create a MemoryStream to save the PDF file
-                            MemoryStream pdfStream = new MemoryStream();
-                            pdfDocument.Save(pdfStream);
-
-                            // save the PDF file to disk
-
-                        MailMessage mail = new MailMessage();
-                        SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-
-                        
-                        mail.From = new MailAddress("vstudio7377@gmail.com");
-                        mail.To.Add(EmailName);
-                        //mail.Subject = Subject;
-
-
-                        // create a new email message
-                        mail.Subject = "PDF Attachment";
-                        mail.Body = "Please find the attached PDF document.";
-                            mail.IsBodyHtml = false;
-
-                            // attach the PDF document to the email message
-                            Attachment attachment = new Attachment(pdfStream, "output.pdf", "application/pdf");
-                            mail.Attachments.Add(attachment);
-
-
-
-                        smtp.Port = 587;
-                        smtp.Credentials = new NetworkCredential("vstudio7377@gmail.com", "vbsqxayxsgjktzbn");
-                        smtp.EnableSsl = true;
-
-                        smtp.Send(mail);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid Email or Password!");
+                        PaymentVisibility = Visibility.Hidden;
+                        CardVisibility = Visibility.Visible;
                     }
                 }
+            });
+            OrderCommand = new RelayCommand((obj) =>
+            {
+                m = 0;
+                n = -1000;
+                IsCardAvailable = true;
+                if (CardNumber.ToString().Length != 16)
+                {
+                    MessageBox.Show("Card number must have 16 digits");
+                    IsCardAvailable = false;
+                }
+                if(Month>12 || Month < 1)
+                {
+                    MessageBox.Show("Month must be between 1 and 12");
+                    IsCardAvailable = false;
+                }
+                if (Year.ToString().Length != 4)
+                {
+                    MessageBox.Show("Year length must be 4");
+                    IsCardAvailable = false;
+                }
+                if (Year < DateTime.Now.Year)
+                {
+                    MessageBox.Show("Month must not be lated");
+                    IsCardAvailable = false;
+                }
                 
+                if (IsCardAvailable == true)
+                {
+                    IsPlaying = true;
+                    CardVisibility = Visibility.Hidden;
+                    SuccessVisibility = Visibility.Visible;
+                    for (int i = 0; i < Count; i++)
+                    {
+                        var uc = new TicketUC();
+                        uc.Margin = new Thickness(n, 0, 0, 0);
+                        n += 200;
+                        var vm = new TicketUCViewModel();
+                        vm.Movie = Movie;
+                        foreach (var img in App.MovieRepo.Movies)
+                        {
+                            if (Movie.MovieName == img.MovieName)
+                            {
+                                vm.ImagePath = img.ImagePath;
+                                break;
+                            }
+                        }
+
+                        vm.SelectedRow = SelectedRows[m];
+                        vm.SelectedColumn = SelectedColumns[m];
+                        uc.DataContext = vm;
+                        
+                        App.MyGrid.Children.Add(uc);
+                        m++;
+                    }
+                }
+
             });
             PlaceClickCommand = new RelayCommand((obj) =>
             {
+                List<int> numbers = new List<int>();
+                Grid grid = obj as Grid;
+                if (grid == null) return;
+
 
                 if (counter + 1 < Count)
                 {
                     counter++;
                 }
-                else if (counter + 1 == Count)
-                {
-                    counter++;
-                    IsButtonEnabled = false;
-                }
                 else
                 {
                     IsButtonEnabled = false;
-                    return;
+                    counter = 0;
                 }
-                Grid grid = obj as Grid;
-                if (grid == null) return;
-
+                string json = "";
+                if (File.Exists("toggleButtonState.json"))
+                {
+                    json = File.ReadAllText("toggleButtonState.json");
+                }
                 foreach (UIElement child in grid.Children)
                 {
+                    numbers = new List<int>();
                     ToggleButton toggleButton = child as ToggleButton;
+                    List<SelectedButtons> buttonStates = JsonConvert.DeserializeObject<List<SelectedButtons>>(json);
                     if (toggleButton != null)
                     {
-                        if (toggleButton.IsChecked == true && toggleButton.Name != "Checked")
+                        if (buttonStates != null)
+                        {
+                            foreach (var btn in buttonStates)
+                            {
+                                if (btn.Movie.MovieName == Movie.MovieName && btn.Movie.MovieDate == Movie.MovieDate && btn.Movie.MovieDate == Movie.MovieDate)
+                                {
+                                    if (toggleButton.IsChecked == true && toggleButton.Name != btn.ButtonName)
+                                    {
+                                        numbers.Add(0);
+                                    }
+                                    else
+                                    {
+                                        numbers.Add(1);
+                                    }
+                                }
+                            }
+                            if (!numbers.Contains(1))
+                            {
+                                SelectedRow = Grid.GetRow(toggleButton);
+                                SelectedColumn = Grid.GetColumn(toggleButton);
+                                if (SelectedRow == 0)
+                                {
+                                    SelectedColumn++;
+                                }
+                                else if (SelectedRow > 0 && SelectedRow < 11)
+                                {
+                                    SelectedColumn--;
+                                }
+                                else
+                                {
+                                    SelectedColumn -= 2;
+                                }
+                                SelectedRow = Math.Abs(SelectedRow - 12);
+                                Seat += " Row - ";
+                                Seat += SelectedRow;
+                                Seat += " Seat - ";
+                                Seat += SelectedColumn;
+                                if (counter == Count)
+                                {
+                                    Seat += ".";
+                                }
+                                else
+                                {
+                                    Seat += ",";
+                                }
+                                var current = new SelectedButtons { Movie = Movie, ButtonName = toggleButton.Name, IsChecked = (bool)toggleButton.IsChecked };
+                                AllSeatNames.Add(current);
+                                toggleButton.IsEnabled = false;
+                                SelectedRows.Add(SelectedRow);
+                                SelectedColumns.Add(SelectedColumn);
+                                break;
+                            }
+                        }
+                        else
                         {
                             SelectedRow = Grid.GetRow(toggleButton);
                             SelectedColumn = Grid.GetColumn(toggleButton);
@@ -449,15 +566,31 @@ namespace ParkCinema.ViewModels
                             {
                                 Seat += ",";
                             }
-                            toggleButton.Name = "Checked";
+                            var current = new SelectedButtons { Movie = Movie, ButtonName = toggleButton.Name, IsChecked = (bool)toggleButton.IsChecked };
+                            AllSeatNames.Add(current);
+                            toggleButton.IsEnabled = false;
                             SelectedRows.Add(SelectedRow);
                             SelectedColumns.Add(SelectedColumn);
                             break;
                         }
                     }
                 }
+                // Append new text data to the existing data
+
+                // Serialize the modified C# object back into JSON format
+
+                // Write the serialized JSON data to the original file, overwriting the existing data
+                //json = JsonConvert.SerializeObject(AllSeatNames, Formatting.Indented);
+                //File.WriteAllText("toggleButtonState.json", json);
+                LoadListFromFile();
+                SaveListToFile(AllSeatNames);
             });
+
         }
     }
 }
+
+
+
+
 

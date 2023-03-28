@@ -71,7 +71,6 @@ namespace ParkCinema.ViewModels
                     }
                 }
                 App.BackPage = App.MyGrid.Children[0];
-                WebViewVisibility = Visibility.Hidden;
                 var uc = new HomeUC();
                 var vm = new HomeUCViewModel();
 
@@ -160,7 +159,6 @@ namespace ParkCinema.ViewModels
                                 randomList.Add(MyNumber);
                             }
                         }
-
                         break;
                     }
                 }

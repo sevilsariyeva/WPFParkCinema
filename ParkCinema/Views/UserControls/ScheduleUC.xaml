@@ -38,7 +38,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ComboBox>
-        <DataGrid CanUserAddRows="False" Background="DarkGoldenrod" RowStyle="{StaticResource DataGridRowStyle}" FontWeight="Bold" FontSize="20"  HorizontalContentAlignment="Center" RowHeight="50" Foreground="Goldenrod" MaxHeight="600" Width="1018" Margin="0,300,0,0" ItemsSource="{Binding Movies}" AutoGenerateColumns="False">
+        <DataGrid x:Name="datagrid" CanUserAddRows="False" Background="DarkGoldenrod" RowStyle="{StaticResource DataGridRowStyle}" FontWeight="Bold" FontSize="20"  HorizontalContentAlignment="Center" RowHeight="50" Foreground="Goldenrod" MaxHeight="600" Width="1018" Margin="0,300,0,0" ItemsSource="{Binding Movies}" AutoGenerateColumns="False">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -87,7 +87,7 @@
                                 <Button Width="46" Height="42" Panel.ZIndex="1" Style="{StaticResource allButtons}" HorizontalContentAlignment="Left" Background="Transparent" Command="{Binding DataContext.SeatClickCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}">
                                     <Image HorizontalAlignment="Left" Width="50" Height="40" Source="/Icons/seat.png"></Image>
                                 </Button>
-                                <Button Command="{Binding DataContext.SeatClickCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="50,10,0,0" Width="51" Height="25" Style="{StaticResource allButtons}" >
+                                <Button Command="{Binding DataContext.SeatClickCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding ElementName=datagrid, Path=SelectedItem}" Margin="50,10,0,0" Width="51" Height="25" Style="{StaticResource allButtons}" >
                                     <TextBlock Style="{StaticResource txtblck}" Panel.ZIndex="1"  FontSize="15" FontWeight="Bold" Text="Places"></TextBlock>
                                 </Button>
                             </Canvas>

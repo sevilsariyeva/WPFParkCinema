@@ -1,15 +1,18 @@
-﻿using ParkCinema.Commands;
+﻿using Newtonsoft.Json;
+using ParkCinema.Commands;
 using ParkCinema.Models;
 using ParkCinema.Views.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace ParkCinema.ViewModels
 {
@@ -166,9 +169,31 @@ namespace ParkCinema.ViewModels
             });
             SeatClickCommand = new RelayCommand((obj) =>
             {
+                var current = obj as MovieSchedule;
                 var uc = new SeatUC();
                 var vm = new SeatUCViewModel();
-                vm.Movie = Movie;
+                vm.Movie = current;
+                if (File.Exists("toggleButtonState.json"))
+                {
+                    string json = File.ReadAllText("toggleButtonState.json");
+                    List<SelectedButtons> buttonStates = JsonConvert.DeserializeObject<List<SelectedButtons>>(json);
+                    foreach (var item in buttonStates)
+                    {
+                        foreach (var temp in uc.myGrid.Children)
+                        {
+                            if (temp is ToggleButton toggleButton)
+                            {
+                                if (item.ButtonName == toggleButton.Name && item.Movie.MovieName == current.MovieName && item.Movie.MovieDate == current.MovieDate && item.Movie.MovieDateTime == current.MovieDateTime)
+                                {
+                                    toggleButton.IsChecked = true;
+                                    toggleButton.IsEnabled = false;
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
+                }
                 uc.DataContext = vm;
                 App.MyGrid.Children.Add(uc);
             });

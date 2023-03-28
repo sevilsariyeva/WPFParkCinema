@@ -40,6 +40,7 @@ namespace ParkCinema.ViewModels
         public RelayCommand BuyTicketBackgroundCommand { get; set; }
         public RelayCommand HappyClickCommand { get; set; }
         public RelayCommand SuperClickCommand { get; set; }
+        public RelayCommand AdminClickCommand { get; set; }
         public BackgroundRepository BackgroundRepository { get; set; }
         DispatcherTimer timer = new DispatcherTimer();
         private ObservableCollection<Movie> movies;
@@ -167,6 +168,14 @@ namespace ParkCinema.ViewModels
             YoutubeClickCommand = new RelayCommand((obj) =>
             {
                 System.Diagnostics.Process.Start("https://www.youtube.com/channel/UC0NJN0gCCx_DbJlkPfD30Ag/feed");
+            });
+            AdminClickCommand = new RelayCommand((obj) =>
+            {
+                var uc = new AdminUC();
+                var vm = new AdminUCViewModel();
+                uc.DataContext = vm;
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
             });
             HappyClickCommand = new RelayCommand((obj) =>
             {
