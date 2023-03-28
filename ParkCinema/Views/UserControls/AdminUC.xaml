@@ -105,7 +105,7 @@
                 </ListBox.ItemContainerStyle>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding MovieNameClickCommand}" 
+                        <i:InvokeCommandAction Command="{Binding EditMovieCommand}" 
                                            CommandParameter="{Binding ElementName=listbox,Path=SelectedItem}"></i:InvokeCommandAction>
 
                     </i:EventTrigger>

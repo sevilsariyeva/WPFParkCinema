@@ -4,10 +4,14 @@ using ParkCinema.Views.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ParkCinema.ViewModels
 {
@@ -15,6 +19,7 @@ namespace ParkCinema.ViewModels
     {
         public RelayCommand LoginCommand { get; set; }
         public RelayCommand LogoClickCommand { get; set; }
+        public RelayCommand EditMovieCommand { get; set; }
         private string email;
 
         public string Email
@@ -43,9 +48,9 @@ namespace ParkCinema.ViewModels
             AllMovies = new ObservableCollection<Movie>(App.MovieRepo.Movies);
             LoginCommand = new RelayCommand((obj) =>
             {
-                if(Email=="sevilsariyeva@gmail.com" && Password == "sevil2023")
+                if (Email == "sevilsariyeva@gmail.com" && Password == "sevil2023")
                 {
-                    
+
                 }
             });
             LogoClickCommand = new RelayCommand((obj) =>
@@ -56,6 +61,31 @@ namespace ParkCinema.ViewModels
                 var vm = new HomeUCViewModel();
 
                 uc.DataContext = vm;
+                App.MyGrid.Children.Add(uc);
+            });
+            EditMovieCommand = new RelayCommand((obj) =>
+            {
+                var mov = obj as Movie;
+                var vm=new EditUCViewModel();
+                vm.Movie = mov;
+                var uc = new EditUC();
+                uc.DataContext = vm;
+                foreach (var item in App.MovieRepo.Movies)
+                {
+                    if (item == mov)
+                    {
+                        vm.Title = mov.MovieName;
+                        vm.Year = mov.MovieDate;
+                        vm.Genre = mov.MovieGenre;
+                        vm.Director = mov.MovieDirector;
+                        vm.Actor = mov.MovieActors;
+                        vm.Country = mov.MovieCountry;
+                        vm.Language = mov.MovieLanguages;
+                        vm.Duration = mov.MovieDuration;
+                        vm.Rating = mov.Rating;
+                        vm.Price = mov.MoviePrice;
+                    }
+                }
                 App.MyGrid.Children.Add(uc);
             });
         }

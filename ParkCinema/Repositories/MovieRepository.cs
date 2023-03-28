@@ -36,6 +36,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="02:10:00",
                 MovieYear=2022,
                 Rating=7.0,
+                MoviePrice=9,
                 MovieLink="https://www.youtube.com/watch?v=Zi88i4CpHe4"
             },
             new Movie{
@@ -55,6 +56,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="02:10:00",
                 MovieYear=2014,
                 Rating=8.2,
+                MoviePrice=10,
                 MovieLink="https://www.youtube.com/watch?v=-JmVnyJ16d4"
             },
             new Movie{
@@ -74,6 +76,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:40:00",
                 MovieYear=2023,
                 Rating=4.7,
+                MoviePrice=10,
                 MovieLink="https://www.youtube.com/watch?v=tfAg2ylTqPo"
             },
             new Movie{
@@ -93,6 +96,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:40:00",
                 MovieYear=2023,
                 Rating=6.0,
+                MoviePrice=7,
                 MovieLink="https://www.youtube.com/watch?v=UzHilzZX7iw"
             },
             new Movie{
@@ -112,6 +116,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:40:00",
                 MovieYear=2023,
                 Rating=6.5,
+                MoviePrice=10,
                 MovieLink="https://www.youtube.com/watch?v=3E6cjO5kcco"
             },
             new Movie{
@@ -131,6 +136,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="02:10:00",
                 MovieYear=2023,
                 Rating=7.2,
+                MoviePrice=9,
                 MovieLink="https://www.youtube.com/watch?v=h74AXqw4Opc"
             },
             new Movie{
@@ -150,6 +156,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:40:00",
                 MovieYear=2023,
                 Rating=5.6,
+                MoviePrice=9,
                 MovieLink="https://www.youtube.com/watch?v=bHXejJq5vr0"
             },
             new Movie{
@@ -169,6 +176,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:40:00",
                 MovieYear=2023,
                 Rating=7.4,
+                MoviePrice=10,
                 MovieLink="https://www.youtube.com/watch?v=0ic2a3QztYc"
             },
             new Movie{
@@ -188,6 +196,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:40:00",
                 MovieYear=2023,
                 Rating=6.1,
+                MoviePrice=9,
                 MovieLink="https://www.youtube.com/watch?v=DuWEEKeJLMI"
             },
             new Movie{
@@ -207,6 +216,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="02:10:00",
                 MovieYear=2022,
                 Rating=6.4,
+                MoviePrice=9,
                 MovieLink="https://www.youtube.com/watch?v=5WfTEZJnv_8"
             },
             new Movie{
@@ -226,6 +236,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="02:10:00",
                 MovieYear=2023,
                 Rating=6.0,
+                MoviePrice=10,
                 MovieLink="https://www.youtube.com/watch?v=zaLV0-2WqEs"
             },
             new Movie{
@@ -245,6 +256,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="02:10:00",
                 MovieYear=2017,
                 Rating=7.6,
+                MoviePrice=9,
                 MovieLink="https://www.youtube.com/watch?v=tI01wBXGHUs"
             },
             new Movie{
@@ -264,6 +276,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:40:00",
                 MovieYear=2023,
                 Rating=3.0,
+                MoviePrice=9,
                 MovieLink="https://www.youtube.com/watch?v=HphAPON03o8"
             },
             new Movie{
@@ -283,6 +296,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="02:30:00",
                 MovieYear=2016,
                 Rating=7.0,
+                MoviePrice=10,
                 MovieLink="https://www.youtube.com/watch?v=BJWR0io_SuE"
             },
             new Movie{
@@ -302,6 +316,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:40:00",
                 MovieYear=2001,
                 Rating=8.2,
+                MoviePrice=10,
                 MovieLink="https://www.youtube.com/watch?v=9wZM7CQY130"
             },
             new Movie{
@@ -321,6 +336,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:10:00",
                 MovieYear=2019,
                 Rating=9.4,
+                MoviePrice=9,
                 MovieLink="https://www.youtube.com/watch?v=s9APLXM9Ei8"
             },
             new Movie{
@@ -340,6 +356,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:40:00",
                 MovieYear=2009,
                 Rating=7.0,
+                MoviePrice=8,
                 MovieLink="https://www.youtube.com/watch?v=ozRK7VXQl-k"
             },
             new Movie{
@@ -359,6 +376,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:40:00",
                 MovieYear=2019,
                 Rating=8.2,
+                MoviePrice=10,
                 MovieLink="https://www.youtube.com/watch?v=z_tgY9Nmo18"
             },
             new Movie{
@@ -378,6 +396,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:40:00",
                 MovieYear=2023,
                 Rating=6.9,
+                MoviePrice=10,
                 MovieLink="https://www.youtube.com/watch?v=dMsSORIgsOg"
             },
             new Movie{
@@ -397,6 +416,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:40:00",
                 MovieYear=2017,
                 Rating=7.9,
+                MoviePrice=10,
                 MovieLink="https://www.youtube.com/watch?v=Ob7fPOzbmzE"
             },
              new Movie{
@@ -416,6 +436,7 @@ namespace ParkCinema.Repositories
                 MovieDuration="01:40:00",
                 MovieYear=2023,
                 Rating=7.7,
+                MoviePrice=10,
                 MovieLink="https://www.youtube.com/watch?v=642lKXC97c4"
             }
                 };
