@@ -1,10 +1,13 @@
 ﻿using ParkCinema.Commands;
+using ParkCinema.Models;
 using ParkCinema.Views.UserControls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace ParkCinema.ViewModels
 {
@@ -26,10 +29,18 @@ namespace ParkCinema.ViewModels
             get { return password; }
             set { password = value; OnPropertyChanged(); }
         }
+        private ObservableCollection<Movie> allMovies;
+
+        public ObservableCollection<Movie> AllMovies
+        {
+            get { return allMovies; }
+            set { allMovies = value; OnPropertyChanged(); }
+        }
 
 
         public AdminUCViewModel()
         {
+            AllMovies = new ObservableCollection<Movie>(App.MovieRepo.Movies);
             LoginCommand = new RelayCommand((obj) =>
             {
                 if(Email=="sevilsariyeva@gmail.com" && Password == "sevil2023")

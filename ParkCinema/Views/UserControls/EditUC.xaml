@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="ParkCinema.Views.UserControls.EditUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ParkCinema.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="Black">
+        <Canvas>
+            <Button Command="{Binding MainClickCommand}" Style="{StaticResource allButtons}" Margin="30,20,0,0" HorizontalAlignment="Left" Width="130" Height="45" Content="Main" FontSize="20" FontWeight="Bold" Background="DarkGoldenrod"></Button>
+            <Button Style="{StaticResource allButtons}" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Content="Plot" FontSize="20" FontWeight="Bold" Canvas.Left="190" Canvas.Top="20" Background="DarkGoldenrod"/>
+            <Button VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Canvas.Left="350" Canvas.Top="20"/>
+            <Button VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Canvas.Left="510" Canvas.Top="20"/>
+        </Canvas>
+    </Grid>
+</UserControl>
