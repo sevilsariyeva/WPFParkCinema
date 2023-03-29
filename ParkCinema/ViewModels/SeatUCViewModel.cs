@@ -322,6 +322,7 @@ namespace ParkCinema.ViewModels
         }
         private void Places(ToggleButton toggleButton)
         {
+
             SelectedRow = Grid.GetRow(toggleButton);
             SelectedColumn = Grid.GetColumn(toggleButton);
             if (SelectedRow == 0)
@@ -349,9 +350,80 @@ namespace ParkCinema.ViewModels
             {
                 Seat += ",";
             }
+
+        }
+        private void PlaceClick(Grid grid)
+        {
+            List<int> numbers = new List<int>();
+            foreach (UIElement child in grid.Children)
+            {
+                numbers = new List<int>();
+                ToggleButton toggleButton = child as ToggleButton;
+                if (toggleButton != null)
+                {
+                    if (File.Exists("toggleButtonState.json"))
+                    {
+                        string jsonString = File.ReadAllText("toggleButtonState.json");
+
+                        var data = JsonConvert.DeserializeObject<List<SelectedButtons>>(jsonString);
+
+                        foreach (var btn in data)
+                        {
+                            if (btn.Movie.MovieName == Movie.MovieName && btn.Movie.MovieDate == Movie.MovieDate && btn.Movie.MovieDate == Movie.MovieDate)
+                            {
+                                if (toggleButton.IsChecked == true && toggleButton.Name != btn.ButtonName)
+                                {
+                                    IsSame = true;
+                                }
+                                else
+                                {
+                                    IsSame = false;
+                                }
+                                numbers.Add(0);
+                            }
+                            else
+                            {
+                                numbers.Add(1);
+                            }
+                        }
+                        if (IsSame || !numbers.Contains(0))
+                        {
+                            if (toggleButton.IsChecked == true)
+                            {
+                                Places(toggleButton);
+                                var current = new SelectedButtons { Movie = Movie, ButtonName = toggleButton.Name, IsChecked = (bool)toggleButton.IsChecked };
+                                AllSeatNames.Add(current);
+                                data.Add(current);
+                                toggleButton.IsEnabled = false;
+                                SelectedRows.Add(SelectedRow);
+                                SelectedColumns.Add(SelectedColumn);
+                                jsonString = JsonConvert.SerializeObject(data);
+                                File.WriteAllText("toggleButtonState.json", jsonString);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (toggleButton.IsChecked == true)
+                        {
+                            Places(toggleButton);
+                            var current = new SelectedButtons { Movie = Movie, ButtonName = toggleButton.Name, IsChecked = (bool)toggleButton.IsChecked };
+                            AllSeatNames.Add(current);
+                            toggleButton.IsEnabled = false;
+                            SelectedRows.Add(SelectedRow);
+                            SelectedColumns.Add(SelectedColumn);
+                            string jsonString = JsonConvert.SerializeObject(AllSeatNames);
+                            File.WriteAllText("toggleButtonState.json", jsonString);
+                            break;
+                        }
+                    }
+                }
+            }
         }
         bool IsAvailable = true;
         bool IsCardAvailable = true;
+        bool IsSame = false;
         static int m = 0;
         static int n = 0;
         public SeatUCViewModel()
@@ -493,7 +565,6 @@ namespace ParkCinema.ViewModels
             PlaceClickCommand = new RelayCommand((obj) =>
             {
 
-                List<int> numbers = new List<int>();
                 Grid grid = obj as Grid;
                 if (grid == null) return;
 
@@ -506,71 +577,7 @@ namespace ParkCinema.ViewModels
                     IsButtonEnabled = false;
                     counter = 0;
                 }
-                foreach (UIElement child in grid.Children)
-                {
-                    numbers = new List<int>();
-                    ToggleButton toggleButton = child as ToggleButton;
-                    if (toggleButton != null)
-                    {
-                        if (File.Exists("toggleButtonState.json"))
-                        {
-                            string jsonString = File.ReadAllText("toggleButtonState.json");
-
-                            var data = JsonConvert.DeserializeObject<List<SelectedButtons>>(jsonString);
-
-                            foreach (var btn in data)
-                            {
-                                if (btn.Movie.MovieName == Movie.MovieName && btn.Movie.MovieDate == Movie.MovieDate && btn.Movie.MovieDate == Movie.MovieDate)
-                                {
-                                    if (toggleButton.IsChecked == true && toggleButton.Name != btn.ButtonName)
-                                    {
-                                        numbers.Add(0);
-                                    }
-                                    else
-                                    {
-                                        numbers.Add(1);
-                                    }
-                                }
-                            }
-                            if (!numbers.Contains(1))
-                            {
-                                Places(toggleButton);
-                                var current = new SelectedButtons { Movie = Movie, ButtonName = toggleButton.Name, IsChecked = (bool)toggleButton.IsChecked };
-                                AllSeatNames.Add(current);
-                                data.Add(current);
-                                toggleButton.IsEnabled = false;
-                                SelectedRows.Add(SelectedRow);
-                                SelectedColumns.Add(SelectedColumn);
-                                jsonString = JsonConvert.SerializeObject(data);
-                                File.WriteAllText("toggleButtonState.json", jsonString);
-                                break;
-                            }
-                        }
-                        else
-                        {
-                            if (toggleButton.IsChecked == true)
-                            {
-                                Places(toggleButton);
-                            var current = new SelectedButtons { Movie = Movie, ButtonName = toggleButton.Name, IsChecked = (bool)toggleButton.IsChecked };
-                            AllSeatNames.Add(current);
-                            toggleButton.IsEnabled = false;
-                            SelectedRows.Add(SelectedRow);
-                            SelectedColumns.Add(SelectedColumn);
-                            string jsonString = JsonConvert.SerializeObject(AllSeatNames);
-                            File.WriteAllText("toggleButtonState.json", jsonString);
-                            break;
-                            }
-                        }
-                    }
-                }
-                // Append new text data to the existing data
-
-                // Serialize the modified C# object back into JSON format
-
-                // Write the serialized JSON data to the original file, overwriting the existing data
-                //json = JsonConvert.SerializeObject(AllSeatNames, Formatting.Indented);
-                //File.WriteAllText("toggleButtonState.json", json);
-                
+                PlaceClick(grid);
             });
 
         }
