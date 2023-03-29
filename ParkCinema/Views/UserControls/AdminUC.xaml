@@ -9,7 +9,7 @@
     <Grid >
         <Grid.Background>
             <LinearGradientBrush>
-                <GradientStop Color="#6e0809" Offset="0"></GradientStop>
+                <GradientStop Color="#2c2c2e" Offset="0.3"></GradientStop>
                 <GradientStop Color="Black" Offset="1"></GradientStop>
             </LinearGradientBrush>
         </Grid.Background>
@@ -23,7 +23,7 @@
             <Button Command="{Binding LoginCommand}" Content="Log in" Canvas.Top="623" Canvas.Left="658" Width="100" Height="35" FontSize="18" FontWeight="Bold" Style="{StaticResource buyButton}" Background="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
         </Canvas>
         <Grid>
-            <TextBlock Width="200" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Text="ParkAdmin" FontWeight="Bold" FontSize="35" Margin="10,6,0,0"></TextBlock>
+            <TextBlock Foreground="#756C6C" Width="200" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Text="ParkAdmin" FontWeight="Bold" FontSize="35" Margin="10,6,0,0"></TextBlock>
             <Label Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="190,-6,0,0" Height="60">
             <Image Stretch="Fill" Source="/Icons/admin.png"></Image>
             </Label>

@@ -66,7 +66,7 @@ namespace ParkCinema.ViewModels
             EditMovieCommand = new RelayCommand((obj) =>
             {
                 var mov = obj as Movie;
-                var vm=new EditUCViewModel();
+                var vm = new EditUCViewModel();
                 vm.Movie = mov;
                 var uc = new EditUC();
                 uc.DataContext = vm;
@@ -75,7 +75,7 @@ namespace ParkCinema.ViewModels
                     if (item == mov)
                     {
                         vm.Title = mov.MovieName;
-                        vm.Year = mov.MovieDate;
+                        vm.Year = mov.MovieYear;
                         vm.Genre = mov.MovieGenre;
                         vm.Director = mov.MovieDirector;
                         vm.Actor = mov.MovieActors;
@@ -84,6 +84,9 @@ namespace ParkCinema.ViewModels
                         vm.Duration = mov.MovieDuration;
                         vm.Rating = mov.Rating;
                         vm.Price = mov.MoviePrice;
+                        vm.ImagePath = mov.ImagePath;
+                        vm.AgeLimit = mov.Age;
+                        vm.Condition = mov.MovieCondition;
                     }
                 }
                 App.MyGrid.Children.Add(uc);

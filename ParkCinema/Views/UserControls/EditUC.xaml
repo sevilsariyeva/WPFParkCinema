@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ParkCinema.Views.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="500" Height="650" Width="900" VerticalAlignment="Top" Margin="0,50,0,0">
-    <Grid Background="Black">
+    <Grid Background="Black" Name="myGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="5*"/>
@@ -18,26 +18,35 @@
             <Button VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Canvas.Left="660" Canvas.Top="20"/>
         </Canvas>
         <Canvas Grid.Row="1">
-            <Label Canvas.Top="5" Canvas.Left="50" Foreground="White" Content="Title" FontSize="16"></Label>
-            <TextBox Text="{Binding Title}" Width="170" Height="25" Canvas.Left="50" Canvas.Top="40"></TextBox>
-            <Label Canvas.Top="70" Canvas.Left="50" Foreground="White" Content="Year" FontSize="16"></Label>
-            <TextBox Text="{Binding Year}" Width="170" Height="25" Canvas.Left="50" Canvas.Top="105"></TextBox>
-            <Label Canvas.Top="140" Canvas.Left="50" Foreground="White" Content="Genre" FontSize="16"></Label>
-            <TextBox Text="{Binding Genre}" Width="170" Height="25" Canvas.Left="50" Canvas.Top="175"></TextBox>
-            <Label Canvas.Top="200" Canvas.Left="50" Foreground="White" Content="Director" FontSize="16"></Label>
-            <TextBox Text="{Binding Director}" Width="170" Height="25" Canvas.Left="50" Canvas.Top="235"></TextBox>
-            <Label Canvas.Top="270" Canvas.Left="50" Foreground="White" Content="Actors" FontSize="16"></Label>
-            <TextBox Text="{Binding Actor}" Width="170" Height="25" Canvas.Left="50" Canvas.Top="305"></TextBox>
-            <Label Canvas.Top="5" Canvas.Left="350" Foreground="White" Content="Country" FontSize="16"></Label>
-            <TextBox Text="{Binding Country}" Width="170" Height="25" Canvas.Left="350" Canvas.Top="40"></TextBox>
-            <Label Canvas.Top="70" Canvas.Left="350" Foreground="White" Content="Language" FontSize="16"></Label>
-            <TextBox Text="{Binding Language}" Width="170" Height="25" Canvas.Left="350" Canvas.Top="105"></TextBox>
-            <Label Canvas.Top="140" Canvas.Left="350" Foreground="White" Content="Duration" FontSize="16"></Label>
-            <TextBox Text="{Binding Duration}" Width="170" Height="25" Canvas.Left="350" Canvas.Top="175"></TextBox>
-            <Label Canvas.Top="200" Canvas.Left="350" Foreground="White" Content="IMDB Rating" FontSize="16"></Label>
-            <TextBox Text="{Binding Rating}" Width="170" Height="25" Canvas.Left="350" Canvas.Top="235"></TextBox>
-            <Label Canvas.Top="270" Canvas.Left="350" Foreground="White" Content="Default Price" FontSize="16"></Label>
-            <TextBox Text="{Binding Price}" Width="170" Height="25" Canvas.Left="350" Canvas.Top="305"></TextBox>
+            <Label Canvas.Top="7" Canvas.Left="50" Foreground="White" Content="Title" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+            <TextBox Text="{Binding Title}" FontSize="15" FontWeight="DemiBold" Width="170" Height="25" Canvas.Left="50" Canvas.Top="50" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBox>
+            <Label Canvas.Top="82" Canvas.Left="50" Foreground="White" Content="Year" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+            <TextBox Text="{Binding Year}"  FontSize="15" FontWeight="DemiBold" Width="170" Height="25" Canvas.Left="50" Canvas.Top="125"></TextBox>
+            <Label Canvas.Top="153" Canvas.Left="50" Foreground="White" Content="Genre" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+            <TextBox Text="{Binding Genre}"  FontSize="15" FontWeight="DemiBold" Width="170" Height="25" Canvas.Left="50" Canvas.Top="191" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBox>
+            <Label Canvas.Top="222" Canvas.Left="50" Foreground="White" Content="Director" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+            <TextBox Text="{Binding Director}"  FontSize="15" FontWeight="DemiBold" Width="170" Height="25" Canvas.Left="50" Canvas.Top="265" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBox>
+            <Label Canvas.Top="294" Canvas.Left="50" Foreground="White" Content="Actors" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+            <TextBox Text="{Binding Actor}" Width="170"  FontSize="15" FontWeight="DemiBold" Height="25" Canvas.Left="50" Canvas.Top="340" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBox>
+            <Label Canvas.Top="369" Canvas.Left="50" Foreground="White" Content="Age Limit" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+            <TextBox Text="{Binding AgeLimit}" Width="170"  FontSize="15" FontWeight="DemiBold" Height="25" Canvas.Left="50" Canvas.Top="415" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBox>
+            <Label Canvas.Top="7" Canvas.Left="350" Foreground="White" Content="Country" FontSize="16"></Label>
+            <TextBox Text="{Binding Country}" Width="170"  FontSize="15" FontWeight="DemiBold" Height="25" Canvas.Left="350" Canvas.Top="50"></TextBox>
+            <Label Canvas.Top="82" Canvas.Left="350" Foreground="White" Content="Language" FontSize="16"></Label>
+            <TextBox Text="{Binding Language}" Width="170"  FontSize="15" FontWeight="DemiBold" Height="25" Canvas.Left="350" Canvas.Top="125"></TextBox>
+            <Label Canvas.Top="153" Canvas.Left="350" Foreground="White" Content="Duration" FontSize="16"></Label>
+            <TextBox Text="{Binding Duration}" Width="170" Height="25"  FontSize="15" FontWeight="DemiBold" Canvas.Left="350" Canvas.Top="191"></TextBox>
+            <Label Canvas.Top="222" Canvas.Left="350" Foreground="White" Content="IMDB Rating" FontSize="16"></Label>
+            <TextBox Text="{Binding Rating}" Width="170" Height="25"  FontSize="15" FontWeight="DemiBold" Canvas.Left="350" Canvas.Top="265"></TextBox>
+            <Label Canvas.Top="294" Canvas.Left="350" Foreground="White" Content="Default Price" FontSize="16"></Label>
+            <TextBox Text="{Binding Price}" Width="170" Height="25"  FontSize="15" FontWeight="DemiBold" Canvas.Left="350" Canvas.Top="340" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBox>
+            <Label Canvas.Top="369" Canvas.Left="350" Foreground="White" Content="Condition" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+            <TextBox Text="{Binding Condition}" Width="170"  FontSize="15" FontWeight="DemiBold" Height="25" Canvas.Left="350" Canvas.Top="415" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBox>
+            <Button Style="{StaticResource allButtons}" Background="Transparent" BorderThickness="0" Width="280" Height="400" Canvas.Top="45" Canvas.Left="570">
+                <Image Stretch="Fill" Source="{Binding ImagePath}" ></Image>
+            </Button>
+            <Button Command="{Binding ResetChangesCommand}" CommandParameter="{Binding ElementName=myGrid}" Canvas.Left="50" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Reset Changes" FontWeight="Bold" FontSize="17" Background="Red" Canvas.Top="480"></Button>
+            <Button Command="{Binding SaveChangesCommand}" Canvas.Left="743" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Save Changes" FontWeight="Bold" FontSize="17" Background="Green" Canvas.Top="480" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
         </Canvas>
     </Grid>
 </UserControl>
