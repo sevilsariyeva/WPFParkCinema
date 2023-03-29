@@ -42,7 +42,7 @@
             <TextBox Text="{Binding Price}" Width="170" Height="25"  FontSize="15" FontWeight="DemiBold" Canvas.Left="350" Canvas.Top="340" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBox>
             <Label Canvas.Top="369" Canvas.Left="350" Foreground="White" Content="Condition" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
             <TextBox Text="{Binding Condition}" Width="170"  FontSize="15" FontWeight="DemiBold" Height="25" Canvas.Left="350" Canvas.Top="415" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBox>
-            <Button Style="{StaticResource allButtons}" Background="Transparent" BorderThickness="0" Width="280" Height="400" Canvas.Top="45" Canvas.Left="570">
+            <Button Command="{Binding ImageClickCommand}" Style="{StaticResource allButtons}" Background="Transparent" BorderThickness="0" Width="280" Height="400" Canvas.Top="45" Canvas.Left="570">
                 <Image Stretch="Fill" Source="{Binding ImagePath}" ></Image>
             </Button>
             <Button Command="{Binding ResetChangesCommand}" CommandParameter="{Binding ElementName=myGrid}" Canvas.Left="50" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Reset Changes" FontWeight="Bold" FontSize="17" Background="Red" Canvas.Top="480"></Button>

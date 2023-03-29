@@ -22,6 +22,7 @@ using System.Drawing;
 using Color = System.Windows.Media.Color;
 using Newtonsoft.Json;
 using Brushes = System.Windows.Media.Brushes;
+using System.Windows.Markup;
 
 namespace ParkCinema.ViewModels
 {
@@ -129,7 +130,7 @@ namespace ParkCinema.ViewModels
             get { return cardVisibility; }
             set { cardVisibility = value; OnPropertyChanged(); }
         }
-         
+
         private Visibility successVisibility;
 
         public Visibility SuccessVisibility
@@ -187,7 +188,7 @@ namespace ParkCinema.ViewModels
         public bool IsPlaying
         {
             get { return isPlaying; }
-            set { isPlaying = value;OnPropertyChanged(); }
+            set { isPlaying = value; OnPropertyChanged(); }
         }
 
         private string emailname;
@@ -237,7 +238,7 @@ namespace ParkCinema.ViewModels
         public long CardNumber
         {
             get { return cardNumber; }
-            set { cardNumber = value;OnPropertyChanged(); }
+            set { cardNumber = value; OnPropertyChanged(); }
         }
 
         private int month;
@@ -245,14 +246,14 @@ namespace ParkCinema.ViewModels
         public int Month
         {
             get { return month; }
-            set { month = value;OnPropertyChanged(); }
+            set { month = value; OnPropertyChanged(); }
         }
         private int year;
 
         public int Year
         {
             get { return year; }
-            set { year = value;OnPropertyChanged(); }
+            set { year = value; OnPropertyChanged(); }
         }
 
         private int cvc;
@@ -260,10 +261,95 @@ namespace ParkCinema.ViewModels
         public int CVC
         {
             get { return cvc; }
-            set { cvc = value;OnPropertyChanged(); }
+            set { cvc = value; OnPropertyChanged(); }
         }
 
+        private void Order()
+        {
+            m = 0;
+            n = -1000;
+            IsCardAvailable = true;
+            if (CardNumber.ToString().Length != 16)
+            {
+                MessageBox.Show("Card number must have 16 digits");
+                IsCardAvailable = false;
+            }
+            if (Month > 12 || Month < 1)
+            {
+                MessageBox.Show("Month must be between 1 and 12");
+                IsCardAvailable = false;
+            }
+            if (Year.ToString().Length != 4)
+            {
+                MessageBox.Show("Year length must be 4");
+                IsCardAvailable = false;
+            }
+            if (Year < DateTime.Now.Year)
+            {
+                MessageBox.Show("Month must not be lated");
+                IsCardAvailable = false;
+            }
 
+            if (IsCardAvailable == true)
+            {
+                IsPlaying = true;
+                CardVisibility = Visibility.Hidden;
+                SuccessVisibility = Visibility.Visible;
+                for (int i = 0; i < Count; i++)
+                {
+                    var uc = new TicketUC();
+                    uc.Margin = new Thickness(n, 0, 0, 0);
+                    n += 200;
+                    var vm = new TicketUCViewModel();
+                    vm.Movie = Movie;
+                    foreach (var img in App.MovieRepo.Movies)
+                    {
+                        if (Movie.MovieName == img.MovieName)
+                        {
+                            vm.ImagePath = img.ImagePath;
+                            break;
+                        }
+                    }
+
+                    vm.SelectedRow = SelectedRows[m];
+                    vm.SelectedColumn = SelectedColumns[m];
+                    uc.DataContext = vm;
+
+                    App.MyGrid.Children.Add(uc);
+                    m++;
+                }
+            }
+        }
+        private void Places(ToggleButton toggleButton)
+        {
+            SelectedRow = Grid.GetRow(toggleButton);
+            SelectedColumn = Grid.GetColumn(toggleButton);
+            if (SelectedRow == 0)
+            {
+                SelectedColumn++;
+            }
+            else if (SelectedRow > 0 && SelectedRow < 11)
+            {
+                SelectedColumn--;
+            }
+            else
+            {
+                SelectedColumn -= 2;
+            }
+            SelectedRow = Math.Abs(SelectedRow - 12);
+            Seat += " Row - ";
+            Seat += SelectedRow;
+            Seat += " Seat - ";
+            Seat += SelectedColumn;
+            if (counter == Count)
+            {
+                Seat += ".";
+            }
+            else
+            {
+                Seat += ",";
+            }
+        }
         bool IsAvailable = true;
         bool IsCardAvailable = true;
         static int m = 0;
@@ -401,67 +487,15 @@ namespace ParkCinema.ViewModels
             });
             OrderCommand = new RelayCommand((obj) =>
             {
-                m = 0;
-                n = -1000;
-                IsCardAvailable = true;
-                if (CardNumber.ToString().Length != 16)
-                {
-                    MessageBox.Show("Card number must have 16 digits");
-                    IsCardAvailable = false;
-                }
-                if(Month>12 || Month < 1)
-                {
-                    MessageBox.Show("Month must be between 1 and 12");
-                    IsCardAvailable = false;
-                }
-                if (Year.ToString().Length != 4)
-                {
-                    MessageBox.Show("Year length must be 4");
-                    IsCardAvailable = false;
-                }
-                if (Year < DateTime.Now.Year)
-                {
-                    MessageBox.Show("Month must not be lated");
-                    IsCardAvailable = false;
-                }
-                
-                if (IsCardAvailable == true)
-                {
-                    IsPlaying = true;
-                    CardVisibility = Visibility.Hidden;
-                    SuccessVisibility = Visibility.Visible;
-                    for (int i = 0; i < Count; i++)
-                    {
-                        var uc = new TicketUC();
-                        uc.Margin = new Thickness(n, 0, 0, 0);
-                        n += 200;
-                        var vm = new TicketUCViewModel();
-                        vm.Movie = Movie;
-                        foreach (var img in App.MovieRepo.Movies)
-                        {
-                            if (Movie.MovieName == img.MovieName)
-                            {
-                                vm.ImagePath = img.ImagePath;
-                                break;
-                            }
-                        }
-
-                        vm.SelectedRow = SelectedRows[m];
-                        vm.SelectedColumn = SelectedColumns[m];
-                        uc.DataContext = vm;
-                        
-                        App.MyGrid.Children.Add(uc);
-                        m++;
-                    }
-                }
+                Order();
 
             });
             PlaceClickCommand = new RelayCommand((obj) =>
             {
+
                 List<int> numbers = new List<int>();
                 Grid grid = obj as Grid;
                 if (grid == null) return;
-
 
                 if (counter + 1 < Count)
                 {
@@ -472,21 +506,19 @@ namespace ParkCinema.ViewModels
                     IsButtonEnabled = false;
                     counter = 0;
                 }
-                string json = "";
-                if (File.Exists("toggleButtonState.json"))
-                {
-                    json = File.ReadAllText("toggleButtonState.json");
-                }
                 foreach (UIElement child in grid.Children)
                 {
                     numbers = new List<int>();
                     ToggleButton toggleButton = child as ToggleButton;
-                    List<SelectedButtons> buttonStates = JsonConvert.DeserializeObject<List<SelectedButtons>>(json);
                     if (toggleButton != null)
                     {
-                        if (buttonStates != null)
+                        if (File.Exists("toggleButtonState.json"))
                         {
-                            foreach (var btn in buttonStates)
+                            string jsonString = File.ReadAllText("toggleButtonState.json");
+
+                            var data = JsonConvert.DeserializeObject<List<SelectedButtons>>(jsonString);
+
+                            foreach (var btn in data)
                             {
                                 if (btn.Movie.MovieName == Movie.MovieName && btn.Movie.MovieDate == Movie.MovieDate && btn.Movie.MovieDate == Movie.MovieDate)
                                 {
@@ -502,76 +534,32 @@ namespace ParkCinema.ViewModels
                             }
                             if (!numbers.Contains(1))
                             {
-                                SelectedRow = Grid.GetRow(toggleButton);
-                                SelectedColumn = Grid.GetColumn(toggleButton);
-                                if (SelectedRow == 0)
-                                {
-                                    SelectedColumn++;
-                                }
-                                else if (SelectedRow > 0 && SelectedRow < 11)
-                                {
-                                    SelectedColumn--;
-                                }
-                                else
-                                {
-                                    SelectedColumn -= 2;
-                                }
-                                SelectedRow = Math.Abs(SelectedRow - 12);
-                                Seat += " Row - ";
-                                Seat += SelectedRow;
-                                Seat += " Seat - ";
-                                Seat += SelectedColumn;
-                                if (counter == Count)
-                                {
-                                    Seat += ".";
-                                }
-                                else
-                                {
-                                    Seat += ",";
-                                }
+                                Places(toggleButton);
                                 var current = new SelectedButtons { Movie = Movie, ButtonName = toggleButton.Name, IsChecked = (bool)toggleButton.IsChecked };
                                 AllSeatNames.Add(current);
+                                data.Add(current);
                                 toggleButton.IsEnabled = false;
                                 SelectedRows.Add(SelectedRow);
                                 SelectedColumns.Add(SelectedColumn);
+                                jsonString = JsonConvert.SerializeObject(data);
+                                File.WriteAllText("toggleButtonState.json", jsonString);
                                 break;
                             }
                         }
                         else
                         {
-                            SelectedRow = Grid.GetRow(toggleButton);
-                            SelectedColumn = Grid.GetColumn(toggleButton);
-                            if (SelectedRow == 0)
+                            if (toggleButton.IsChecked == true)
                             {
-                                SelectedColumn++;
-                            }
-                            else if (SelectedRow > 0 && SelectedRow < 11)
-                            {
-                                SelectedColumn--;
-                            }
-                            else
-                            {
-                                SelectedColumn -= 2;
-                            }
-                            SelectedRow = Math.Abs(SelectedRow - 12);
-                            Seat += " Row - ";
-                            Seat += SelectedRow;
-                            Seat += " Seat - ";
-                            Seat += SelectedColumn;
-                            if (counter == Count)
-                            {
-                                Seat += ".";
-                            }
-                            else
-                            {
-                                Seat += ",";
-                            }
+                                Places(toggleButton);
                             var current = new SelectedButtons { Movie = Movie, ButtonName = toggleButton.Name, IsChecked = (bool)toggleButton.IsChecked };
                             AllSeatNames.Add(current);
                             toggleButton.IsEnabled = false;
                             SelectedRows.Add(SelectedRow);
                             SelectedColumns.Add(SelectedColumn);
+                            string jsonString = JsonConvert.SerializeObject(AllSeatNames);
+                            File.WriteAllText("toggleButtonState.json", jsonString);
                             break;
+                            }
                         }
                     }
                 }
@@ -582,8 +570,7 @@ namespace ParkCinema.ViewModels
                 // Write the serialized JSON data to the original file, overwriting the existing data
                 //json = JsonConvert.SerializeObject(AllSeatNames, Formatting.Indented);
                 //File.WriteAllText("toggleButtonState.json", json);
-                LoadListFromFile();
-                SaveListToFile(AllSeatNames);
+                
             });
 
         }

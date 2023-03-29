@@ -35,7 +35,6 @@ namespace ParkCinema.ViewModels
         public RelayCommand LogoClickCommand { get; set; }
         public RelayCommand MovieNameClickCommand { get; set; }
         public RelayCommand SelectedItemChangedCommand { get; set; }
-        public RelayCommand PreviewMouseDownCommand { get; set; }
         public RelayCommand BuyTicketCommand { get; set; }
         public RelayCommand BuyTicketBackgroundCommand { get; set; }
         public RelayCommand HappyClickCommand { get; set; }
@@ -83,6 +82,104 @@ namespace ParkCinema.ViewModels
             {
                 count++;
             }
+        }
+        private void MovieClick(Movie temp)
+        {
+            movieList = new ObservableCollection<Movie>();
+
+            var vm = new MovieBackgroundUCViewModel();
+            vm.Movie = temp;
+            var movies = new ObservableCollection<Movie>();
+            var moviesShort = new ObservableCollection<Movie>();
+            for (int i = 1; i <= App.MovieRepo.Movies.Count; i++)
+            {
+                if (i == vm.Movie.Id)
+                {
+                    for (int j = 0; j < i - 1; j++)
+                    {
+                        movies.Add(App.MovieRepo.Movies[j]);
+                    }
+                    for (int j = i; j < App.MovieRepo.Movies.Count; j++)
+                    {
+                        movies.Add(App.MovieRepo.Movies[j]);
+                    }
+                    for (int k = 0; k < 5;)
+                    {
+                        MyNumber = a.Next(0, movies.Count);
+                        if (!randomList.Contains(MyNumber) && MyNumber != vm.Movie.Id)
+                        {
+                            k++;
+                            movieList.Add(movies[MyNumber]);
+                            randomList.Add(MyNumber);
+                        }
+                    }
+                    break;
+                }
+            }
+            vm.AllMovies = movieList;
+            var uc = new MovieBackgroundUC();
+            uc.DataContext = vm;
+            App.MyGrid.Children.RemoveAt(0);
+            App.MyGrid.Children.Add(uc);
+        }
+        private void BuyTicketBackground(BackgroundImage recent)
+        {
+            var uc = new ScheduleUC();
+            var vm = new ScheduleUCViewModel();
+            var myMovies = new ObservableCollection<MovieSchedule>();
+            foreach (var item in AllMovies)
+            {
+                if (item.MovieName == recent.MovieName)
+                {
+                    foreach (var current in App.ScheduleRepo.MovieSchedules)
+                    {
+                        if (current.MovieName == item.MovieName)
+                        {
+                            vm.Movie = current;
+                            myMovies.Add(current);
+                        }
+                    }
+                }
+            }
+            vm.Movies = myMovies;
+            vm.AllMovies = myMovies;
+            uc.DataContext = vm;
+
+            App.MyGrid.Children.RemoveAt(0);
+            App.MyGrid.Children.Add(uc);
+        }
+        private void BuyTicket(Grid grid)
+        {
+            var myMovies = new ObservableCollection<MovieSchedule>();
+            var uc = new ScheduleUC();
+            var vm = new ScheduleUCViewModel();
+            foreach (var child in grid.Children)
+            {
+                if (child is Image img)
+                {
+                    foreach (var mov in App.MovieRepo.Movies)
+                    {
+                        if (img.Source.ToString().Contains(mov.ImagePath))
+                        {
+                            Movie = mov;
+                        }
+                    }
+                }
+                foreach (var item in App.ScheduleRepo.MovieSchedules)
+                {
+                    if (item.MovieName == Movie.MovieName)
+                    {
+                        vm.Movie = item;
+                        myMovies.Add(item);
+                    }
+                }
+            }
+            vm.Movies = myMovies;
+            vm.AllMovies = myMovies;
+            uc.DataContext = vm;
+
+            App.MyGrid.Children.RemoveAt(0);
+            App.MyGrid.Children.Add(uc);
         }
         public HomeUCViewModel()
         {
@@ -196,63 +293,14 @@ namespace ParkCinema.ViewModels
             BuyTicketBackgroundCommand = new RelayCommand((obj) =>
             {
                 var recent = BackImage;
-                var uc = new ScheduleUC();
-                var vm = new ScheduleUCViewModel();
-                var myMovies = new ObservableCollection<MovieSchedule>();
-                foreach (var item in AllMovies)
-                {
-                    if (item.MovieName == recent.MovieName)
-                    {
-                        foreach (var current in App.ScheduleRepo.MovieSchedules)
-                        {
-                            if (current.MovieName == item.MovieName)
-                            {
-                                vm.Movie = current;
-                                myMovies.Add(current);
-                            }
-                        }
-                    }
-                }
-                vm.Movies = myMovies;
-                vm.AllMovies = myMovies;
-                uc.DataContext = vm;
-
-                App.MyGrid.Children.RemoveAt(0);
-                App.MyGrid.Children.Add(uc);
+                BuyTicketBackground(recent);
+                
             });
             BuyTicketCommand = new RelayCommand((obj) =>
             {
                 var grid = obj as Grid;
-                var myMovies = new ObservableCollection<MovieSchedule>();
-                var uc = new ScheduleUC();
-                var vm = new ScheduleUCViewModel();
-                foreach (var child in grid.Children)
-                {
-                    if(child is Image img)
-                    {
-                        foreach (var mov in App.MovieRepo.Movies)
-                        {
-                            if (img.Source.ToString().Contains(mov.ImagePath))
-                            {
-                                Movie = mov;
-                            }
-                        }
-                    }
-                    foreach (var item in App.ScheduleRepo.MovieSchedules)
-                    {
-                        if (item.MovieName == Movie.MovieName)
-                        {
-                            vm.Movie = item;
-                            myMovies.Add(item);
-                        }
-                    }
-                }
-                vm.Movies = myMovies;
-                vm.AllMovies = myMovies;
-                uc.DataContext = vm;
-
-                App.MyGrid.Children.RemoveAt(0);
-                App.MyGrid.Children.Add(uc);
+                BuyTicket(grid);
+                
             });
             LogoClickCommand = new RelayCommand((obj) =>
             {
@@ -268,56 +316,9 @@ namespace ParkCinema.ViewModels
             {
                 timer.Stop();
                 var temp = obj as Movie;
-                movieList = new ObservableCollection<Movie>();
-
-                var vm = new MovieBackgroundUCViewModel();
-                vm.Movie = temp;
-                var movies = new ObservableCollection<Movie>();
-                var moviesShort = new ObservableCollection<Movie>();
-                for (int i = 1; i <= App.MovieRepo.Movies.Count; i++)
-                {
-                    if (i == vm.Movie.Id)
-                    {
-                        for (int j = 0; j < i - 1; j++)
-                        {
-                            movies.Add(App.MovieRepo.Movies[j]);
-                        }
-                        for (int j = i; j < App.MovieRepo.Movies.Count; j++)
-                        {
-                            movies.Add(App.MovieRepo.Movies[j]);
-                        }
-                        for (int k = 0; k < 5;)
-                        {
-                            MyNumber = a.Next(0, movies.Count);
-                            if (!randomList.Contains(MyNumber) && MyNumber != vm.Movie.Id)
-                            {
-                                k++;
-                                movieList.Add(movies[MyNumber]);
-                                randomList.Add(MyNumber);
-                            }
-                        }
-                        break;
-                    }
-                }
-                vm.AllMovies = movieList;
-                var uc = new MovieBackgroundUC();
-                uc.DataContext = vm;
-                App.MyGrid.Children.RemoveAt(0);
-                App.MyGrid.Children.Add(uc);
+                MovieClick(temp);
             });
-            PreviewMouseDownCommand = new RelayCommand((obj) =>
-            {
-                timer.Stop();
-                var temp = obj as Movie;
-
-                var vm = new MovieBackgroundUCViewModel();
-                vm.Movie = temp;
-                var uc = new MovieBackgroundUC();
-                uc.DataContext = vm;
-
-                App.MyGrid.Children.RemoveAt(0);
-                App.MyGrid.Children.Add(uc);
-            });
+           
         }
     }
 }
