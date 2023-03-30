@@ -94,6 +94,7 @@
     <Compile Include="Repositories\EmailRepository.cs" />
     <Compile Include="Repositories\MovieRepository.cs" />
     <Compile Include="Repositories\ScheduleRepository.cs" />
+    <Compile Include="ViewModels\AdminSeatsUCViewModel.cs" />
     <Compile Include="ViewModels\AdminUCViewModel.cs" />
     <Compile Include="ViewModels\BackgroundImageViewModel.cs" />
     <Compile Include="ViewModels\CampaingsUCViewModel.cs" />
@@ -104,6 +105,9 @@
     <Compile Include="ViewModels\SeatUCViewModel.cs" />
     <Compile Include="ViewModels\SuperDayUCViewModel.cs" />
     <Compile Include="ViewModels\TicketUCViewModel.cs" />
+    <Compile Include="Views\UserControls\AdminSeatsUC.xaml.cs">
+      <DependentUpon>AdminSeatsUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\AdminUC.xaml.cs">
       <DependentUpon>AdminUC.xaml</DependentUpon>
     </Compile>
@@ -149,6 +153,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Dictionaries\StyleDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\AdminSeatsUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -363,6 +371,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\admin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\cloud.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1587.40\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1587.40\build\Microsoft.Web.WebView2.targets')" />
