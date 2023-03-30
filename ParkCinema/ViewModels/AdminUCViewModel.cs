@@ -20,6 +20,7 @@ namespace ParkCinema.ViewModels
         public RelayCommand LoginCommand { get; set; }
         public RelayCommand LogoClickCommand { get; set; }
         public RelayCommand EditMovieCommand { get; set; }
+        public RelayCommand AddMovieClickCommand { get; set; }
         private string email;
 
         public string Email
@@ -42,7 +43,6 @@ namespace ParkCinema.ViewModels
             set { allMovies = value; OnPropertyChanged(); }
         }
 
-
         public AdminUCViewModel()
         {
             AllMovies = new ObservableCollection<Movie>(App.MovieRepo.Movies);
@@ -52,6 +52,14 @@ namespace ParkCinema.ViewModels
                 {
 
                 }
+            });
+            AddMovieClickCommand = new RelayCommand((obj) =>
+            {
+                var uc = new AddMovieUC();
+                var vm = new AddMovieUCViewModel();
+                uc.DataContext = vm;
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
             });
             LogoClickCommand = new RelayCommand((obj) =>
             {
@@ -66,6 +74,23 @@ namespace ParkCinema.ViewModels
             EditMovieCommand = new RelayCommand((obj) =>
             {
                 var mov = obj as Movie;
+                if (obj is Grid grid)
+                {
+                    foreach (var item in grid.Children)
+                    {
+                        if(item is TextBlock txt)
+                        {
+                            foreach (var temp in App.MovieRepo.Movies)
+                            {
+                                if(txt.Text == temp.MovieName)
+                                {
+                                    mov = temp;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
                 var vm = new EditUCViewModel();
                 var uc = new EditUC();
                 

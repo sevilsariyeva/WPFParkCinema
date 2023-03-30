@@ -94,6 +94,8 @@
     <Compile Include="Repositories\EmailRepository.cs" />
     <Compile Include="Repositories\MovieRepository.cs" />
     <Compile Include="Repositories\ScheduleRepository.cs" />
+    <Compile Include="Services\AddMovie.cs" />
+    <Compile Include="ViewModels\AddMovieUCViewModel.cs" />
     <Compile Include="ViewModels\AdminSeatsUCViewModel.cs" />
     <Compile Include="ViewModels\AdminUCViewModel.cs" />
     <Compile Include="ViewModels\BackgroundImageViewModel.cs" />
@@ -101,10 +103,14 @@
     <Compile Include="ViewModels\EditUCViewModel.cs" />
     <Compile Include="ViewModels\HomeUCViewModel.cs" />
     <Compile Include="ViewModels\MovieBackgroundUCViewModel.cs" />
+    <Compile Include="ViewModels\MovieCellUCViewModel.cs" />
     <Compile Include="ViewModels\ScheduleUCViewModel.cs" />
     <Compile Include="ViewModels\SeatUCViewModel.cs" />
     <Compile Include="ViewModels\SuperDayUCViewModel.cs" />
     <Compile Include="ViewModels\TicketUCViewModel.cs" />
+    <Compile Include="Views\UserControls\AddMovieUC.xaml.cs">
+      <DependentUpon>AddMovieUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\AdminSeatsUC.xaml.cs">
       <DependentUpon>AdminSeatsUC.xaml</DependentUpon>
     </Compile>
@@ -122,6 +128,9 @@
     </Compile>
     <Compile Include="Views\UserControls\MovieBackgroundUC.xaml.cs">
       <DependentUpon>MovieBackgroundUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MovieCellUC.xaml.cs">
+      <DependentUpon>MovieCellUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\ScheduleUC.xaml.cs">
       <DependentUpon>ScheduleUC.xaml</DependentUpon>
@@ -159,6 +168,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\UserControls\AddMovieUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UserControls\AdminSeatsUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -180,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserControls\MovieBackgroundUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\MovieCellUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

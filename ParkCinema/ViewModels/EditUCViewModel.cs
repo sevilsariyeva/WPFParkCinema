@@ -5,6 +5,7 @@ using ParkCinema.Models;
 using ParkCinema.Views.UserControls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,7 @@ namespace ParkCinema.ViewModels
         public RelayCommand MovieSeatsCommand { get; set; }
         public RelayCommand MovieDatesCommand { get; set; }
         public RelayCommand CloseEditCommand { get; set; }
+        public RelayCommand DeleteMovieCommand { get; set; }
 
         private Movie movie;
         private string title;
@@ -440,7 +442,15 @@ namespace ParkCinema.ViewModels
             });
             CloseEditCommand = new RelayCommand((obj) =>
             {
+                if(App.MyGrid.Children.Count > 2)
+                {
+                    App.MyGrid.Children.RemoveAt(2);
+                    App.MyGrid.Children.RemoveAt(1);
+                }
+                else
+                {
                 App.MyGrid.Children.RemoveAt(1);
+                }
             });
             PlotClickCommand = new RelayCommand((obj) =>
             {
@@ -463,7 +473,7 @@ namespace ParkCinema.ViewModels
             {
                 var current = obj as MovieSchedule;
                 uc = new AdminSeatsUC();
-                 vm = new AdminSeatsUCViewModel();
+                vm = new AdminSeatsUCViewModel();
                 vm.Movie = current;
                 if (File.Exists("toggleButtonState.json"))
                 {
@@ -498,8 +508,8 @@ namespace ParkCinema.ViewModels
             MovieDatesCommand = new RelayCommand((obj) =>
             {
                 var current = obj as MovieSchedule;
-                 uc = new AdminSeatsUC();
-                 vm = new AdminSeatsUCViewModel();
+                uc = new AdminSeatsUC();
+                vm = new AdminSeatsUCViewModel();
                 vm.Movie = current;
                 if (File.Exists("toggleButtonState.json"))
                 {
@@ -523,6 +533,22 @@ namespace ParkCinema.ViewModels
                 }
                 uc.DataContext = vm;
                 App.MyGrid.Children.Add(uc);
+            });
+            DeleteMovieCommand = new RelayCommand((obj) =>
+            {
+                string json = File.ReadAllText("movies.json");
+
+                List<Movie> itemList = JsonConvert.DeserializeObject<List<Movie>>(json);
+                Movie itemToDelete = itemList.FirstOrDefault(item => item.Id == Movie.Id);
+                if (itemToDelete != null)
+                {
+                    itemList.Remove(itemToDelete);
+                }
+                App.MovieRepo.Movies = itemList;
+                string updatedJson = JsonConvert.SerializeObject(itemList, Formatting.Indented);
+                File.WriteAllText("movies.json", updatedJson);
+                App.MyGrid.Children.RemoveAt(1);
+                MessageBox.Show("You have deleted the Movie");
             });
         }
     }

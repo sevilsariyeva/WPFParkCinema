@@ -17,13 +17,11 @@
             <Button Command="{Binding PlotClickCommand}" Style="{StaticResource mainButtons}" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Content="Plot" FontSize="20" FontWeight="Bold" Foreground="#2c2c2e" Canvas.Left="210" Canvas.Top="20" Background="DarkGray"/>
             <Button Command="{Binding PosterClickCommand}" Style="{StaticResource mainButtons}" Content="Poster" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Canvas.Left="370" Canvas.Top="20" FontSize="20" FontWeight="Bold" Foreground="#2c2c2e" Background="DarkGray"/>
             <Button Command="{Binding SeatsClickCommand}" Style="{StaticResource mainButtons}" Content="Seats"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Canvas.Left="530" Canvas.Top="20"  FontSize="20" FontWeight="Bold" Foreground="#2c2c2e" Background="DarkGray"/>
-            <Button Command="{Binding SessionsClickCommand}" Style="{StaticResource mainButtons}" Content="Sessions"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Canvas.Left="690" Canvas.Top="20"  FontSize="20" FontWeight="Bold" Foreground="#2c2c2e" Background="DarkGray"/>
-            <Button Command="{Binding ResetChangesCommand}" CommandParameter="{Binding ElementName=myGrid}" Canvas.Left="50" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Delete Movie" FontWeight="Bold" FontSize="17" Background="Red" Canvas.Top="590"></Button>
             <Button Command="{Binding CloseEditCommand}" Style="{StaticResource allButtons}" Background="Transparent" Canvas.Left="835" Canvas.Top="-7" >
                 <Image Source="/Icons/closered.png"></Image>
             </Button>
         </Canvas>
-        <Canvas Grid.Row="1" Visibility="{Binding MainVisibility}">
+        <Canvas x:Name="myCanvas" Grid.Row="1" Visibility="{Binding MainVisibility}">
             <Label Canvas.Top="7" Canvas.Left="50" Foreground="White" Content="Title" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
             <TextBox Text="{Binding Title}" FontSize="15" FontWeight="DemiBold" Width="170" Height="25" Canvas.Left="50" Canvas.Top="50" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBox>
             <Label Canvas.Top="82" Canvas.Left="50" Foreground="White" Content="Year" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
@@ -53,11 +51,13 @@
             </Button>
             <Button Command="{Binding ResetChangesCommand}" CommandParameter="{Binding ElementName=myGrid}" Canvas.Left="570" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Reset Changes" FontWeight="Bold" FontSize="17" Background="DarkGray" Canvas.Top="480"></Button>
             <Button Command="{Binding SaveChangesCommand}" Canvas.Left="718" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Save Changes" FontWeight="Bold" FontSize="17" Background="Green" Canvas.Top="480" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
+            <Button Command="{Binding DeleteMovieCommand}" CommandParameter="{Binding ElementName=myCanvas}" Canvas.Left="50" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Delete Movie" FontWeight="Bold" FontSize="17" Background="Red" Canvas.Top="483" HorizontalAlignment="Center" VerticalAlignment="Top"></Button>
         </Canvas>
         <Canvas Grid.Row="1" Visibility="{Binding PlotVisibility}">
             <TextBox FontSize="20" FontWeight="Bold" Canvas.Top="70" Canvas.Left="50" Width="800" TextWrapping="Wrap" Height="400" Background="LightGray" Text="{Binding MovieAbout}"></TextBox>
             <Button Command="{Binding ResetPlotCommand}" CommandParameter="{Binding ElementName=myGrid}" Canvas.Left="570" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Reset Changes" FontWeight="Bold" FontSize="17" Background="DarkGray" Canvas.Top="480"></Button>
             <Button Command="{Binding SaveChangesCommand}" Canvas.Left="718" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Save Changes" FontWeight="Bold" FontSize="17" Background="Green" Canvas.Top="480" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
+            <Button Command="{Binding DeleteMovieCommand}" CommandParameter="{Binding ElementName=myCanvas}" Canvas.Left="50" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Delete Movie" FontWeight="Bold" FontSize="17" Background="Red" Canvas.Top="483" HorizontalAlignment="Center" VerticalAlignment="Top"></Button>
         </Canvas>
         <Canvas Grid.Row="1" Visibility="{Binding PosterVisibility}">
             <Button Style="{StaticResource allButtons}" AllowDrop="True" Background="Transparent" BorderThickness="0" Width="280" Height="400" Canvas.Left="50" Canvas.Top="50">
@@ -71,6 +71,7 @@
             </Button>
             <Button Command="{Binding ResetPosterCommand}" CommandParameter="{Binding ElementName=myGrid}" Canvas.Left="570" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Reset Changes" FontWeight="Bold" FontSize="17" Background="DarkGray" Canvas.Top="480"></Button>
             <Button Command="{Binding SaveChangesCommand}" Canvas.Left="718" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Save Changes" FontWeight="Bold" FontSize="17" Background="Green" Canvas.Top="480" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
+            <Button Command="{Binding DeleteMovieCommand}" CommandParameter="{Binding ElementName=myCanvas}" Canvas.Left="50" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Delete Movie" FontWeight="Bold" FontSize="17" Background="Red" Canvas.Top="483" HorizontalAlignment="Center" VerticalAlignment="Top"></Button>
         </Canvas>
         <Canvas Grid.Row="1" Visibility="{Binding SeatsVisibility}">
             <ComboBox FontSize="15" FontWeight="Bold" Canvas.Left="298" Width="250" Height="30" Name="myComboBox" ItemsSource="{Binding AllMoviesSchedule}" HorizontalAlignment="Left" VerticalAlignment="Center">
@@ -92,7 +93,7 @@
             </ComboBox>
             <Button Command="{Binding ResetSeatsCommand}" CommandParameter="{Binding ElementName=myComboBox}" Canvas.Left="570" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Reset Changes" FontWeight="Bold" FontSize="17" Background="DarkGray" Canvas.Top="480"></Button>
             <Button Command="{Binding SaveSeatsCommand}" Canvas.Left="718" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Save Changes" FontWeight="Bold" FontSize="17" Background="Green" Canvas.Top="480" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
+            <Button Command="{Binding DeleteMovieCommand}" CommandParameter="{Binding ElementName=myCanvas}" Canvas.Left="50" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Delete Movie" FontWeight="Bold" FontSize="17" Background="Red" Canvas.Top="483" HorizontalAlignment="Center" VerticalAlignment="Top"></Button>
         </Canvas>
-        
     </Grid>
 </UserControl>

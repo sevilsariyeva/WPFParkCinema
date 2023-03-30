@@ -170,6 +170,7 @@ namespace ParkCinema.ViewModels
                 var grid = obj as Grid;
                 PlaceClick(grid);
             });
+
         }
     }
 }

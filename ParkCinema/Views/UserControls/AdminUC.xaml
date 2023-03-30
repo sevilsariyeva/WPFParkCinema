@@ -6,13 +6,8 @@
              xmlns:local="clr-namespace:ParkCinema.Views.UserControls" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Height="1900">
-    <Grid >
-        <Grid.Background>
-            <LinearGradientBrush>
-                <GradientStop Color="#2c2c2e" Offset="0.3"></GradientStop>
-                <GradientStop Color="Black" Offset="1"></GradientStop>
-            </LinearGradientBrush>
-        </Grid.Background>
+    <Grid Background="Black">
+        
         <Canvas Visibility="Hidden">
             <Image Source="/Images/movieback.jpg"></Image>
             <TextBlock FontSize="40" Foreground="White" FontWeight="DemiBold"  Text="Welcome, Admin!" HorizontalAlignment="Left" Canvas.Top="339" VerticalAlignment="Center" Canvas.Left="612"></TextBlock>
@@ -22,14 +17,17 @@
             <TextBox Width="220" Height="30" Canvas.Top="550" Canvas.Left="659" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
             <Button Command="{Binding LoginCommand}" Content="Log in" Canvas.Top="623" Canvas.Left="658" Width="100" Height="35" FontSize="18" FontWeight="Bold" Style="{StaticResource buyButton}" Background="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
         </Canvas>
+        
         <Grid>
             <TextBlock Foreground="#756C6C" Width="200" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Text="ParkAdmin" FontWeight="Bold" FontSize="35" Margin="10,6,0,0"></TextBlock>
             <Label Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="190,-6,0,0" Height="60">
             <Image Stretch="Fill" Source="/Icons/admin.png"></Image>
             </Label>
+            <Button Command="{Binding AddMovieClickCommand}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,200,0" Width="150" Height="40" Content="Add Movie" FontSize="20" FontWeight="Bold" Style="{StaticResource mainButtons}" Background="Green" Foreground="Black"></Button>
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,20,0" Width="150" Height="40" Content="All Places" FontSize="20" FontWeight="Bold" Style="{StaticResource mainButtons}" Background="Goldenrod" Foreground="Black"></Button>
             <ListBox  HorizontalAlignment="Center" Width="850" Height="1550" BorderThickness="0"  ItemsSource="{Binding AllMovies}" Name="listbox" Margin="0,360,0,0" Background="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListBox.BitmapEffect>
-                    <DropShadowBitmapEffect ShadowDepth="20" Direction="120"></DropShadowBitmapEffect>
+                    <DropShadowBitmapEffect ShadowDepth="10" Color="Gray" Direction="250"></DropShadowBitmapEffect>
                 </ListBox.BitmapEffect>
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -117,7 +115,6 @@
                             <Grid Height="300" Name="myGrid" Background="Transparent" Margin="0,0,8,-4" >
 
                                 <Image Cursor="Hand" Height="170" Width="115" Margin="-150,15,0,50" Stretch="Fill" Style="{StaticResource imgStyle}" Name="image" Source="{Binding ImagePath}"></Image>
-
                                 <TextBlock Margin="135,45,0,150" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource txtblck}" TextWrapping="Wrap" Text="{Binding MovieName}" FontWeight="Bold" FontFamily="Segoe ui" Background="Transparent"  Name="filmnametxtBox" Foreground="WhiteSmoke" FontSize="15" Width="110" />
                                 <TextBlock Margin="135,105,0,0" Background="Transparent" Foreground="WhiteSmoke" Text="{Binding MovieDate}" FontFamily="Segoe ui"></TextBlock>
                                 <TextBlock Margin="135,125,0,0" Background="Transparent" Foreground="WhiteSmoke" Text="{Binding MovieFormat}" FontFamily="Segoe ui"></TextBlock>
