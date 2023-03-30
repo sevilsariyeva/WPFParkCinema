@@ -177,21 +177,24 @@ namespace ParkCinema.ViewModels
                 {
                     string json = File.ReadAllText("toggleButtonState.json");
                     List<SelectedButtons> buttonStates = JsonConvert.DeserializeObject<List<SelectedButtons>>(json);
-                    foreach (var item in buttonStates)
+                    if (buttonStates != null)
                     {
-                        foreach (var temp in uc.myGrid.Children)
+                        foreach (var item in buttonStates)
                         {
-                            if (temp is ToggleButton toggleButton)
+                            foreach (var temp in uc.myGrid.Children)
                             {
-                                if (item.ButtonName == toggleButton.Name && item.Movie.MovieName == current.MovieName && item.Movie.MovieDate == current.MovieDate && item.Movie.MovieDateTime == current.MovieDateTime)
+                                if (temp is ToggleButton toggleButton)
                                 {
-                                    toggleButton.IsChecked = true;
-                                    toggleButton.IsEnabled = false;
-                                    break;
+                                    if (item.ButtonName == toggleButton.Name && item.Movie.MovieName == current.MovieName && item.Movie.MovieDate == current.MovieDate && item.Movie.MovieDateTime == current.MovieDateTime)
+                                    {
+                                        toggleButton.IsChecked = true;
+                                        toggleButton.IsEnabled = false;
+                                        break;
+                                    }
                                 }
                             }
-                        }
 
+                        }
                     }
                 }
                 uc.DataContext = vm;

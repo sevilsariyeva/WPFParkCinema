@@ -91,7 +91,7 @@
                 </i:Interaction.Triggers>
             </ComboBox>
             <Button Command="{Binding ResetSeatsCommand}" CommandParameter="{Binding ElementName=myComboBox}" Canvas.Left="570" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Reset Changes" FontWeight="Bold" FontSize="17" Background="DarkGray" Canvas.Top="480"></Button>
-            <Button Command="{Binding SaveChangesCommand}" Canvas.Left="718" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Save Changes" FontWeight="Bold" FontSize="17" Background="Green" Canvas.Top="480" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
+            <Button Command="{Binding SaveSeatsCommand}" Canvas.Left="718" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Save Changes" FontWeight="Bold" FontSize="17" Background="Green" Canvas.Top="480" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
         </Canvas>
         
     </Grid>

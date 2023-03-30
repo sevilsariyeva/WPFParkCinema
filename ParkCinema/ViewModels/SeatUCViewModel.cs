@@ -366,25 +366,31 @@ namespace ParkCinema.ViewModels
                         string jsonString = File.ReadAllText("toggleButtonState.json");
 
                         var data = JsonConvert.DeserializeObject<List<SelectedButtons>>(jsonString);
-
-                        foreach (var btn in data)
+                        if (data != null)
                         {
-                            if (btn.Movie.MovieName == Movie.MovieName && btn.Movie.MovieDate == Movie.MovieDate && btn.Movie.MovieDate == Movie.MovieDate)
+                            foreach (var btn in data)
                             {
-                                if (toggleButton.IsChecked == true && toggleButton.Name != btn.ButtonName)
+                                if (btn.Movie.MovieName == Movie.MovieName && btn.Movie.MovieDate == Movie.MovieDate && btn.Movie.MovieDate == Movie.MovieDate)
                                 {
-                                    IsSame = true;
+                                    if (toggleButton.IsChecked == true && toggleButton.Name != btn.ButtonName)
+                                    {
+                                        IsSame = true;
+                                    }
+                                    else
+                                    {
+                                        IsSame = false;
+                                    }
+                                    numbers.Add(0);
                                 }
                                 else
                                 {
-                                    IsSame = false;
+                                    numbers.Add(1);
                                 }
-                                numbers.Add(0);
                             }
-                            else
-                            {
-                                numbers.Add(1);
-                            }
+                        }
+                        else
+                        {
+                            data = new List<SelectedButtons>();
                         }
                         if (IsSame || !numbers.Contains(0))
                         {
