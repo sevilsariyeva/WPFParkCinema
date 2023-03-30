@@ -25,8 +25,15 @@ namespace ParkCinema.ViewModels
         public RelayCommand SaveChangesCommand { get; set; }
         public RelayCommand ImageClickCommand { get; set; }
         public RelayCommand PlotClickCommand { get; set; }
+        public RelayCommand SessionsClickCommand { get; set; }
+        public RelayCommand PosterClickCommand { get; set; }
+        public RelayCommand SeatsClickCommand { get; set; }
         public RelayCommand ResetPlotCommand { get; set; }
+        public RelayCommand ResetPosterCommand { get; set; }
+        public RelayCommand ResetSeatsCommand { get; set; }
         public RelayCommand MovieSeatsCommand { get; set; }
+        public RelayCommand MovieDatesCommand { get; set; }
+        public RelayCommand CloseEditCommand { get; set; }
 
         private Movie movie;
         private string title;
@@ -48,6 +55,9 @@ namespace ParkCinema.ViewModels
         private List<MovieSchedule> allMovies;
         private Visibility mainVisibility;
         private Visibility plotVisibility;
+        private Visibility posterVisibility;
+        private Visibility seatsVisibility;
+        private Visibility sessionsVisibility;
 
         public Visibility MainVisibility
         {
@@ -59,6 +69,24 @@ namespace ParkCinema.ViewModels
         {
             get { return plotVisibility; }
             set { plotVisibility = value; OnPropertyChanged(); }
+        }
+
+        public Visibility PosterVisibility
+        {
+            get { return posterVisibility; }
+            set { posterVisibility = value; OnPropertyChanged(); }
+        }
+
+        public Visibility SeatsVisibility
+        {
+            get { return seatsVisibility; }
+            set { seatsVisibility = value;OnPropertyChanged(); }
+        }
+
+        public Visibility SessionsVisibility
+        {
+            get { return sessionsVisibility; }
+            set { sessionsVisibility = value;OnPropertyChanged(); }
         }
 
         public string MovieAbout
@@ -154,6 +182,14 @@ namespace ParkCinema.ViewModels
             get { return movies; }
             set { movies = value; OnPropertyChanged(); }
         }
+        private List<SelectedButtons> data;
+
+        public List<SelectedButtons> Data
+        {
+            get { return data; }
+            set { data = value;OnPropertyChanged(); }
+        }
+
 
         private void Reset()
         {
@@ -197,6 +233,50 @@ namespace ParkCinema.ViewModels
                 }
             }
         }
+        private void ResetPoster()
+        {
+            foreach (var item in App.MovieRepo.Movies)
+            {
+                if (item.Id == Movie.Id)
+                {
+                    string jsonString = File.ReadAllText("movies.json");
+
+                    var data = JsonConvert.DeserializeObject<List<Movie>>(jsonString);
+
+                    var element = data.FirstOrDefault(e => e.Id == item.Id);
+
+                    ImagePath = element.ImagePath;
+                }
+            }
+        }
+        private void ResetSeats(MovieSchedule obj)
+        {
+            var current = obj;
+            var uc = new AdminSeatsUC();
+            var vm = new AdminSeatsUCViewModel();
+            vm.Movie = current;
+            if (File.Exists("toggleButtonState.json"))
+            {
+                string json = File.ReadAllText("toggleButtonState.json");
+                List<SelectedButtons> buttonStates = JsonConvert.DeserializeObject<List<SelectedButtons>>(json);
+                data = JsonConvert.DeserializeObject<List<SelectedButtons>>(json);
+                foreach (var item in buttonStates)
+                {
+                    foreach (var temp in uc.myGrid.Children)
+                    {
+                        if (temp is ToggleButton toggleButton)
+                        {
+                            if (item.ButtonName == toggleButton.Name && item.Movie.MovieName == current.MovieName && item.Movie.MovieDate == current.MovieDate && item.Movie.MovieDateTime == current.MovieDateTime)
+                            {
+                                toggleButton.IsChecked = true;
+                                toggleButton.IsEnabled = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         private void OpenImage()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -228,10 +308,7 @@ namespace ParkCinema.ViewModels
                         var element = data.FirstOrDefault(e => e.Id == item.Id);
 
 
-                        element.ImagePath = ImagePath;
-                        jsonString = JsonConvert.SerializeObject(data);
-
-                        File.WriteAllText("movies.json", jsonString);
+                        element.ImagePath = ImagePath;                        
 
                     }
                 }
@@ -266,34 +343,60 @@ namespace ParkCinema.ViewModels
                 }
             }
         }
-
+        private void WriteData(List<SelectedButtons> data)
+        {
+            string jsonString = JsonConvert.SerializeObject(data);
+            File.WriteAllText("toggleButtonState.json", jsonString);
+        }
         public EditUCViewModel()
         {
             var newMovies = new List<MovieSchedule>();
-            var mymovies = new List<MovieSchedule>();
-            foreach (var item in App.ScheduleRepo.MovieSchedules)
-            {
-                if (newMovies.Count!=0)
-                {
-                    mymovies=newMovies.Where(n => n.MovieName != item.MovieName).ToList();
-                    mymovies.Add(item);
-                    newMovies = mymovies;
-                    
-                }
-                else
-                {
-                    newMovies.Add(item);
-                }
-            }
+            
             AllMoviesSchedule = newMovies;
             MainVisibility = Visibility.Visible;
             PlotVisibility = Visibility.Hidden;
+            PosterVisibility = Visibility.Hidden;
+            SeatsVisibility = Visibility.Hidden;
+            SessionsVisibility = Visibility.Hidden;
             MainClickCommand = new RelayCommand((obj) =>
             {
                 MainVisibility = Visibility.Visible;
                 PlotVisibility = Visibility.Hidden;
+                PosterVisibility = Visibility.Hidden;
+                SeatsVisibility = Visibility.Hidden;
+                SessionsVisibility = Visibility.Hidden;
+                if (App.MyGrid.Children.Count == 3)
+                    App.MyGrid.Children.RemoveAt(2);
             });
 
+            PosterClickCommand = new RelayCommand((obj) =>
+            {
+                MainVisibility = Visibility.Hidden;
+                PlotVisibility = Visibility.Hidden;
+                PosterVisibility = Visibility.Visible;
+                SeatsVisibility = Visibility.Hidden;
+                SessionsVisibility = Visibility.Hidden;
+                if (App.MyGrid.Children.Count == 3)
+                    App.MyGrid.Children.RemoveAt(2);
+            });
+            SeatsClickCommand = new RelayCommand((obj) =>
+            {
+                MainVisibility = Visibility.Hidden;
+                PlotVisibility = Visibility.Hidden;
+                PosterVisibility = Visibility.Hidden;
+                SeatsVisibility = Visibility.Visible;
+                SessionsVisibility = Visibility.Hidden;
+            });
+            SessionsClickCommand = new RelayCommand((obj) =>
+            {
+                MainVisibility = Visibility.Hidden;
+                PlotVisibility = Visibility.Hidden;
+                PosterVisibility = Visibility.Hidden;
+                SeatsVisibility = Visibility.Hidden;
+                SessionsVisibility = Visibility.Visible;
+                if(App.MyGrid.Children.Count==3)
+                App.MyGrid.Children.RemoveAt(2);
+            });
             ResetChangesCommand = new RelayCommand((obj) =>
             {
                 Reset();
@@ -302,6 +405,17 @@ namespace ParkCinema.ViewModels
             {
                 ResetPlot();
             });
+            ResetPosterCommand = new RelayCommand((obj) =>
+            {
+                ResetPoster();
+            });
+            ResetSeatsCommand = new RelayCommand((obj) =>
+            {
+                var combo = obj as ComboBox;
+                var movie = combo.SelectedItem as MovieSchedule;
+                ResetSeats(movie);
+            });
+            
             SaveChangesCommand = new RelayCommand((obj) =>
             {
                 Save();
@@ -310,10 +424,17 @@ namespace ParkCinema.ViewModels
             {
                 OpenImage();
             });
+            CloseEditCommand = new RelayCommand((obj) =>
+            {
+                App.MyGrid.Children.RemoveAt(1);
+            });
             PlotClickCommand = new RelayCommand((obj) =>
             {
-                MainVisibility = Visibility.Hidden;
                 PlotVisibility = Visibility.Visible;
+                MainVisibility = Visibility.Hidden;
+                PosterVisibility = Visibility.Hidden;
+                SeatsVisibility = Visibility.Hidden;
+                SessionsVisibility = Visibility.Hidden;
                 foreach (var item in App.MovieRepo.Movies)
                 {
                     if (item == Movie)
@@ -321,8 +442,43 @@ namespace ParkCinema.ViewModels
                         MovieAbout = Movie.About;
                     }
                 }
+                if(App.MyGrid.Children.Count==3)
+                App.MyGrid.Children.RemoveAt(2);
             });
             MovieSeatsCommand = new RelayCommand((obj) =>
+            {
+                var current = obj as MovieSchedule;
+                var uc = new AdminSeatsUC();
+                var vm = new AdminSeatsUCViewModel();
+                vm.Movie = current;
+                if (File.Exists("toggleButtonState.json"))
+                {
+                    string json = File.ReadAllText("toggleButtonState.json");
+                    List<SelectedButtons> buttonStates = JsonConvert.DeserializeObject<List<SelectedButtons>>(json);
+                    foreach (var item in buttonStates)
+                    {
+                        foreach (var temp in uc.myGrid.Children)
+                        {
+                            if (temp is ToggleButton toggleButton)
+                            {
+                                if (item.ButtonName == toggleButton.Name && item.Movie.MovieName == current.MovieName && item.Movie.MovieDate == current.MovieDate && item.Movie.MovieDateTime == current.MovieDateTime)
+                                {
+                                    toggleButton.IsChecked = true;
+                                    toggleButton.IsEnabled = false;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                uc.DataContext = vm;
+                if (App.MyGrid.Children.Count > 2)
+                {
+                    App.MyGrid.Children.RemoveAt(2);
+                }
+                App.MyGrid.Children.Add(uc);
+            });
+            MovieDatesCommand = new RelayCommand((obj) =>
             {
                 var current = obj as MovieSchedule;
                 var uc = new AdminSeatsUC();

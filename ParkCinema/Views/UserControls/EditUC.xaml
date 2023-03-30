@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ParkCinema.Views.UserControls" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="500" Height="650" Width="900" VerticalAlignment="Top" Margin="0,50,0,0" Name="myUserControl">
-    <Grid Background="Black" Name="myGrid">
+    <Grid Background="LightSlateGray" Name="myGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="5*"/>
@@ -14,11 +14,16 @@
         <Canvas>
             <Button x:Name="mainButton" Command="{Binding MainClickCommand}" Style="{StaticResource mainButtons}" Margin="50,20,0,0" HorizontalAlignment="Left" Width="130" Height="45" Content="Main" FontSize="20" FontWeight="Bold" Background="DarkGray" Foreground="#2c2c2e">
             </Button>
-            <Button Command="{Binding PlotClickCommand}" Style="{StaticResource mainButtons}" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Content="Plot" FontSize="20" FontWeight="Bold" Foreground="#2c2c2e" Canvas.Left="260" Canvas.Top="20" Background="DarkGray"/>
-            <Button Command="{Binding PosterClickCommand}" Style="{StaticResource mainButtons}" Content="Poster" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Canvas.Left="460" Canvas.Top="20" FontSize="20" FontWeight="Bold" Foreground="#2c2c2e" Background="DarkGray"/>
-            <Button Command="{Binding SeatsClickCommand}" Style="{StaticResource mainButtons}" Content="Seats"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Canvas.Left="660" Canvas.Top="20"  FontSize="20" FontWeight="Bold" Foreground="#2c2c2e" Background="DarkGray"/>
+            <Button Command="{Binding PlotClickCommand}" Style="{StaticResource mainButtons}" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Content="Plot" FontSize="20" FontWeight="Bold" Foreground="#2c2c2e" Canvas.Left="210" Canvas.Top="20" Background="DarkGray"/>
+            <Button Command="{Binding PosterClickCommand}" Style="{StaticResource mainButtons}" Content="Poster" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Canvas.Left="370" Canvas.Top="20" FontSize="20" FontWeight="Bold" Foreground="#2c2c2e" Background="DarkGray"/>
+            <Button Command="{Binding SeatsClickCommand}" Style="{StaticResource mainButtons}" Content="Seats"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Canvas.Left="530" Canvas.Top="20"  FontSize="20" FontWeight="Bold" Foreground="#2c2c2e" Background="DarkGray"/>
+            <Button Command="{Binding SessionsClickCommand}" Style="{StaticResource mainButtons}" Content="Sessions"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" Height="45" Canvas.Left="690" Canvas.Top="20"  FontSize="20" FontWeight="Bold" Foreground="#2c2c2e" Background="DarkGray"/>
+            <Button Command="{Binding ResetChangesCommand}" CommandParameter="{Binding ElementName=myGrid}" Canvas.Left="50" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Delete Movie" FontWeight="Bold" FontSize="17" Background="Red" Canvas.Top="590"></Button>
+            <Button Command="{Binding CloseEditCommand}" Style="{StaticResource allButtons}" Background="Transparent" Canvas.Left="835" Canvas.Top="-7" >
+                <Image Source="/Icons/closered.png"></Image>
+            </Button>
         </Canvas>
-        <Canvas Grid.Row="1" Visibility="Hidden">
+        <Canvas Grid.Row="1" Visibility="{Binding MainVisibility}">
             <Label Canvas.Top="7" Canvas.Left="50" Foreground="White" Content="Title" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
             <TextBox Text="{Binding Title}" FontSize="15" FontWeight="DemiBold" Width="170" Height="25" Canvas.Left="50" Canvas.Top="50" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBox>
             <Label Canvas.Top="82" Canvas.Left="50" Foreground="White" Content="Year" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
@@ -46,15 +51,15 @@
             <Button Style="{StaticResource allButtons}" Background="Transparent" BorderThickness="0" Width="280" Height="400" Canvas.Top="45" Canvas.Left="570">
                 <Image Stretch="Fill" Source="{Binding ImagePath}" ></Image>
             </Button>
-            <Button Command="{Binding ResetChangesCommand}" CommandParameter="{Binding ElementName=myGrid}" Canvas.Left="50" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Reset Changes" FontWeight="Bold" FontSize="17" Background="Red" Canvas.Top="480"></Button>
-            <Button Command="{Binding SaveChangesCommand}" Canvas.Left="743" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Save Changes" FontWeight="Bold" FontSize="17" Background="Green" Canvas.Top="480" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
+            <Button Command="{Binding ResetChangesCommand}" CommandParameter="{Binding ElementName=myGrid}" Canvas.Left="570" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Reset Changes" FontWeight="Bold" FontSize="17" Background="DarkGray" Canvas.Top="480"></Button>
+            <Button Command="{Binding SaveChangesCommand}" Canvas.Left="718" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Save Changes" FontWeight="Bold" FontSize="17" Background="Green" Canvas.Top="480" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
         </Canvas>
-        <Canvas Grid.Row="1" Visibility="Hidden">
-            <TextBox FontSize="20" FontWeight="Bold" Canvas.Top="80" Canvas.Left="50" Width="800" TextWrapping="Wrap" Height="400" Background="DimGray" Text="{Binding MovieAbout}"></TextBox>
-            <Button Command="{Binding ResetPlotCommand}" CommandParameter="{Binding ElementName=myGrid}" Canvas.Left="50" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Reset Changes" FontWeight="Bold" FontSize="17" Background="Red" Canvas.Top="500"></Button>
-            <Button Command="{Binding SaveChangesCommand}" Canvas.Left="718" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Save Changes" FontWeight="Bold" FontSize="17" Background="Green" Canvas.Top="500" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
+        <Canvas Grid.Row="1" Visibility="{Binding PlotVisibility}">
+            <TextBox FontSize="20" FontWeight="Bold" Canvas.Top="70" Canvas.Left="50" Width="800" TextWrapping="Wrap" Height="400" Background="LightGray" Text="{Binding MovieAbout}"></TextBox>
+            <Button Command="{Binding ResetPlotCommand}" CommandParameter="{Binding ElementName=myGrid}" Canvas.Left="570" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Reset Changes" FontWeight="Bold" FontSize="17" Background="DarkGray" Canvas.Top="480"></Button>
+            <Button Command="{Binding SaveChangesCommand}" Canvas.Left="718" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Save Changes" FontWeight="Bold" FontSize="17" Background="Green" Canvas.Top="480" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
         </Canvas>
-        <Canvas Grid.Row="1" Visibility="Hidden">
+        <Canvas Grid.Row="1" Visibility="{Binding PosterVisibility}">
             <Button Style="{StaticResource allButtons}" AllowDrop="True" Background="Transparent" BorderThickness="0" Width="280" Height="400" Canvas.Left="50" Canvas.Top="50">
                 <Image Source="{Binding ImagePath}"></Image>
             </Button>
@@ -63,11 +68,21 @@
             </Button>
             <Button Command="{Binding ImageClickCommand}" Style="{StaticResource allButtons}" Background="Transparent" BorderThickness="0" Canvas.Left="520" Canvas.Top="300">
                 <TextBlock  Height='40' Foreground="Black" FontWeight="Bold" FontSize="25" Text="Upload your image"></TextBlock>
-
             </Button>
+            <Button Command="{Binding ResetPosterCommand}" CommandParameter="{Binding ElementName=myGrid}" Canvas.Left="570" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Reset Changes" FontWeight="Bold" FontSize="17" Background="DarkGray" Canvas.Top="480"></Button>
+            <Button Command="{Binding SaveChangesCommand}" Canvas.Left="718" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Save Changes" FontWeight="Bold" FontSize="17" Background="Green" Canvas.Top="480" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
         </Canvas>
-        <Canvas Grid.Row="1">
-            <ComboBox Canvas.Left="222" Width="200" Name="myComboBox" ItemsSource="{Binding AllMoviesSchedule}" DisplayMemberPath="MovieName" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Canvas Grid.Row="1" Visibility="{Binding SeatsVisibility}">
+            <ComboBox FontSize="15" FontWeight="Bold" Canvas.Left="298" Width="250" Height="30" Name="myComboBox" ItemsSource="{Binding AllMoviesSchedule}" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Theater}" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding MovieDate}" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding MovieDateTime}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding MovieSeatsCommand}"
@@ -75,14 +90,9 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ComboBox>
-            <ComboBox Canvas.Left="450" x:Name="dateComboBox"  Width="200" ItemsSource="{Binding AllMoviesSchedule}" DisplayMemberPath="MovieDate" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding MovieDatesCommand}"
-                                           CommandParameter="{Binding ElementName=dateComboBox,Path=SelectedItem}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </ComboBox>
+            <Button Command="{Binding ResetSeatsCommand}" CommandParameter="{Binding ElementName=myComboBox}" Canvas.Left="570" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Reset Changes" FontWeight="Bold" FontSize="17" Background="DarkGray" Canvas.Top="480"></Button>
+            <Button Command="{Binding SaveChangesCommand}" Canvas.Left="718" Width="130" Height="40" Style="{StaticResource buyButton}" Content="Save Changes" FontWeight="Bold" FontSize="17" Background="Green" Canvas.Top="480" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
         </Canvas>
+        
     </Grid>
 </UserControl>

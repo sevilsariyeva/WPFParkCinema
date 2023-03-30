@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ParkCinema.Views.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="550">
+             d:DesignHeight="500" d:DesignWidth="700">
     <Grid>
-        <Grid>
-            <Grid Name="myGrid" Visibility="{Binding PlacesVisibility}" Width="500" Height="350" Margin="50,-1000,0,0">
+        <Grid Width="800" Margin="50,-1000,0,0">
+            <Grid Name="myGrid" Visibility="{Binding PlacesVisibility}" Width="500" Height="350" >
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>

@@ -67,13 +67,13 @@ namespace ParkCinema.ViewModels
             {
                 var mov = obj as Movie;
                 var vm = new EditUCViewModel();
-                vm.Movie = mov;
                 var uc = new EditUC();
-                uc.DataContext = vm;
+                
                 foreach (var item in App.MovieRepo.Movies)
                 {
                     if (item == mov)
                     {
+                        vm.Movie = mov;
                         vm.Title = mov.MovieName;
                         vm.Year = mov.MovieYear;
                         vm.Genre = mov.MovieGenre;
@@ -87,8 +87,17 @@ namespace ParkCinema.ViewModels
                         vm.ImagePath = mov.ImagePath;
                         vm.AgeLimit = mov.Age;
                         vm.Condition = mov.MovieCondition;
+                        break;
                     }
                 }
+                foreach (var item in App.ScheduleRepo.MovieSchedules)
+                {
+                    if (item.MovieName == vm.Movie.MovieName)
+                    {
+                        vm.AllMoviesSchedule.Add(item);
+                    }
+                }
+                uc.DataContext = vm;
                 App.MyGrid.Children.Add(uc);
             });
         }

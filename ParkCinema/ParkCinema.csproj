@@ -129,6 +129,9 @@
     <Compile Include="Views\UserControls\SeatUC.xaml.cs">
       <DependentUpon>SeatUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\SessionsUC.xaml.cs">
+      <DependentUpon>SessionsUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\SuperDayUC.xaml.cs">
       <DependentUpon>SuperDayUC.xaml</DependentUpon>
     </Compile>
@@ -185,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserControls\SeatUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\SessionsUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -374,6 +381,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\cloud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\closered.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1587.40\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1587.40\build\Microsoft.Web.WebView2.targets')" />
