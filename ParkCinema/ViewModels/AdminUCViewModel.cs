@@ -21,6 +21,7 @@ namespace ParkCinema.ViewModels
         public RelayCommand LogoClickCommand { get; set; }
         public RelayCommand EditMovieCommand { get; set; }
         public RelayCommand AddMovieClickCommand { get; set; }
+        public RelayCommand AllPlacesClickCommand { get; set; }
         private string email;
 
         public string Email
@@ -60,6 +61,10 @@ namespace ParkCinema.ViewModels
                 uc.DataContext = vm;
                 App.MyGrid.Children.RemoveAt(0);
                 App.MyGrid.Children.Add(uc);
+            });
+            AllPlacesClickCommand = new RelayCommand((obj) =>
+            {
+                
             });
             LogoClickCommand = new RelayCommand((obj) =>
             {
@@ -123,6 +128,14 @@ namespace ParkCinema.ViewModels
                     }
                 }
                 uc.DataContext = vm;
+                App.MyGrid.Children.Add(uc);
+            });
+            AllPlacesClickCommand = new RelayCommand((obj) =>
+            {
+                var uc = new AllPlacesUC();
+                var vm = new AllPlacesUCViewModel();
+                uc.DataContext = vm;
+                App.MyGrid.Children.RemoveAt(0);
                 App.MyGrid.Children.Add(uc);
             });
         }

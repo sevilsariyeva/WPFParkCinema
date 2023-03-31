@@ -57,11 +57,7 @@ namespace ParkCinema.ViewModels
             set { myData = value;OnPropertyChanged(); }
         }
 
-        private void WriteData(List<SelectedButtons>data)
-        {
-            string jsonString = JsonConvert.SerializeObject(data);
-            File.WriteAllText("toggleButtonState.json", jsonString);
-        }
+        
         private void Places(ToggleButton toggleButton)
         {
 
@@ -128,7 +124,7 @@ namespace ParkCinema.ViewModels
                         {
                             data = new List<SelectedButtons>();
                         }
-                        if (IsSame || numbers.Contains(0))
+                        if (IsSame || !numbers.Contains(0))
                         {
                             if (toggleButton.IsChecked == true)
                             {

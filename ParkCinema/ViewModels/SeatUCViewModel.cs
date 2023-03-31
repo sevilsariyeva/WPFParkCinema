@@ -359,7 +359,7 @@ namespace ParkCinema.ViewModels
             {
                 numbers = new List<int>();
                 ToggleButton toggleButton = child as ToggleButton;
-                if (toggleButton != null)
+                if (toggleButton != null && !AllSeatNames.Any(m => m.ButtonName == toggleButton.Name))
                 {
                     if (File.Exists("toggleButtonState.json"))
                     {
@@ -370,7 +370,7 @@ namespace ParkCinema.ViewModels
                         {
                             foreach (var btn in data)
                             {
-                                if (btn.Movie.MovieName == Movie.MovieName && btn.Movie.MovieDate == Movie.MovieDate && btn.Movie.MovieDate == Movie.MovieDate)
+                                if (btn.Movie.MovieName == Movie.MovieName && btn.Movie.MovieDate == Movie.MovieDate && btn.Movie.MovieDate == Movie.MovieDate && !AllSeatNames.Any(m => m.ButtonName == toggleButton.Name && m.Movie == Movie))
                                 {
                                     if (toggleButton.IsChecked == true && toggleButton.Name != btn.ButtonName)
                                     {

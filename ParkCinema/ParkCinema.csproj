@@ -98,6 +98,7 @@
     <Compile Include="ViewModels\AddMovieUCViewModel.cs" />
     <Compile Include="ViewModels\AdminSeatsUCViewModel.cs" />
     <Compile Include="ViewModels\AdminUCViewModel.cs" />
+    <Compile Include="ViewModels\AllPlacesUCViewModel.cs" />
     <Compile Include="ViewModels\BackgroundImageViewModel.cs" />
     <Compile Include="ViewModels\CampaingsUCViewModel.cs" />
     <Compile Include="ViewModels\EditUCViewModel.cs" />
@@ -116,6 +117,9 @@
     </Compile>
     <Compile Include="Views\UserControls\AdminUC.xaml.cs">
       <DependentUpon>AdminUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\AllPlacesUC.xaml.cs">
+      <DependentUpon>AllPlacesUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\CampaingsUC.xaml.cs">
       <DependentUpon>CampaingsUC.xaml</DependentUpon>
@@ -177,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserControls\AdminUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\AllPlacesUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
