@@ -30,7 +30,7 @@
             <TextBlock x:Name="about" Width="200" TextWrapping="Wrap" FontSize="15" FontWeight="DemiBold"
                            Foreground="Black" FontFamily="Comic Sans MS" Canvas.Right="20" Canvas.Top="408" 
                           Text="{Binding Movie.About,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center"  ></TextBlock>
-            <Button Command="{Binding AddMovieClickCommand}" CommandParameter="{Binding ElementName=myGrid}" Background="Green" Width="100" Height="40" FontSize="20" FontWeight="Bold" Style="{StaticResource buyButton}" Content="Add" HorizontalAlignment="Left" Canvas.Left="300" VerticalAlignment="Center" Canvas.Top="73"></Button>
+            <Button Command="{Binding AddMovieClickCommand}" CommandParameter="{Binding ElementName=myGrid}" Background="Green" Width="100" Height="40" FontSize="20" FontWeight="Bold" Style="{StaticResource buyButton}" Content="Add" HorizontalAlignment="Center" Canvas.Left="300" VerticalAlignment="Top" Canvas.Top="100"></Button>
 
         </Canvas>
 

@@ -18,6 +18,8 @@ namespace ParkCinema.ViewModels
     {
         public RelayCommand MovieSeatsCommand { get; set; }
         public RelayCommand DateSeatsCommand { get; set; }
+        public RelayCommand BackToUserCommand { get; set; }
+        public RelayCommand BackCommand { get; set; }
         private string movieName;
 
         public string MovieName
@@ -154,7 +156,7 @@ namespace ParkCinema.ViewModels
                 {
                     string jsonString = File.ReadAllText("toggleButtonState.json");
                     var data = JsonConvert.DeserializeObject<List<SelectedButtons>>(jsonString);
-                    if (data != null && movie!=null)
+                    if (data != null && movie != null)
                     {
                         foreach (var item in data)
                         {
@@ -178,6 +180,22 @@ namespace ParkCinema.ViewModels
                 {
                     App.MyGrid.Children.RemoveAt(2);
                 }
+                App.MyGrid.Children.Add(uc);
+            });
+            BackToUserCommand = new RelayCommand((obj) =>
+            {
+                var uc = new HomeUC();
+                var vm = new HomeUCViewModel();
+                uc.DataContext = vm;
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
+            });
+            BackCommand = new RelayCommand((obj) =>
+            {
+                var uc = new AdminUC();
+                var vm = new AdminUCViewModel();
+                uc.DataContext = vm;
+                App.MyGrid.Children.RemoveAt(0);
                 App.MyGrid.Children.Add(uc);
             });
         }

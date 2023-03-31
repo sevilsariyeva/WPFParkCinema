@@ -20,10 +20,7 @@
                     FontWeight="ExtraBlack" Width="200">Search</Button>
         </StackPanel>
 
-
-        <WrapPanel Grid.Row="1" Orientation="Horizontal" Name="myPanel">
-                
-        </WrapPanel>
+        <Button Grid.Row="1" Command="{Binding BackToUserCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="1000,10,0,0" Width="150" Height="40" Content="Back To User Side" FontSize="16" FontWeight="Bold" Style="{StaticResource mainButtons}" Background="DarkRed" Foreground="White"></Button>
 
     </Grid>
 </UserControl>

@@ -21,6 +21,7 @@ namespace ParkCinema.ViewModels
         }
 
         public RelayCommand SearchCommand { get; set; }
+        public RelayCommand BackToUserCommand { get; set; }
 
         public WrapPanel MyPanel { get; set; }
 
@@ -39,14 +40,20 @@ namespace ParkCinema.ViewModels
                         Movie = m
                     };
                     var uc = new MovieCellUC(ucVM);
-
-                    var d = double.Parse(m.Rating.ToString().Replace('.', ',')).ToString();
                     
                     uc.Margin = new System.Windows.Thickness(x, 100, 100, 0);
                     App.MyGrid.Children.Add(uc);
                     x +=400;
                     
                 }
+            });
+            BackToUserCommand = new RelayCommand((obj) =>
+            {
+                var uc = new HomeUC();
+                var vm = new HomeUCViewModel();
+                uc.DataContext = vm;
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
             });
         }
     }

@@ -438,26 +438,6 @@ namespace ParkCinema.Repositories
                 Rating=7.7,
                 MoviePrice=10,
                 MovieLink="https://www.youtube.com/watch?v=642lKXC97c4"
-            },
-             new Movie{
-                Id=21,
-                MovieName="The Fault In Our Stars",
-                MovieDate="From 1 April",
-                MovieFormat="2D",
-                MovieLanguages="EN TR",
-                Age="16+",
-                ImagePath="/images/thefault.jpg",
-                MovieCondition="soon",
-                MovieCountry="USA",
-                MovieDirector="Josh Boone",
-                MovieGenre="Drama, Romance",
-                MovieActors="Shailene Woodley Ansel ElgortNat Wolff",
-                About="Two teenage cancer patients begin a life-affirming journey to visit a reclusive author in Amsterdam.",
-                MovieDuration="01:40:00",
-                MovieYear=2023,
-                Rating=7.7,
-                MoviePrice=10,
-                MovieLink="https://www.youtube.com/watch?v=642lKXC97c4"
             }
                 };
                 FileHelper.WriteMovies(Movies);

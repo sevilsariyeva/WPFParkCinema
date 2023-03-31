@@ -12,7 +12,7 @@
                 <Image Stretch="Uniform" Source="/icons/logo.png" Height="89" Width="121"></Image>
             </Button>
             <Canvas Background="Black">
-                <Image  Height="750" Stretch="Fill"  Name="secondImage" Source="{Binding BackImage.ImagePath}"></Image>
+                <Image  Height="750" Stretch="Fill" Width="1500" Name="secondImage" Source="{Binding BackImage.ImagePath}"></Image>
                 <TextBlock TextWrapping="Wrap" Width="800" Panel.ZIndex="1" Text="{Binding BackImage.MovieName}"  HorizontalAlignment="Center" Foreground="White" FontSize="65" Canvas.Left="88" Canvas.Top="436" VerticalAlignment="Top" FontWeight="ExtraBlack">
                     <TextBlock.Effect>
                         <DropShadowEffect ShadowDepth="8"></DropShadowEffect>

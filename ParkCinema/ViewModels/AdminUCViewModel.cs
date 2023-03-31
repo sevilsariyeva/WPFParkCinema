@@ -22,6 +22,22 @@ namespace ParkCinema.ViewModels
         public RelayCommand EditMovieCommand { get; set; }
         public RelayCommand AddMovieClickCommand { get; set; }
         public RelayCommand AllPlacesClickCommand { get; set; }
+        public RelayCommand BackToUserCommand { get; set; }
+        private Visibility passwordSideVisibility;
+
+        public Visibility PasswordSideVisibility
+        {
+            get { return passwordSideVisibility; }
+            set { passwordSideVisibility = value;OnPropertyChanged(); }
+        }
+        private Visibility mainPartVisibility;
+
+        public Visibility MainPartVisibility
+        {
+            get { return mainPartVisibility; }
+            set { mainPartVisibility = value;OnPropertyChanged();OnPropertyChanged(); }
+        }
+
         private string email;
 
         public string Email
@@ -46,12 +62,15 @@ namespace ParkCinema.ViewModels
 
         public AdminUCViewModel()
         {
+            PasswordSideVisibility = Visibility.Visible;
+            MainPartVisibility = Visibility.Hidden;
             AllMovies = new ObservableCollection<Movie>(App.MovieRepo.Movies);
             LoginCommand = new RelayCommand((obj) =>
             {
                 if (Email == "sevilsariyeva@gmail.com" && Password == "sevil2023")
                 {
-
+                    PasswordSideVisibility = Visibility.Hidden;
+                    MainPartVisibility= Visibility.Visible;
                 }
             });
             AddMovieClickCommand = new RelayCommand((obj) =>
@@ -62,9 +81,13 @@ namespace ParkCinema.ViewModels
                 App.MyGrid.Children.RemoveAt(0);
                 App.MyGrid.Children.Add(uc);
             });
-            AllPlacesClickCommand = new RelayCommand((obj) =>
+            BackToUserCommand = new RelayCommand((obj) =>
             {
-                
+                var uc = new HomeUC();
+                var vm = new HomeUCViewModel();
+                uc.DataContext = vm;
+                App.MyGrid.Children.RemoveAt(0);
+                App.MyGrid.Children.Add(uc);
             });
             LogoClickCommand = new RelayCommand((obj) =>
             {
